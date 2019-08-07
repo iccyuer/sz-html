@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #mis {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<script src="echarts.js"></script>
+
+<div id="mis"></div>
+
+<script>
+    var myChart = echarts.init(document.getElementById("mis"));
+    let option = {
+        title: {
+            text: ''
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: [5,15,10,22,18,20,33]
+        },
+
+        grid: {
+            left: '0',
+            right: '12%',
+            bottom: '15%',
+            top: '15%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: [1,2,3,4,5,6,7],
+            splitLine: {
+                show: true
+            },
+
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: {onZero: false},
+            boundaryGap: false,
+            splitLine: {
+                show: false
+            },
+            splitArea: {
+                show: true,
+                areaStyle: {
+                    shadowColor: 'rgba(0,0,0,0.5)'
+                }
+            }
+        },
+
+        series: [
+            {
+                name: "hehe",
+                type: 'line',
+                smooth: true,
+                lineStyle: {
+                    normal: {
+                        width: 3,
+                        shadowColor: 'rgba(0,0,0,0.4)',
+                        shadowBlur: 10,
+                        shadowOffsetY: 10
+                    }
+                },
+
+                data: [5],
+                markPoint: {
+                    data: 20
+                }
+
+            },
+//            {
+//                name: "hehe1",
+//                type: 'line',
+//                smooth: true,
+//                lineStyle: {
+//                    normal: {
+//                        width: 3,
+//                        shadowColor: 'rgba(0,0,0,0.4)',
+//                        shadowBlur: 10,
+//                        shadowOffsetY: 10
+//                    }
+//                },
+//                data: [5,15,10,22,18],
+//
+//                markPoint: {
+//                    data: 15
+//                },
+//                markLine: {
+//                    symbolSize: [0, 0],
+//                    label: {
+//                        normal: {
+//                            show: false
+//                        },
+//                        emphasis: {
+//                            show: false
+//                        }
+//                    },
+//                    lineStyle: {
+//                        normal: {
+//                            type: 'solid',
+//                            width: 10,
+//                            color: '#FFB500',
+//                            opacity: 0.8,
+//                            lineStyle: {type: 'solid', color: '#000'},
+//                        },
+//                        emphasis: {
+//                            type: 'solid',
+//                            width: 10,
+//                            color: '#FFB500',
+//                            opacity: 0.5
+//                        },
+//                        opacity: 0.5
+//                    },
+//                    data: "2018-06-01"
+//                }
+//            }
+        ]
+    }
+    myChart.setOption(option);
+</script>
+</body>
+</html>

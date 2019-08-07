@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+    console.log(1+"1");  //11
+    console.log(1+true);  //2  (1+true.valueOf()=2)    true参与运算当作1处理了
+    console.log(1+undefined);  //NaN
+    console.log(1+null);  //1
+    console.log(1+[]);  //1
+    console.log(1+{}); //1[object Object]
+
+    console.log("--------------------------------");
+
+    console.log(1-"1");  //0
+    console.log(1-false);  //1  (1-false.valueOf()=1) false参与运算当作0处理了
+    console.log(1-undefined);  //NaN
+    console.log(1-null);  //1
+    console.log(1-[]);  //1
+    console.log(1-{}); //NaN
+
+    console.log("--------------------------------");
+
+    console.log(1*"1");  //1
+    console.log(1*false);  //0  (1*false.valueOf()=0) false参与运算当作0处理了
+    console.log(1*undefined);  //NaN
+    console.log(1*null);  //0
+    console.log(1*[]);  //0
+    console.log(1*{}); //NaN
+
+    console.log("--------------------------------");
+
+    console.log(1/"1");  //1
+    console.log(1/false);  //Infinity  (1/false.valueOf()=Infinity) 除0异常
+    console.log(1/undefined);  //NaN
+    console.log(1/null);  //Infinity
+    console.log(1/[]);  //Infinity
+    console.log(1/{}); //NaN
+
+
+</script>
+</body>
+</html>

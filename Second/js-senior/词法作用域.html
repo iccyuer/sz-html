@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //    var num=10;
+    //    console.log(num);
+
+    //1.函数允许访问函数外部的数据
+    var num = 123;
+
+    function foo() {
+        console.log(num);
+    }
+
+    foo(); //123
+
+    //2. 条件语句限制变量的执行
+    if(false) var num1=124;
+    console.log(num1); //undefined
+
+    //3.内部作用域查找优先于外部作用域(全局作用域)
+    var num = 123;
+    function foo() {
+        var num = 456;
+        function func() {
+            console.log( num );
+        }
+        func();
+    }
+    foo(); //456
+
+    //4.
+    var num1 = 123;
+    function foo1() {
+        var num1 = 456;
+        function foo2() {
+            num1 = 789;
+            function foo3 () {
+                console.log( num1 );
+            }
+            foo3();
+        }
+        foo2();
+    }
+    foo1(); //789
+    console.log( num1 ); //123
+
+    //5.
+    /*
+     词法作用域  代码编写期间就已经决定了作用域范围(和调用时无关)
+     作用域只能向上访问 不同同级别跨域访问
+    */
+    var num = 123;
+    function func1(){
+        console.log(num);
+    }
+
+    function func2(){
+        var num = 456;
+        func1();
+    }
+    func2(); //123
+
+
+    /*    console.log(typeof func);
+     if(true){
+     function func(){
+     return 1;
+     }
+     }
+     console.log(typeof func);*/
+
+
+</script>
+<script>
+    //    var num=20;
+</script>
+</body>
+</html>

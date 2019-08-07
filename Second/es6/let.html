@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button>jjj</button>
+<button>jjj</button>
+<button>jjj</button>
+<button>jjj</button>
+
+
+<script>
+
+    var btns = document.getElementsByTagName("button");
+
+    //  var let
+    //使用let相当于使用了闭包，因为闭包就是套了一层函数，将变量限制在作用域当中，而let就是这么个效果。
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].onclick = function () {
+            console.log(i);
+        }
+    }
+
+    /*  var num=5;
+
+     function fn(num){
+     console.log(num);
+     }
+
+     fn(num);
+     num=4;
+     fn()*/
+
+    for (let i = 0; i < 3; i++) {
+
+    }
+
+
+</script>
+</body>
+</html>

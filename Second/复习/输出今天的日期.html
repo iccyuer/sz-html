@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    console.log(dataFormat(new Date()));
+    function dataFormat(date){
+        var year=date.getFullYear();
+        var month=date.getMonth()+1;
+        var day=date.getDate();
+        month=month<9?"0"+month:month;
+        day=day<9?"0"+day:day;
+        return year+"-"+month+"-"+day;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    //1.toString()    和 valueOf()
+
+    /*
+     如果一个引用类型 跟number类型进行算术运算
+     那么会优先调用该对象的valueof方法 并且用返回值跟当前number类型进行计算
+     如果valueOf方法返回的值 无法进行直接计算
+     那么就会切换到调用toString()方法 返回字符串格式的对象再进行计算
+     */
+
+    var per = {
+        name: 100,
+    };
+
+    console.log(1 + per); //1[object Object]
+    console.log(1 * per); //NaN
+
+    var per = {
+        name: 100,
+        valueOf: function () {
+            return 20;
+        }
+    };
+
+    console.log(1 + per); //21
+    console.log(1 * per); //20
+
+
+    //    console.log(per);  //{name: 100}  console默认调用valueOf()方法
+    //    alert(per);  //[object Object]  alert默认调用toString()方法
+
+//    2.
+    /*
+     Object.prototype.hasOwnProperty()
+     返回一个布尔值 ，表示某个对象是否含有指定的属性，而且此属性非原型链继承的。
+     */
+
+    var o = {
+        age: 16
+    };
+
+    var per = {
+        name: "qinqin"
+    };
+
+    per.__proto__ = o;
+
+    console.log(per.hasOwnProperty("name")); //true
+    console.log(per.hasOwnProperty("age")); //false
+
+
+    //3.
+    /*
+     Object.prototype.isPrototypeOf()
+     返回一个布尔值，表示指定的对象是否在本对象的原型链中。
+     */
+
+    var per = {};
+
+    var stu = {};
+
+    stu.__proto__ = per;
+
+    //判断指定对象(参数)是否在调用方法的对象的原型链下面的其中一个对象
+    console.log(per.isPrototypeOf(stu)); //true
+
+</script>
+
+</body>
+</html>

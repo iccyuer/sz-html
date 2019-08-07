@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="../正则表达式/jquery-1.11.1.js"> </script>
+<script>
+    $(function () {
+        $.ajax({
+                url: "http://192.168.1.41:8081/user/addUser",
+                data: {
+                    username:'hello4',
+                    password:181818
+                },
+                success:function(res){
+                    console.log(res);
+                },type:"post"
+            }
+        )
+    })
+</script>
+</body>
+</html>

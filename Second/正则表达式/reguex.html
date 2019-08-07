@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    //    var regEx=/x/;
+    //    var regEx1=new RegExp(/q/);
+
+    //    console.log(regEx.test("x"));
+    //    console.log(regEx1.test("q"));
+
+    //.
+    //    console.log(/./.test("b"));  //true
+    //    console.log(/./.test("\r"));  //false
+    //    console.log(/./.test("\r "));  //true
+    //    console.log(/./.test("\t"));  //true
+
+
+    //\d
+    //    console.log(/\d/.test("baf."));  //false
+    //    console.log(/\d/.test("b1f."));  //true
+    //    console.log(/\d/.test("1234"));  //true
+
+
+    //D
+    //    console.log(/\D/.test("ab1"));  //true
+    //    console.log(/\D/.test("12c"));  //true
+    //    console.log(/\D/.test("123"));  //false
+    //    console.log(/\D/.test("%^&*"));  //true
+
+    //s
+    //    console.log(/\s/.test('\r'));  //true
+    //    console.log(/\s/.test('a'));  //false
+    //    console.log(/\s/.test('a '));  //true
+    //    console.log(/\s/.test(' \t\r\n\f'));  //true
+
+    //S
+    //    console.log(/\S/.test(" a"));
+
+    //w
+    //    console.log(/\w/.test("_")); //true
+
+    //W
+    //    console.log(/\W/.test('_'));  //flase
+
+    //简单类
+    //    console.log(/[abc]/.test("cjjj"));  //true
+    //    console.log(/[abc]/.test("abc"));  //true
+    //
+    //    //负向类
+    //    console.log(/[^abc]/.test("cjjj"));  //true
+    //    console.log(/[^abc]/.test("abc"));  //true
+    //
+    //    console.log(/[a-z]/.test("a"));  //true
+    //    console.log(/[^a-z]/.test("ab1"));  //true
+
+    //组合类
+    //    console.log(/[a-e1-5]/.test("c"));  //true
+
+
+    //边界
+
+    //    console.log(/^\w/.test("_"));  //true，以数字字母下划线开始
+    //    console.log(/^[abc]/.test("acc"));  //true，以a或b或c开始
+    //    console.log(/^[^abc]/.test("acc"));  //false，以非a或b或c开始
+    //    console.log(/^[a-z]/.test("acc"));  //true，以小写字母开始
+    //    console.log(/^[a-zA-Z]/.test("Acc"));  //true，以字母开始
+
+    //边界完全比配
+    //    console.log(/^\d$/.test("3"));  //true，精确匹配一个数字
+    //    console.log(/^\d$/.test("13"));  //false，所匹配的字符串必须是一个数字
+    //    console.log(/^[ab][cd]$/.test("ab"));  //false，匹配两个字符，第一个是a或b，第二个是c或d
+    //    console.log(/^[ab][cd]$/.test("ac"));  //true，....
+    //    console.log(/^[^ab][cd]$/.test("cc"));  //true，....
+
+
+    //预定义量词
+    //    console.log(/\d*/.test("123c"));  //true，匹配任意多个数字，0个也可以
+    //    console.log(/[abc]*/.test("acabz"));  //true，a或b或c出现任意次数，0次也可以
+    //    console.log(/^[abc]*$/.test("acabz"));  //false，所匹配字符串必须不能是abc之外的，且a或b或c出现任意次数，
+    //    console.log(/[abc]+/.test("z"));  //false，a或b或c最少出现1次
+    //    console.log(/^[abc]+$/.test("acabz"));  //false，所匹配字符串必须不能是abc之外的，且a或b或c最少出现1次
+    //    console.log(/[abc]?/.test("z"));  //true，a或b或c出现0次或1次
+    //    console.log(/^[abc]?$/.test("acabz"));  //false，所匹配字符串必须不能是abc之外的，且a或b或c出现0次或1次
+
+
+    //范围量词
+//    console.log(/\d{3}/.test("12"));  //false
+//    console.log(/\d{3}/.test("1234"));  //true
+//    console.log(/^\d{3}$/.test("123"));  //true
+//    console.log(/^\d{3}$/.test("1234"));  //false   注意以上这几种的区别
+//
+//    console.log(/^[abc]{3}$/.test("abb"));  //true
+//    console.log(/^[abc]{3,}$/.test("abbc"));  //true  至少3次
+//    console.log(/^[abc]{3,5}$/.test("abbca"));  //true  3-5次，包含3和5
+
+
+    //-----------
+//    console.log(/[0\-9]/.test("1"));
+
+
+</script>
+</body>
+</html>

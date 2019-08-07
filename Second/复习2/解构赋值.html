@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+
+    /*
+    解构赋值
+    */
+
+    function ac(obj){
+        console.log(obj.name);
+    }
+
+    var per={
+        name:"miss",
+        age:16
+    };
+    ac(per); //miss
+
+    //解构声明
+    let {name}=per;
+    console.log(name); //miss
+
+    let age=10;
+    //解构赋值，需要()包裹，转化成一个表达式
+    ({age}=per);
+    console.log(age); //16
+
+
+</script>
+
+</body>
+</html>

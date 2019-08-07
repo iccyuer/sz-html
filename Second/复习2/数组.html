@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    /*
+     扩展运算符用三个点号表示，功能是把数组或类数组对象展开成一系列用逗号隔开的值
+     */
+    var list=['haha','hehe'];
+    var lis=['ii','kk'];
+    list= [...list,...lis];
+    console.log(list);//['haha','hehe','ii','kk']
+
+    var str='love';
+    console.log(...str); //l o v e
+    var arr= [...str];
+    console.log(arr); //["l", "o", "v", "e"]
+</script>
+</body>
+</html>

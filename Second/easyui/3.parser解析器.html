@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css"/>
+
+</head>
+<body>
+<div id="btn">
+    <a href="#" class="easyui-linkbutton" >click me</a>
+</div>
+
+
+<script>
+    ///关闭自动解析功能，放在$(function() {})外  也就是在页面加载完成之前执行，不能等页面都加载完了(解析完了)再关闭，没用
+    $.parser.auto=false;
+    $(function(){
+        //解析所有UI，指明解析所有页面ui组件
+//        $.parser.parse();
+        //解析指定ui组件，参数为选择器，必须设置的是父容器才可以解析到
+        $.parser.parse("#btn");
+    });
+
+    //解析完成自动调用的方法(若页面没有解析任何一个ui组件，则不会触发此回调)
+    $.parser.onComplete = function () {
+        alert('UI组件解析完毕！');
+    };
+
+
+</script>
+
+</body>
+</html>

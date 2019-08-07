@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    /*    function getCache(){
+     var cache={};
+     return function (key,value){
+     if(cache[key]){
+     if(value){
+     cache[key]=value;
+     }else{
+     return cache[key];
+     }
+     }else{
+     cache[key]=value;
+     return cache[key];
+     }
+     }
+     }
+
+     var p=getCache();
+
+     p("username","miss");
+     p("username","miss you.");
+
+     console.log(p("username"));*/
+
+
+/*    function createCache() {
+        var cache = {};
+        var keys = [];
+        return function (key, value) {
+            if (value !== undefined) {
+                keys.push(key);
+                cache[key] = value;
+                if (keys.length > 50) {
+                    var firstKey = keys.shift();
+                    var oldData = cache[firstKey];
+                    delete cache[firstKey];
+                }
+                return cache;
+            } else {
+                return cache[key];
+            }
+        }
+    }
+
+    var cache = createCache();
+    cache("miss", "you");
+    console.log(cache("miss")); //you
+    console.log(cache("mis")); //undefined
+
+    for (var i = 0; i < 50; i++) {
+        cache("key" + i, "value" + i);
+    }
+    console.log(cache("key49")); //value49
+    console.log(cache("miss")); //undefined，此时miss已被替换*/
+
+
+    /*    function createCache() {
+     var keys = [];
+
+     function cache( key, value ) {
+     // Use (key + " ") to avoid collision with native prototype properties (see Issue #157)
+     if ( keys.push( key + " " ) > 3 ) {
+     // Only keep the most recent entries
+     delete cache[ keys.shift() ];
+     }
+     console.log(keys);
+     return (cache[ key + " " ] = value);
+     }
+     return cache;
+     }
+
+     var tis=createCache();
+     tis(1,"11");
+     tis(2,"22");
+     tis(3,"33");
+     tis(4,"44");*/
+    //    console.log(tis);
+</script>
+
+
+</body>
+</html>

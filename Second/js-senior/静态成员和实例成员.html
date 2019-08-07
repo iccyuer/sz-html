@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //实例成员
+    var per={
+        show: function () {
+            console.log("wait for you");
+        }
+    };
+    per.show();
+    function Person(){}
+
+    //静态成员
+    Person.tis= function () {
+        console.log('forever');
+    };
+    Person.tis();
+    Person.prototype.constructor.name="sadasda";
+
+    //每一个构造方法对象默认都有一个name属性，值为构造方法名
+    //(此外：window对象也有name属性，值默认"")
+    console.log(Person.name); //Person
+
+
+    console.log(Person.prototype);
+    //    per.tis();
+
+</script>
+</body>
+</html>

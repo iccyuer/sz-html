@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css"/>
+</head>
+<body>
+
+<a id="box">我哈哈</a>
+<a id="box1">我哈哈s</a>
+
+<script>
+    //linkbutton类的标签最好是a标签，否则有些效果不会生效
+    $("#box").linkbutton({
+        //允许切换状态是否被选中，类似checkbox效果
+        toggle:true,
+        //添加组，同一个组下面只能有1个事选中状态，radio效果
+        group:'mm',
+    });
+    $("#box1").linkbutton({
+        toggle:true,
+        group:'mm',
+        //显示简洁效果
+        plain:true,
+        //传入一个类名  在icon.css里面找
+        iconCls:"icon-cut",
+        //图标位置，left/right
+        iconAlign:"right"
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+
+    //1.function声明的函数
+    //代码编写阶段：
+    func(); //Funciton has been called
+    function func() {
+        alert("Funciton has been called");
+    }
+
+    //预解析后:
+    function func() {
+        alert("Funciton has been called");
+    }
+    func();
+
+    //2.var声明的变量
+    //代码编写阶段：
+    alert(a);
+    var a = 10; //undefined
+
+    //解析后：
+    var a;
+    alert(a);
+    a = 10;
+
+
+    //3.var声明的函数
+    //代码编写阶段：
+    func(); //报错func is not a function
+    var func = function () {
+        console.log("Funciton has been called");
+    };
+
+    //解析后：
+    var func;
+    func();
+    func = function () {
+        console.log("Funciton has been called");
+    };
+
+
+    //4.函数同名(同名的函数，后面的会覆盖前面的)
+    //代码编写阶段：
+    func1(); //This is last func1
+    function func1() {
+        console.log('This is func1');
+    }
+
+    func1(); //This is last func1
+    function func1() {
+        console.log('This is last func1');
+    }
+
+    //解析后：
+    function func1() {
+        console.log('This is func1');
+    }
+
+    function func1() {
+        console.log('This is last func1');
+    }
+
+    func1();
+    func1();
+
+
+    //5.变量和函数同名(只会对函数声明进行提升，变量会被忽略)
+    //代码编写阶段：
+    alert(foo); //function foo(){}
+    function foo() {
+    }
+    var foo = 2;
+
+    //解析后：
+    function foo() {
+    }
+    alert(foo);
+    foo = 2;
+
+
+    //6.变量和函数同名
+    //代码编写阶段：
+    var num = 1;
+    function num() {
+        alert(num);
+    }
+    num(); //报错num is not a function
+
+    //解析后：
+    function num() {
+        alert(num);
+    }
+    num = 1;
+    num();
+
+
+    //7.预解析是分作用域的(提升只会提升到当前作用域的的首行，并不能跨域)
+    //代码编写阶段：
+    function showMsg() {
+        var msg = 'This is message';
+    }
+    alert(msg); //msg is not defined
+
+    //解析后：
+    function showMsg() {
+        var msg;
+        msg = 'This is message';
+    }
+    alert(msg);
+
+
+    //8.条件式函数声明(在某些特定的条件语句下 才会创建该函数,所以不会被直接提升)
+    //代码编写阶段：
+    console.log(typeof func); //undefined
+    if (true) {
+        function func() {
+            return 1;
+        }
+    }
+    console.log(typeof func); //function
+
+    //解析后(和之前一毛一样，没有提升)
+
+
+    //9.预解析是分段(script标签)的
+    //全局作用域预解析只会提升到当前script标签的首行，不会提升到其他script标签里面
+    //后面的script标签，是可以使用之前script标签里面的变量和方法的，但是之前的js标签不会享受到后面标签的提升
+    func(); // AA2;
+    function func() {
+        console.log('AA1');
+    }
+
+    function func() {
+        console.log('AA2');
+    }
+    */
+
+</script>
+
+<script>
+    function func() {
+        console.log('AA3');
+    }
+
+/*
+    function text6() {
+        var a = 1;
+        function b() {
+            a = 10;
+            return;
+            function a() {
+            }
+        }
+        b();
+        console.log(a);         //  ？
+    }
+    text6();*/
+
+
+
+    function text6(){
+        function b() {
+            function a() {
+            }
+            a = 10;
+            return;
+        }
+        var a;
+        a=1;
+        b();
+        console.log(a);
+    }
+
+    text6();
+</script>
+</body>
+</html>

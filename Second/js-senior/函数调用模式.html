@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+/*
+    //函数模式
+    //this在函数中表示全局对象，即浏览器window对象
+    function show() {
+        console.log("miss you.", this);
+    }
+    show(); //直接方法名()，函数名前面没有任何引导内容
+
+    //立即执行函数也是函数模式
+    (function () {
+        console.log("wait for you.", this)
+    })();
+
+
+    //方法模式
+    //对象.方法名()，也就是绑定到对象上的方法，该方法依附于这个对象存在
+    function fn() {
+        this.tis = function () {
+            console.log("wait for you.", this);
+        };
+    }
+    fn();
+    tis(); //函数模式
+
+    new fn().tis(); //方法模式
+
+    var o = {
+        tis: function () {
+            console.log("miss you.", this);
+        }
+    };
+    o.tis();
+
+    //构造器调用模式
+    //new关键字作用之一：执行构造函数内部代码
+    function Person(name) {
+        this.name = name;
+        this.show = function () {
+            console.log("miss you.");
+        }
+    }
+    new Person("osl");
+
+    /!*
+     补充：构造函数的return关键字说明
+     构造函数中不需要return, 就会默认的return this
+     如果手动的添加return, 就相当于 return this
+     如果手动的添加return 基本类型; 无效, 还是保留原来 返回this
+     如果手动添加return null; 或return undefiend, 无效
+     如果手动添加return 对象类型; 那么原来创建的this就会被丢掉, 返回的是 return后面的对象
+     *!/
+
+    function Person(name) {
+        this.name = name;
+        return new Object();
+    }
+
+    var per = new Person("hi");
+    console.log(per);
+
+    //上下文调用模式
+    /!*
+     上下文(Context)，就是函数调用所处的环境。
+     同一个函数在不同的上下文调用会产生不同的效果。
+     在当前上下文调用，this就是指代当前上下文，不能更改。
+     因为this是一个右值，不能被赋值(其他右值：基本数据类型、undefined、null、null、NaN、方法调用...)
+     上下文调用模式就是更改调用函数时的this指向。不再指向当前上下文的this。
+     *!/
+
+
+    //例子：
+    var per = {
+        tis: "miss you",
+        show: function () {
+            console.log(this.tis);
+        }
+    };
+
+    var p = per.show;
+    p(); //undefined  ,context是window，而window没有tis属性，所以undefined
+    per.show(); //miss you  ，context是per，per.tis="miss you"。
+    p.apply(per); //miss you    ,context是window，但是更改了调用p方法的上下对象，指定为per
+
+    /!*
+     上下文调用的语法(两种方式)
+     ①函数名.apply(对象, [参数]); --更好一些，可以直接传一个数组对象，参数过多时简洁
+     ②函数名.call(对象, 参数...);
+     对象：为当前函数指向新的上下文对象 (如果不传，默认window，如果传入基本数据类型，那么对应其包装类)
+     参数：为当前函数的参数
+     *!/
+
+
+    function show(a, b) {
+        console.log(this.name + a + b);
+    }
+
+
+    function You(name) {
+        this.name = name;
+    }
+
+    var you = new You("wait");
+
+    show(" for", " you"); // for you
+    show.apply(you, [" for", " you"]); //wait for you
+    show.call(you, " for", " you"); //wait for you
+
+
+    /!*
+     补充：
+     如果函数或方法中没有this的操作, 那么无论什么调用其实都一样.
+     如果是函数调用foo(), 那么有点像foo.apply( window ).
+     如果是方法调用o.method(), 那么有点像o.method.apply( o ).
+     *!/
+
+
+    /!*
+     上下文调用模式的使用
+     1.更改上下文对象
+     2.函数借用(实际使用最多的地方)
+     *!/
+
+    */
+
+    var o = {};
+    o[0] = "miss";
+    o[1] = "you";
+//    o.length = 2;
+
+    //让Array数组的方法的上下文指向我们的伪数组对象，然后我们就可以把数组方法借用过来。
+    Array.prototype.push.apply(o, ["a"]);
+    console.log(o); //{0: "miss", 1: "you", 2: "a", length: 3}
+
+//    [].pop.call(o);
+//    console.log(o); //{0: "miss", 1: "you", length: 2}
+//    [].push.apply(o, ["wait"]);
+//    [].push.apply(o, ["for"]);
+//    [].push.apply(o, ["you"]);
+//    [].reverse.call(o);
+//    console.log(o); //{0: "you", 1: "for", 2: "wait", 3: "you", 4: "miss", length: 5}
+
+    //还可以借助apply参数可以传数组的特性，对一些需要传入多个参数，但是不支持数组传递的方法的展开。
+    var arr = [123456, 12345, 1234, 345345, 234, 5];
+    console.log(Math.max.apply(null, arr)); //345345
+
+    //借用构造函数继承
+    function Person(name, age, gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    // 需要提供一个 Student 的构造函数创建学生对象
+    // 学生也应该有 name, age, gender, 同时还需要有 course 课程
+    function Student(name, age, gender, course) {
+        Person.call(this, name, age, gender);
+        this.course = course;
+    }
+    var stu = new Student("ti", 16, "girl", "english");
+    console.log(stu); //Student {name: "ti", age: 16, gender: "girl", course: "english"}
+
+</script>
+</body>
+</html>

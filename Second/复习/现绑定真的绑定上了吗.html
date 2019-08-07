@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    //delete实例成员
+    var per = {};
+
+    per.name = "miss";
+
+    console.log(per.name); //miss
+    delete per.name;
+    console.log(per.name); //undefined
+
+    per.show = function () {
+        console.log("miss you.")
+    };
+    per.show(); //miss you.
+    delete per.show;
+    per.show(); //报错，per.show is not a function
+
+
+    //delete静态成员
+    function Person() {
+    }
+
+    Person.tis = "mis";
+
+    console.log(Person.tis); //mis
+    delete Person.tis;
+    console.log(Person.tis); //undefined
+
+    Person.show = function () {
+        console.log("miss you.");
+    };
+
+    Person.show(); //miss you.
+    delete Person.show;
+    Person.show(); //报错，Person.show is not a function
+
+
+    //dadasdasdasdadsadsdasdasdasdasdadadasd!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!
+    //!!!!!
+    //!!
+    //!
+
+
+</script>
+</body>
+</html>

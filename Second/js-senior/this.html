@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var per = {
+        num: 1,
+        fn: function () {
+            console.log(this.num)
+        }
+    };
+    var num = 2;
+
+    var fn = per.fn;
+
+    fn(); //2
+    per.fn(); //1
+</script>
+</body>
+</html>

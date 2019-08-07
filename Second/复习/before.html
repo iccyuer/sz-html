@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      /*background-color: pink;*/
+      background-image: url("steak.jpg");
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      /*background-image: url("steak.jpg");*/
+      background-color: orange;
+      margin-top: 20px;
+      /*border: 10px solid darkgreen;*/
+      /*padding-top:1px;*/
+    }
+    body:before{
+      content: "";
+      display: table;
+    }
+
+    .box:before {
+      content: "";
+      display: table;
+    }
+    .inner{
+      width: 20px;
+      height: 20px;
+      background-color: purple;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box">
+  <div class="inner"></div>
+</div>
+
+</body>
+</html>

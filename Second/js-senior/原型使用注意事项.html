@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*    function Person(name){
+     this.name=name;
+     //        this.show=function(){
+     //            console.log("I'm a princess");
+     //        }
+     }
+
+     Person.prototype.name='Elsa';
+     Person.prototype.show= function () {
+     console.log('i am the queen');
+     };
+
+     var per=new Person('Anna');
+     var per1=new Person('Anna');
+
+     per.name='Kristoff';
+     per.show= function () {
+     console.log('Kristoff is tall, rugged, handsome');
+     };
+
+     console.log(per.name);
+     console.log(per.show());
+
+     console.log(per1.name);
+     console.log(per1.show());*/
+
+    //------------------------------------------------------------
+
+    function Person(name) {
+        this.name = name;
+    }
+
+    var elsa = new Person('Elsa');
+
+    var anna = new elsa.constructor('Anna'); //同样可以进行实例化
+
+    console.log(anna.name); //Anna
+
+
+</script>
+</body>
+</html>

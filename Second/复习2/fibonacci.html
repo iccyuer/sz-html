@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+    1 1 2 3 5 8
+     */
+    function aa(num){
+        if (num == 1 || num == 2) {
+            return 1;
+        }
+        var a= 1,b=1;
+        var c=0;
+        for(var i=0;i<num-2;i++){
+            c=a+b;
+            a=b;
+            b=c;
+        }
+        return c;
+    }
+    console.log(aa(6));
+
+</script>
+</body>
+</html>

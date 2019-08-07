@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+
+    /*
+    在js中，所有的引用数据类型都继承Object，也就是它们的构造函数的的原型都替换成了Object构造函数的原型对象
+    也就是因为如此才出现的继承,也就出现了原型链。
+     */
+
+    /*
+     原型链:
+     每个对象都有自己的构造函数,而每个构造函数都有一个神秘而且强大的原型对象
+     每个原型本身是一个对象,该原型对象也有自己的构造函数,该构造函数也会有一个原型对象
+     该原型对象上面也有构造函数 ,也会有原型对象
+     这种原型对象上面还有原型对象的结构 形成了一个链式的结构  这种结构就叫原型链结构
+     原型链的最顶层是Object.prototype  Object的原型对象的上面没有原型了
+     作用:
+     在同一个原型链里面 所有的对象的方法 都可以一直继承下去使用
+     当前对象可以使用 原型链上面的所有定义过的功能
+     所以我们平时创建出来的对象 能调用的那些通用方法 都是原型链给我们提供的
+     */
+
+//    var per={};
+//    per.__proto__=new Object().__proto__; //每个引用数据类型的
+
+
+/*    function Person(){};
+    //每个引用数据类型的原型对象的构造函数都替换成了Object构造函数的原型对象
+    //(相当于执行了这么个操作，具体如何实现的不知道)
+    Person.prototype=new Object().__proto__;
+
+    var per=new Person();
+
+    console.log(per);
+    console.log({});
+
+    console.log(Object.prototype); //Object构造函数的原型对象
+    console.log(Object.prototype.__proto__);  //null    ,Object构造函数的原型对象的构造函数的原型对象(到顶了为null)
+    console.log(new Object().__proto__.__proto__);  //同上*/
+
+
+
+
+    function Animal(){
+        this.name='我是动物';
+    }
+
+    function Person(){
+        this.name='我是人类';
+    }
+
+    Person.prototype=new Animal();
+    Person.prototype.constructor=Person;
+
+    function Student(){
+        this.name='我是小学生';
+    }
+    Student.prototype=new Person();
+    Student.prototype.constructor=Student;
+
+    var stu=new Student();
+    console.log(stu);
+
+
+</script>
+</body>
+</html>

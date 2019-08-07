@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #mis{
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<script src="echarts.js"></script>
+
+<div id="mis"></div>
+
+<script>
+    var myChart=echarts.init(document.getElementById("mis"));
+    myChart.setOption({
+        title:{
+            text:"ECharts 入门演示"
+        },
+        tooltip:{},
+        legend:{
+            data:['销量']
+        },
+        xAxis:{
+            data:['tu','ok','miss','you','wait']
+        },
+        yAxis:{},
+        series:{
+            name:'销量',
+            type:'bar',
+            data:[5,15,10,22,18]
+        },
+        itemStyle:{
+            color:"orange"
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //1.混入式继承
+    var per = {
+        name: "Olaf",
+        sayHi: function () {
+            console.log('Hello');
+        }
+    };
+    var p = {};
+    for (var k in per) {
+        p[k] = per[k];
+    }
+    console.log(p);
+
+
+    //2.原型默认继承
+    //    .....
+
+
+    //3.替换原型继承
+/*    var per = {
+        name: 'hi',
+        sayHi: function () {
+            console.log('Hello');
+        }
+    };
+    var p = {};
+    p.__proto__ = per;
+    console.log(p);*/
+
+
+    //4.原型对象混入式继承
+/*    var per = {
+        name: "hi",
+        sayHi: function () {
+            console.log('Hello');
+        }
+    };
+
+    var p = {};
+    for (var k in per) {
+        p.__proto__[k] = per[k];
+    }
+    console.log(p);*/
+
+
+    //5.javascript语言精粹 提供了一种继承方式
+/*    function Person(name) {
+        this.name = name;
+    }
+    var per = new Person('Elsa');
+    console.log(per.__proto__); //谷歌、火狐、IE Edge/IE11下可使用
+
+    function create(obj) {
+        var o = {};
+        o.__proto__ = obj;
+        return o;
+    }
+
+    var p = create(per);
+
+    console.log(p);*/
+
+
+    //------------------------------------
+    //6.ECMA 5推出的  IE8及以下不支持
+    //7.自己封装的
+/*    console.log(Object.create);
+
+    function Person(name) {
+        this.name = name;
+    }
+
+    var per = new Person('Anna');
+
+    function create(obj) {
+        if (Object.create) {
+            return Object.create(obj);
+        } else {
+            function F() {
+
+            }
+            F.prototype = obj;
+            return new F();
+        }
+    }
+
+    var p = create(per);
+
+    console.log(p);
+    console.log(p.constructor);
+
+    //    var p1 = new p.constructor('Olaf');
+    //    console.log(p1);
+    //
+    //    var per1 = new per.constructor('kris');
+    //    console.log(per1);*/
+
+</script>
+</body>
+</html>

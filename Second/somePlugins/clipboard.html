@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="copyBtn" data-clipboard-text="鹅鹅鹅饿饿，炒鹅肝">一键复制</div>
+<script type='text/javascript' src="https://cdn.staticfile.org/clipboard.js/1.5.15/clipboard.min.js"></script>
+<script>
+
+    var clipboard = new Clipboard('.copyBtn').on('success', function(e) {
+        var e = e || window.event;
+        console.log(e);
+    }).on('error', function(e) {});
+</script>
+
+</body>
+</html>

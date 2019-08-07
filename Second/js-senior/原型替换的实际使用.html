@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+     内置对象 原有功能我们已经会使用了
+     但是我们如果自己想要增加功能 不可能去修改源代码
+     但是我们可以访问到Array的原型
+     */
+
+    var arr=['tutu','shanshan','xixi'];
+    Array.prototype.show = function () {
+        console.log("我是数组的show方法");
+    };
+    arr.show();
+
+    //如果修改的方法名和Array原有方法名冲突，那么会出现覆盖，导致Array原有的方法名不能使用
+    Array.prototype.slice = function () {
+        console.log("不能截取了");
+    };
+    arr.slice(0,2);
+
+    //换一种思路，不去直接修改Array原有的原型方法，而是我们自己创建一个构造方法，把自己的原型替换成Array的原型
+    //此时，在自己的上面扩展功能，并不会影响到原有Array的使用。
+    function MyArray(){}
+    MyArray.prototype=[];
+    var myArr=new MyArray();
+    myArr.push("xiang");
+    myArr.push("ni");
+    myArr.push("la");
+    console.log(myArr);
+
+
+</script>
+</body>
+</html>

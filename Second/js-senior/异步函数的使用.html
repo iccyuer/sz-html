@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    //同步执行
+    //(每次for循环都会执行一次，每次输出当前i值)
+/*    for (var i = 0; i < 3; i++) {
+        function show() {
+            var num = i;
+            console.log(num);
+        }
+        show(); //1 2 3
+    }*/
+
+    //异步执行
+    //(每次for循环都只是声明了一个函数，等到for循环完毕才执行，此时i值为3)
+/*    for (var i = 0; i < 3; i++) {
+        function show() {
+            var num = i;
+            console.log(num);
+        }
+        setTimeout(show, 0); //3 3 3
+    }*/
+
+    //解决方式1
+    //给每个函数添加形参，调用时的i值为局部变量的形参值，并不会去找全局的i
+/*    for (var i = 0; i < 3; i++) {
+        function show(i) {
+            var num = i;
+            console.log(num);
+        }
+        setTimeout(show(i), 0); //0 1 2
+    }*/
+
+    //解决方式2
+    //利用闭包(每个函数的num值都封闭起来了)
+    for (var i = 0; i < 3; i++) {
+        function show(i) {
+//            var num = i;
+            return function () {
+                console.log(i);
+            }
+        }
+        setTimeout(show(i), 0); //0 1 2
+    }
+
+    //解决方式3
+    //利用自调用函数+闭包
+/*    for (var i = 0; i < 3; i++) {
+        setTimeout((function () {
+            var num = i;
+            return function () {
+                console.log(num);
+            }
+        })(), 0); //0 1 2
+    }*/
+</script>
+</body>
+</html>

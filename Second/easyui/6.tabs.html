@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css"/>
+</head>
+<body>
+
+<div class="easyui-tabs" style="width: 300px;height: 200px" >
+    <div title="选项卡标题1">我是内容1</div>
+    <div title="选项卡标题2">我是内容2</div>
+    <div title="选项卡标题3">我是内容3</div>
+</div>
+<br>
+<button id="btn">btn</button>
+
+<div id="box" style="width: 300px;height: 200px" >
+    <div title="选项卡标题1">我是内容1</div>
+    <div title="选项卡标题2">我是内容2</div>
+    <div title="选项卡标题3">我是内容3</div>
+</div>
+<script>
+    $(function(){
+
+        $("#btn").click(function(){
+            //Tabs方法
+//            console.log($("#box").tabs("getTab",1));
+//            console.log($("#box").tabs("resize"));
+            console.log($("#box").tabs("select",2));
+
+//            ...
+
+
+        });
+
+
+        $("#box").tabs({
+            width:300,
+            height:200,
+            //简洁模式
+//        plain:true,
+            //大小占满父容器
+//            fit:true,
+            //单个选项卡宽度  选项卡如果太宽  显示不下 则默认可以滚动
+            tabWidth:150,
+            tabHeight:40,
+
+            //选项卡每次滚动的像素值和时长
+            scrollIncrement:80,
+            scrollDuration:1000,
+
+            //默认选中的tab
+            selected:1,
+
+            //选项卡位置，如果为left或right，选项卡超出了tabs高度则没有可滚动
+            tabPosition:'bottom',
+            headerWidth:120,
+
+            //工具栏：值是个数组，可以写多个，内容和linkbutton属性一致
+            tools:[
+                {
+                    text:'呵呵',
+                    //传入一个类名  在icon.css里面找
+                    iconCls:"icon-cut",
+                    //图标位置，left/right
+                    iconAlign:"right",
+                    handler:function(){
+                        //隐藏tabs表格
+                        $("#box").tabs().hide();
+                    }
+                }
+            ],
+            //工具栏位置，默认right
+            toolPosition:'left'
+
+        });
+    })
+</script>
+
+</body>
+</html>

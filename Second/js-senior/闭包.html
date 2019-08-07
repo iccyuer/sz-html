@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+     //    闭包问题
+     var fns = [];
+     for (var i = 0; i < 3; i++) {
+     function inner() {
+     return i * i;
+     }
+
+     fns.push(inner);
+     }
+
+     console.log(fns[0]());
+     console.log(fns[1]());
+     console.log(fns[2]());
+
+     //闭包：在inner外包了一层函数
+     var fs = [];
+     for (var i = 0; i < 3; i++) {
+     function out(i) {
+     function inner() {
+     return i * i;
+     }
+
+     return inner;
+     }
+
+     fs.push(out(i))
+     }
+     console.log(fs[0]());
+     console.log(fs[1]());
+     console.log(fs[2]());
+
+     */
+
+    /*
+
+     for(var i=0;i<3;i++){
+
+     function out(i){
+     function fn(){
+     console.log(i);
+     }
+     return fn;
+     }
+
+     setInterval(out(i),1000);
+     }
+
+     */
+
+
+    //    -=-------------------------------
+    console.log("-----------------------------");
+
+    /*
+     function show() {
+     var Anna = {
+     name: 'Anna',
+     age: 16
+     };
+     var Elsa = {
+     name: 'Elsa',
+     age: 18
+     };
+     function fn() {
+     return Anna;
+     }
+     function fn1() {
+     return Elsa;
+     }
+     return {fn, fn1}
+     }
+
+     console.log(show().fn());
+     console.log(show().fn1());
+
+
+     //1.如何拿到函数里面的变量？ 通过return
+     //弊端：每次调用函数都会执行内部代码，return一个新的变量回去，这样调用多次，返回的并不是同一个变量
+     function miss() {
+     var name = "you";
+     return name;
+     }
+
+     var name = miss();
+     var name1 = miss();
+
+     console.log(name);
+     console.log(name1);
+
+
+     //2.改进(不直接return变量，借助一个function，function里面return变量，再return这个function)
+     //然后我们不断调用这个function，真个函数只执行了1次，每次都是同一个变量
+
+     */
+    function missyou() {
+        var per = {
+            name: "mio",
+            age: 18
+        };
+        function fn() {
+            return per;
+        }
+        return fn;
+    }
+
+    var p1 = missyou();
+    var p2 = missyou();
+    p1().name = "osa";
+    console.log(p1());
+    console.log(p2());
+
+
+    //如何返回多个值(return一个{}，或者[])
+
+
+    //闭包的实际使用
+
+    function miss() {
+        var per = {
+            name: 'luo',
+            age: 18
+        };
+        return {
+            setName: function (name) {
+                per.name = name;
+                return this;
+            },
+            setAge: function (age) {
+                per.age = age;
+                return this;
+            },
+            getName: function () {
+                return per.name;
+            },
+            getAge: function () {
+                return per.age;
+            }
+        }
+    }
+
+    console.log(miss().setName("sio").getName()); //sio
+
+    */
+</script>
+</body>
+</html>

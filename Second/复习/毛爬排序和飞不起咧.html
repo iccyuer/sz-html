@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    /*    var arr=new Array(4,2,7,5,1,9);
+     for(var i=0;i<arr.length-1;i++){
+     var boo=false;
+     for(var j=0;j<arr.length-1-i;j++){
+     if (arr[j] < arr[j + 1]) {
+     var tem=arr[j];
+     arr[j]=arr[j+1];
+     arr[j+1]=tem;
+     }
+     boo=true;
+     }
+     if (!boo) {
+     break;
+     }
+     }
+     console.log(arr);*/
+
+//    console.log(fibonacci(13));
+    function fibonacci(num) {
+        var a = 1, b = 1;
+        if (num == 0 || num == 1) {
+            return num;
+        }
+        for (var i = 0; i < num-2; i++) {
+            var c = a + b;
+            a = b;
+            b = c;
+        }
+        return c;
+    }
+</script>
+</body>
+</html>

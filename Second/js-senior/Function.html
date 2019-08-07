@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script id="fun" type="xx">
+    var res=a>b?a:b;
+    res=res>c?res:c;
+    return res;
+
+
+
+
+</script>
+
+<script>
+    /*
+     函数定义的3种方式
+     */
+    function xiang() {
+    }
+
+    var ni = function () {
+    }
+
+    var miss = new Function();
+
+    /*
+     在js中 每一个函数本身也是一种对象
+     只要是对象就有自己本身的构造函数
+     该构造函数就是 Function
+     只要是构造函数 那么就能new 对象 new Function返回的就是函数对象
+
+     1.函数是对象, 就可以使用对象的动态特性：  可以绑定属性和方法
+     2.函数是对象, 就有构造函数创建函数：  可以new对象
+     3.函数是函数, 可以创建其他对象:    函数内部可以写代码 去创建其他变量 还可以return (工厂函数)
+     4.函数是唯一可以限定变量作用域的结构:  局部变量
+     */
+
+    /*
+     语法：
+     Function函数所有的参数全都是字符串
+     Function函数的作用就是将所有的参数组合起来，变成一个函数
+     1、如果只传一个参数，那么这个函数必然是函数体
+     2、如果传多个参数，那么最后一个参数表示函数体，前面的参数代表将要创建的函数的参数
+     3、如果不传参数，表示创建一个空函数
+     new Function(arg1, arg2, arg3, ..., argN, body);
+     */
+
+    //1.简单字符串
+    var xiangni = new Function("a", "b", "console.log(a+b);")
+
+    xiangni("miss", " you."); //miss you.
+
+    //2.利用script标签(或者其他div标签也可以，此时用innerText获取)
+    var max = new Function("a", "b", "c", document.getElementById("fun").innerHTML);
+
+    console.log(max(1, 2, 3)); //3
+
+    //3.+字符串拼接
+    var max1 = new Function("a", "b", "c",
+        "var res=a>b?a:b;" +
+        "res=res>c?res:c;" +
+        "return res;"
+    );
+    console.log(max1(2, 3, 4)); //4
+
+    //4.模板字符串
+    var max2 = new Function("a", "b", "c",
+        `var res=a>b?a:b;
+    res=res>c?res:c;
+    return res;
+    `
+    );
+    console.log(max2(3, 4, 5));
+
+    //5.通过外部方法
+    function foo(a,b,c){
+        var res=a>b?a:b;
+        res=res>c?res:c;
+        return res;
+    }
+    var max3=new Function("a","b","c","return foo(a,b,c)");
+
+    console.log(max3(4, 5, 6)); //6
+
+
+</script>
+</body>
+</html>

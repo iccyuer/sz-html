@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="../正则表达式/jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+//        console.log($("#app").createCache);
+//        console.log(createCache);
+    });
+
+    //    console.log(jQuery("#app"));
+    //
+    //    var cache = createCache();
+    //    cache("miss", "you");
+    //    console.log(cache("miss"));
+
+
+    //为页面元素对象存储一个缓存
+    $("#app").data("key", {
+        name: "miss"
+    });
+
+    console.log($("#app").data("key")); //{name: "miss"}
+
+
+    //给对象(任意对象)存储一个缓存
+    $.data($("#app"), "key", {
+        name: "miss"
+    });
+
+    console.log($.data($("#app"), "key")); //undefined，因为不是同一个对象了
+
+
+    var $app = $("#app");
+    $.data($app, "key", {
+        name: "miss"
+    });
+
+    console.log($.data($app, "key")); //{name: "miss"}
+
+</script>
+
+</body>
+</html>

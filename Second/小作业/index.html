@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .head{
+            background-color: #fff;
+            text-align: center;
+        }
+        embed{
+            display: block;
+            margin: auto;
+        }
+        .marquee{
+            position: relative;
+            top:-400px;
+            width: 852px;
+            margin: auto;
+            display: block;
+        }
+        .marquee>span{
+            font-size: 40px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="head">唯美食不可辜负</div>
+</header>
+
+<embed src="fla/meishi.mp4" hidden="false" width="852" height="480">
+
+<marquee class="marquee" behavior="scroll" direction="left" loop="-1" scrollamount="18">
+    <span>吃饭了叫我</span>
+</marquee>
+
+</body>
+</html>

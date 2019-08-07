@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Person(name){
+        this.name=name;
+    }
+
+    Person.prototype.show= function () {
+        console.log('go and play');
+    };
+
+    var per =new Person('Olaf');
+
+//    console.log(Person.prototype);
+//    console.log(per);
+
+    console.log(Person.prototype.constructor); // ƒ Person(name){this.name=name;}
+    console.log(per.constructor);  // ƒ Person(name){this.name=name;}
+
+    //替换原型
+    Person.prototype={
+        constructor:Person
+    };
+
+    var per1=new Person('Anna');
+
+    console.log(Person.prototype.constructor); //ƒ Object() { [native code] }
+    console.log(per.constructor);  // ƒ Person(name){this.name=name;}
+
+    console.log(Person.prototype.constructor);  //ƒ Object() { [native code] }
+    console.log(per1.constructor);  //ƒ Object() { [native code] }
+
+
+    console.log({});
+
+
+</script>
+
+</body>
+</html>

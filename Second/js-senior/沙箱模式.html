@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    /*
+     沙箱是一个独立的 不与外界相关联的  隔离空间
+     外部是无法直接操作内部的数据的   内部的所有数据以及其他功能 都是独立的
+
+     javascript中处理模块依赖关系的闭包被称之为沙箱
+     解决：1.全局变量污染
+        2.沙箱内部是一个受保护的环境
+
+     jQuery的沙箱是什么样子的?
+     jq中的沙箱是将所有的jq方法 和变量数据 都封装到了沙箱里面
+     外部无法使用 然后 对外暴露两个对象 $和jQuery  让我们能够
+     通过这两个对象调用沙箱里面的方法  但是无法修改数据
+
+     */
+
+    //简单沙箱使用
+    (function () {
+        console.log("我是沙箱中的代码");
+    })();
+
+    /*
+    jQuery中的沙箱是怎么一步步来的？
+    基本：自调用函数
+        ① 直接return $=jquery; 不好，直接和外界联系
+        ② window.$=window.jquery=jquery; 也不好，直接操作了外部的window对象
+        ③ 通过参数传入进来一个window对象  然后里面进行window对象的操作
+
+     */
+
+    //jQuery中沙箱封装
+    (function (window) {
+        var $;
+        var jquery={
+            getElement: function () {
+                console.log("获取元素的方法");
+            }
+        };
+        window.$=window.jquery=jquery;
+    })(window);
+
+    console.log("$" in window);
+    console.log("setInterval" in window);
+    console.log(jquery);
+
+    console.log();
+
+
+</script>
+</body>
+</html>

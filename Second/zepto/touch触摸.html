@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: hotpink;
+            line-height: 200px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<ul id=items>
+    <li>List item 1 <span class=delete>DELETE</span></li>
+    <li>List item 2 <span class=delete>DELETE</span></li>
+</ul>
+
+<div></div>
+
+<!--touch的一些触摸事件需要引入此js文件-->
+<script src="zepto-touch-gesture-detect.js"></script>
+<script>
+
+    // show delete buttons on swipe
+    //    $('#items li').swipe(function(){
+    //        $('.delete').hide();
+    ////        $('.delete', this).show();
+    //    });
+
+    // delete row on tapping delete button
+    //    $('.delete').tap(function(){
+    //        $(this).parent('li').remove()
+    //    })
+
+    document.addEventListener("touchmove", function (event) {
+        //阻止默认事件  否则 手机浏览器会有 滑动前进后退效果
+        event.preventDefault();
+        // alert("触摸移动了");
+    });
+    var box = $("div");
+    /*要使用touch事件 必须在手机模式下才会触发 在浏览器当中无法触发*/
+    //轻按
+    box.on("tap", function () {
+        alert("点哚我呢？");
+    });
+
+    /*长按*/
+    box.on("longTap", function () {
+        alert("长按");
+    });
+
+
+    /*类似于拖放api 在元素上面滑动时触发  亲测有效  元素上面滑动*/
+    //     box.on("swipe",function(){
+    //     alert("动我干嘛")
+    //     });
+
+    /*向上滑动生效*/
+
+    //    box.on("swipeUp",function(){
+    //        alert("向上滑动生效")
+    //    });
+    //
+    //    box.on("swipeDown",function(){
+    //        alert("向下滑动")
+    //    });
+    //    box.on("swipeLeft",function(){
+    //        alert("向左滑动")
+    //    });
+    //    box.on("swipeRight",function(){
+    //        alert("向右滑动")
+    //    });
+
+
+</script>
+</body>
+</html>

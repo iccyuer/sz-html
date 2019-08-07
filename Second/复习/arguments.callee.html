@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+   /* setTimeout(function () {
+        setTimeout(function () {
+            console.log("小马");
+        }, 1000);
+        return arguments.callee();
+    }, 1000);*/
+
+//    setTimeout(function(){
+//        console.log("miss you.");
+//        setTimeout(arguments.callee,1000);
+//    },1000);
+
+    /*
+
+    //arguments.callee指向拥有这个 arguments 对象的函数
+    function aa(num) {
+        num++;
+        if (num == 5) {
+            return num;
+        }
+        return arguments.callee(num);
+    }
+
+    console.log(aa(1)); //5
+
+    //好处：函数的执行和函数名解耦合
+    var bb = aa;
+    aa = 5;
+    //把aa函数重新赋值，不会影响递归函数的使用，因为arguments.callee始终指向当前函数
+    //如果直接使用函数名()调用递归，那么则会报错
+    console.log(bb(1)); //5
+
+
+    //普通函数递归
+    /*    function tis(num) {
+     if (num != 0) {
+     tis.a += num % 2 + "";
+     tis(parseInt(num / 2));
+     }
+     }
+     tis(8);
+     console.log(Number(tis.a.split("").splice(9).reverse().join("")));*/
+
+    //    var b=tis;
+    //    tis=1;
+    //    b(9);
+
+
+    //10进制转二进制
+   function mis(num) {
+       if (num != 0) {
+           mis.a += num % 2 + "";
+           arguments.callee(parseInt(num / 2));
+       }
+       return Number(mis.a.split("").splice(9).reverse().join(""));
+   }
+   console.log(mis(23));
+
+    //    console.log(window.a);
+
+    //    var b = mis;
+    //    mis = 1;
+    //    b(9);
+    //    console.log(Number(mis.a.split("").splice(9).reverse().join("")));
+
+
+
+
+    //caller返回一个函数的引用，这个函数调用了当前的函数
+    var a= function () {
+        console.log(a.caller);
+    };
+    a(); //null，如果在javascript程序中，函数是由顶层调用的，则返回null
+    var b= function () {
+        a();
+    };
+    b(); //返回的是b的引用：ƒ () {a();}
+
+
+    //callee是arguments对象的一个属性，arguments.callee指向拥有这个 arguments 对象的函数
+    var c=function(){
+        console.log(arguments.callee);
+    };
+    c(); //ƒ (){console.log(arguments.callee);}
+
+
+    console.log(null===undefined);
+
+
+
+
+</script>
+</body>
+</html>

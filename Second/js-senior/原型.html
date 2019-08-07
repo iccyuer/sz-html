@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    function Person(name,age){
+//        this.name=name;
+//        this.age=age;
+//        this.show= function () {
+//            console.log('i wish you wold tell me why?');
+//        }
+    }
+    var per=new Person();
+    console.log(Person.prototype);
+    console.log(per);
+
+/*    //原型对象绑定属性和方法
+    Person.prototype.name='Elsa';
+    Person.prototype.tis= function () {
+        console.log('go away,anna');
+    };
+
+    if (!Person.prototype.tis) {
+        Person.prototype.tis= function () {
+            console.log('ok,bye');
+        };
+    }*/
+
+    var per=new Person("Anna",16);
+
+    per.tis();  //go away,anna  原型方法
+
+    console.log(per.name);  //Anna  构造函数自己的方属性
+
+/*    console.log(typeof Person.prototype.tis);  //function
+    console.log(typeof Person);  //function
+    console.log(typeof per);  //object
+
+    console.log(per instanceof Person);  //true
+    console.log(Person instanceof Object);  //true
+    console.log(Person instanceof Person);  //false
+    console.log(Person instanceof Function);  //true
+    console.log(Person.prototype.tis instanceof Function);  //true*/
+
+</script>
+
+
+</body>
+</html>
