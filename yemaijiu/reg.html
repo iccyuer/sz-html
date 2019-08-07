@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				font-family: "微软雅黑";
+			}
+			a{
+				text-decoration: none;
+			}
+			li{
+				list-style: none;
+			}
+			#box{
+				width: 398px;
+				min-height: 537px;
+				border: 1px solid #CCCCCC;
+				background: #f8f8f5;
+				margin: 20px auto;
+			}
+			#box>h3{
+				width: 354px;
+				height: 56px;
+				line-height: 64px;
+				font-size: 16px;
+				margin: 0 auto;
+				border-bottom: 1px solid #ccc;
+				position: relative;
+			}
+			#box>h3>a{
+				color: #0066cc;
+				font-size: 12px;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				line-height: 20px;
+				font-weight: 400;
+			}
+			.form1{
+				width: 354px;
+				margin: 43px auto 0;
+			}
+			label{
+				width: 78px;
+				display: inline-block;
+			}
+			#inp1,#inp3,#inp4{
+				width: 270px;
+				height: 43px;
+			}
+			#inp2{
+				width: 178px;
+				height: 43px;
+			}
+			input{
+				margin-bottom: 14px;
+				text-indent: 10px;
+			}
+			.yzm{
+				display: inline-block;
+				width: 82px;
+				height: 30px;
+				background: #fff;
+				position: relative;
+				top: -4px;
+				letter-spacing: 10px;
+				padding-left: 10px;
+				line-height: 24px;
+				cursor: pointer;
+			}
+			#sub{
+				width: 354px;
+				height: 45px;
+				background: #bb0e30;
+				line-height: 45px;
+				text-align: center;
+				color: #fff;
+				font-size: 16px;
+				font-weight: bold;
+				outline: none;
+				border: none;
+				margin-top: 20px;
+			}
+			.p_{
+				margin-left: 78px;
+				color: red;
+				display: none;
+			}
+		</style>
+		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var arr = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
+				$('.yzm').click(function(){
+					var i = parseInt(Math.random()*arr.length);
+					var j = parseInt(Math.random()*arr.length);
+					var m = parseInt(Math.random()*arr.length);
+					var n = parseInt(Math.random()*arr.length);
+					var str = arr[i]+arr[j]+arr[m]+arr[n];
+					$(this).text(str);
+				})
+				function yzm(){
+					var i = parseInt(Math.random()*arr.length);
+					var j = parseInt(Math.random()*arr.length);
+					var m = parseInt(Math.random()*arr.length);
+					var n = parseInt(Math.random()*arr.length);
+					var str = arr[i]+arr[j]+arr[m]+arr[n];
+					$('.yzm').text(str);
+				}
+				yzm();
+				
+				
+			})
+			var res = /^1[3|5|8]\d{9}$/;
+			function nam(){
+				var oInp = document.getElementById("inp1");
+				if (res.test(oInp.value)) {
+					$('.p_1').css('display','none');
+					return true;
+				}else{
+					$('.p_1').css('display','block');
+					return false;
+				}
+			}
+			function pas(){
+				var oInp = document.getElementById("inp3");
+				if (oInp.value.length<6||oInp.value.length>16) {
+					$('.p_2').css('display','block');
+					return false;
+				}else{
+					$('.p_2').css('display','none');
+					return true;
+				}
+			}
+			function pas1(){
+				var oInp = document.getElementById("inp3");
+				var oInp1 = document.getElementById("inp4");
+				if (oInp.value!=oInp1.value) {
+					$('.p_3').css('display','block');
+					return false;
+				} else{
+					$('.p_3').css('display','none');
+					return true;
+				}
+			}
+			function yz(){
+				var oInp = document.getElementById("inp2");
+				var yzm = document.getElementsByClassName('yzm')[0];
+				if (oInp.value!=yzm.innerHTML) {
+					$('.p_4').css('display','block');
+					return false;
+				}else{
+					$('.p_4').css('display','none');
+					return true;
+				}
+			}
+			function m(){
+				var oCke = document.getElementById("cke");
+				if (oCke.checked) {
+					return true;
+				}else{
+					return false;
+				}
+			}
+			function end(){
+				if (nam()&&pas()&&pas1()&&yz()&&m()) {
+					return true;
+				}else{
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<h3>注册也买酒<a href="">您可以使用QQ、支付宝、新浪微博登录</a></h3>
+			<div class="form1">
+				<form action="https://www.baidu.com" method="get" onsubmit="return end()">
+					<label for="inp1">手机号码:</label><input onblur="nam()" id="inp1" type="text" placeholder="输入手机号" />
+					<p class="p_ p_1">请输入正确的手机号</p>
+					<label for="inp2">验证码:</label><input id="inp2" onblur="yz()" type="text" placeholder="请输入验证码" /><span class="yzm">apie</span>
+					<p class="p_ p_4">请输入正确的验证码</p>
+					<label for="inp3">密码:</label><input id="inp3" onblur="pas()" type="password" placeholder="密码设置为6-16位字母或数字" />
+					<p class="p_ p_2">请输入正确的密码格式</p>
+					<label for="inp4">确认密码:</label><input onblur="pas1()" id="inp4" type="password" placeholder="再次输入登录密码" />
+					<p class="p_ p_3">两次密码必须一致</p>
+					<br /><br /><input type="checkbox" />我有VIP升级码<br />
+					<input id="cke" type="checkbox" />我已满18周岁并接受<a style="color: #0066cc;" href="">《也买酒服务条款》</a><br />
+					<input id="sub" type="submit" value="注册完成"/>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

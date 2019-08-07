@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			html,body{
+				font-size: 12px;
+			}
+			#box{
+				width: 403px;
+				min-height: 294px;
+				border: 1px solid #CCCCCC;
+				margin: 50px auto;
+				background: url(img/login_text.gif) no-repeat center 24px;
+			}
+			.div1{
+				width: 326px;
+				margin: 78px auto 0;
+			}
+			#inp1,#inp2{
+				width: 298px;
+				height: 30px;
+				text-indent: 10px;
+				margin-bottom: 16px;
+			}
+			#btn{
+				width: 300px;
+				height: 40px;
+				background: #d10000;
+				line-height: 40px;
+				text-align: center;
+				color: #fff;
+				font-size: 16px;
+				font-weight: bold;
+				outline: none;
+				border: none;
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+			p{
+				color: red;
+				margin-bottom: 10px;
+				display: none;
+			}
+		</style>
+		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var res = /^1[358]\d{9}$/;
+			function nam(){
+				var oInp = document.getElementById("inp1");
+				var oP = document.getElementsByTagName('p')[0];
+				if (res.test(oInp.value)) {
+					oP.style.display = 'none';
+					return true;
+				}else{
+					oP.style.display = 'block';
+					return false;
+				}
+			}
+			function pas(){
+				var oInp = document.getElementById("inp2");
+				var oP = document.getElementsByTagName('p')[1];
+				if (oInp.value=='') {
+					oP.style.display = 'block';
+					return false;
+				}else{
+					oP.style.display = 'none';
+					return true;
+				}
+			}
+			function z(){
+				if (nam()&&pas()) {
+					return true;
+				} else{
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<div class="div1">
+				<form action="https://www.baidu.com" method="post" onsubmit="return z()">
+					<input onblur="nam()" type="text" name="usname" id="inp1" value="" placeholder="请输入手机号" />
+					<p>请输入正确的手机号</p>
+					<input type="password" name="pwd" id="inp2" value="" placeholder="请输入密码" /><br /><br />
+					<p>密码不能为空</p>
+					<input type="checkbox" id="cke" />自动登录
+					<input id="btn" type="submit" value="登录"/>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,252 @@
+ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,body,p{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	font-size: 12px;
+	font-family: '微软雅黑';
+
+}
+img{
+	vertical-align: middle;
+}
+a{
+	text-decoration: none;
+}
+/*a:hover{
+	text-decoration: underline;
+}*/
+li{
+	list-style: none;
+}
+
+.color_a1{
+	color: #85726c;
+	
+}
+
+.weight_a1{
+	font-weight:900;
+}
+.color_red{
+	color: red;
+}
+.ft{
+	float: left;
+}
+
+			/*作者：13522772622@163.com
+        	时间：2017-03-02
+        	描述：顶部灰条*/
+/*灰条部分*/
+
+/*nav*/
+.shopcar_1_nav{
+	width: 960px;
+	margin: 0 auto;
+	text-align: center;
+	background: #E0DBD8;
+	box-shadow: 5px 5px 3px 3px #EDE8E6;
+}
+.shopcar_1_nav>h3{
+	font-size: 40px;
+	padding: 0;
+	line-height: 100px;
+	letter-spacing: 55px;
+}
+.shopcar_1_body_ul h1{
+	width: 960px;
+	height: 43px;
+}
+
+
+
+/*主体部分*/
+.shopcar_1_body{
+	width: 960px;
+
+	margin: 0 auto;
+}
+.shopcar_1_body h1{
+	width: 960px;
+	height: 50px;
+	margin:  0 auto;
+}
+.shopcar_1_body_ul>li:nth-child(2){
+	width: 960px;
+	border: 5px solid #ccc;
+}
+.shopcar_1_body_ul_li2_div1{
+	width: 960px;
+	height: 35px;
+	border-bottom: 3px solid #999999;
+}
+.shopcar_1_body_ul_li2_div1>span{
+    position: relative;
+    float: right;
+    display: block;
+    margin: 7px 5px 0 0 ;
+    width: 70px;
+    height: 17px;
+    background: url(../img/cart_icon.png) 0 -86px no-repeat;
+    color: #fff;
+    text-align: center;
+    font-weight: normal;
+    line-height: 17px;
+    cursor: pointer;
+}
+.shopcar_1_body_ul_li2_div1>p{
+	margin: 5px 0 0 5px;
+	float: left;
+	width: 120px;
+	height: 30px;
+	background: url(../img/QQ图片20170307213609.png) no-repeat;
+}
+.shopcar_1_body_ul_li2_div2{
+	width: 960px;
+	height: 35px;
+	background: #D6C9BC;
+}
+.shopcar_1_body_ul_li2_div2>table>tbody>tr{
+	margin: 5px 0 0 0 ;
+	line-height: 35px;
+}
+.shopcar_1_body_ul_li2_div2>table>tbody>tr>td:nth-child(2){
+	text-align: center;
+}
+.shopcar_1_body_ul_li2_div2>table>tbody>tr>td:nth-child(2)>label{
+	vertical-align: middle;
+}
+
+.jj-span{
+	display: block;
+	width: 58px;
+	height: 24px;
+}
+.jj-span>b:nth-child(1){
+	width: 13px;
+	height: 24px;
+	overflow: hidden;
+	background: url(../img/cart_icon.png) no-repeat ;
+	background-position: 0 -107px;
+	display: inline-block;
+	vertical-align: middle;
+	float: left;
+}
+.jj-span>input:nth-child(2){
+	width: 28px;
+	height: 20px;
+	margin: 0;
+	padding: 0;
+	float: left;
+	text-align: center;
+}
+.jj-span>b:nth-child(3){
+	width: 13px;
+	height: 24px;
+	overflow: hidden;
+	background: url(../img/cart_icon.png) no-repeat ;
+	background-position: -45px -107px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.shopcar_1_body_ul_li2_div3{
+	height: 161px;
+}
+.shopcar_1_body_ul_li2_div3>table{
+	width: 100%;
+	height: 98px;
+}
+.shopcar_1_body_ul_li2_div4{
+	height: 50px;
+	width: 100%;
+	background: #DFD5CA;
+	line-height: 50px;
+	
+}
+.shopcar_1_body_ul_li2_div4>table>tbody>tr>td:nth-child(2)>a{
+	margin: 0 0 0 25px;
+}
+.shopcar_1_body_ul_li2_div4>table>tbody>tr>td:nth-child(3)>a{
+	margin: 0 0 0 25px;
+}
+
+.shopcar_1_body_ul_li3{
+	padding: 10px 0;
+    width: 960px;
+    border-bottom: 2px solid #e0dad8;
+    text-align: right;
+}
+.shopcar_1_body_ul_li3 i{
+	font-style: normal;
+	color: #E4393A;
+}
+
+
+.dibudaohang{
+	width: 100%;
+	height: 62px;
+	background: #f3f3f3;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+.shopsalary{
+
+	width: 940px;
+	height: 62px;
+	background: #f3f3f3;
+	line-height: 62px;
+	padding-left: 30px;
+	margin: 0 auto;
+	color: #333;
+}
+.shopsalary input{
+	float: left;
+	margin-top: 24px;
+}
+.shopsalary>span{
+	float: left;
+	margin-right: 6px;
+}
+.shopsalary a{
+	float: left;
+}
+.shopsalary p{
+	float: left;
+	margin-left: 436px;
+}
+.shopsalary p span:nth-child(1){
+	padding: 0 3px;
+	color: #EE4444;
+}
+.shopsalary p span:nth-child(2){
+	font-size: 22px;
+	color: #EE4444;
+	position: relative;
+	top: 4px;
+}
+.shopsalary p span:nth-child(3){
+	font-size: 22px;
+	color: #EE4444;
+	position: relative;
+	top: 4px;
+}
+.shopsalary div{
+	float: right;
+	margin-right: 16px;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #FFFFFF;
+	background: #E54247;
+	border-radius: 5px;
+	margin-top: 11px;
+	cursor: pointer;
+	font-size:20px ;
+}
+.zhanwei{
+	width: 100px;
+	height: 300px;
+}
