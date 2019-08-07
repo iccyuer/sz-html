@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
+
+<script>
+
+    window.onscroll= function () {
+        console.log(getClientArea().x + " " + getClientArea().y);
+    }
+
+
+    function getClientArea() {
+        if (window.innerHeight !== undefined) {
+            return {
+                x: window.innerWidth,
+                y: window.innerHeight
+            }
+        } else {
+            return {
+                x: document.documentElement.clientWidth,
+                y: document.documentElement.clientHeight
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

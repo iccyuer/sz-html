@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 300px;
+            height: 300px;
+        }
+
+        .thead {
+            /*width: 300px;*/
+            /*height: 50px;*/
+        }
+
+        .tbody {
+        }
+
+        td {
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+<span class="span">我是span我通过css设置</span>
+
+
+<table border="1" valign="middle" align="center">
+    <thead class="thead">
+    <tr>
+        <th>姓名</th>
+        <th>课程</th>
+        <th>成绩</th>
+    </tr>
+    </thead>
+
+    <tbody class="tbody">
+    <tr>
+        <th>卢布</th>
+        <th>马术</th>
+        <th>30</th>
+    </tr>
+    <tr>
+        <th>卢布</th>
+        <th>马术</th>
+        <th>30</th>
+    </tr>
+    <tr>
+        <th>卢布</th>
+        <th>马术</th>
+        <th>30</th>
+    </tr>
+    <tr>
+        <th>卢布</th>
+        <th>马术</th>
+        <th>30</th>
+    </tr>
+    <tr>
+        <th>卢布</th>
+        <th>马术</th>
+        <th>30</th>
+    </tr>
+    <tr>
+        <th>卢布</th>
+        <th>马术</th>
+        <th>30</th>
+    </tr>
+    </tbody>
+
+</table>
+
+<table border="1" valign="middle" align="center">
+    <thead>
+    <tr>
+        <td>
+            <input type="checkbox" class="theadInp">
+        </td>
+        <td>language</td>
+        <td>country</td>
+    </tr>
+    </thead>
+
+    <tbody class="tbodyInp">
+    <tr>
+        <td>
+            <input type="checkbox">
+        </td>
+        <td>英语</td>
+        <td>英国</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox">
+        </td>
+        <td>法语</td>
+        <td>法国</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox">
+        </td>
+        <td>汉语</td>
+        <td>中国</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox">
+        </td>
+        <td>俄语</td>
+        <td>俄罗斯</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox">
+        </td>
+        <td>意语</td>
+        <td>意大利</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="../MyJs/jQuery.js"></script>
+<script>
+
+    var span = document.getElementsByClassName("span")[0];
+
+    css(span, {"background": "hotpink", "font-size": "20px"});
+
+//    jQ(span).css({"background": "hotpink", "font-size": "20px"});
+
+
+    var thead = document.getElementsByClassName("thead")[0];
+    thead.style.backgroundColor = "hotpink";
+
+
+    var tbody = document.getElementsByClassName("tbody")[0];
+    var tr = tbody.getElementsByTagName("tr");
+    console.log(tr);
+
+    for (var i = 0; i < tr.length; i++) {
+        if (i % 2 == 0) {
+            tr[i].style.backgroundColor = "#ccc";
+        } else {
+            tr[i].style.backgroundColor = "#eee";
+
+        }
+        var color;
+        tr[i].onmouseover = function () {
+            color = this.style.backgroundColor;
+            this.style.backgroundColor = "white";
+        }
+        tr[i].onmouseout = function () {
+            this.style.backgroundColor = color;
+        }
+    }
+
+
+    var theadInp = document.getElementsByClassName("theadInp")[0];
+    var tbodyInp = document.getElementsByClassName("tbodyInp")[0];
+    var tbodyInps = tbodyInp.getElementsByTagName("input");
+
+
+    theadInp.onclick = function () {
+
+        for (var i = 0; i < tbodyInps.length; i++) {
+            tbodyInps[i].checked = this.checked;
+        }
+    }
+
+    for (var i = 0; i < tbodyInps.length; i++) {
+        tbodyInps[i].onclick = function () {
+            var boo = true;
+            for (var i = 0; i < tbodyInps.length; i++) {
+                if (tbodyInps[i].checked === false) {
+                    boo=false;
+                    break;
+                }
+            }
+            theadInp.checked=boo;
+        }
+    }
+
+
+</script>
+</body>
+</html>

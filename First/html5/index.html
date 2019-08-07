@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<span id="sp"></span>
+<script>
+    console.log(sessionStorage.key(0));
+    var user_name = sessionStorage.getItem("name");
+    var span = document.querySelector("#sp");
+    span.innerHTML = user_name;
+
+    sessionStorage.removeItem('uname');
+    sessionStorage.clear();
+
+
+</script>
+</body>
+</html>

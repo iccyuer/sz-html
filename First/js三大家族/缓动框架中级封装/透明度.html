@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .boc {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<button>gogogo</button>
+<div class="boc"></div>
+<script src="../../MyJs/jQuery.js"></script>
+<script>
+    var boc = document.getElementsByClassName("boc")[0];
+    var go=document.getElementsByTagName("button")[0];
+//    boc.style.opacity = 0.3;
+
+    go.onclick= function () {
+        animate_SlowSpeed(boc,{
+            top:300,
+            left:200,
+            width:200,
+            height:200
+        })
+    };
+
+
+
+
+    function animate_SlowSpeed(ele, json) {
+        clearInterval(ele.timer);
+        ele.timer = setInterval(function () {
+            var boo = true;
+            for (var k in json) {
+                var nowState = parseInt(getStyle(ele, k));
+                var step = (json[k] - nowState) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                console.log(1);
+                nowState = nowState + step;
+                ele.style[k] = nowState + "px";
+
+                if (Math.abs(json[k] - nowState) > Math.abs(step)) {
+                    boo = false;
+                }
+            }
+            if (boo) {
+                clearInterval(ele.timer);
+                for (var k in json) {
+                    ele.style[k] = json[k] + "px";
+                }
+            }
+        }, 20);
+
+    }
+</script>
+</body>
+</html>

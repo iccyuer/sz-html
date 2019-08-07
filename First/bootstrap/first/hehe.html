@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="../css/phone.css">
+    <link rel="stylesheet" media="screen and (min-width:769px) and (max-width:991px)" href="../css/pad.css">
+    <link rel="stylesheet" media="screen and (min-width:992px)" href="../css/pc.css">
+</head>
+<body>
+
+<button>click me</button>
+<span>涂山</span>
+<script src="../js/jquery-1.11.3.js"></script>
+<script>
+    var span=document.querySelector("span");
+
+    $(span).css({"background":"red","font-size":"20px"})
+
+    console.log(span.css);
+
+
+</script>
+
+</body>
+</html>

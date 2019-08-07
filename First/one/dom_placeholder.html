@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="tao">enter something</label>
+<input type="text" id="tao">
+<script>
+//    var lab = document.querySelector("label");
+//    var inp = document.querySelector("input");
+    //    inp.oninput = function () {
+    //        //输入时消失
+    //        lab.style.display = "none";
+    //
+    //    };
+    //    //失去焦点，input框没内容后，再显示
+    //    inp.onblur = function () {
+    //        if (inp.value.length === 0) {
+    //            lab.style.display = "inline-block";
+    //        }
+    //    };
+</script>
+
+<script src="placeholder.js"></script>
+<script>
+    var lab = document.querySelector("label");
+    var inp = document.querySelector("input");
+    var text = "enter";
+    placeholderUtil(lab,inp,text);
+</script>
+
+</body>
+</html>

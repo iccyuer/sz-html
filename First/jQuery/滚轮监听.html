@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            /*height: 5000px;*/
+        }
+
+        #cube {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 10px;
+            left: 65px;
+            background: yellow;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div id="cube"></div>
+<script src="jquery-1.11.1.js"></script>
+<script src="jquery.mousewheel.js"></script>
+<script>
+    //    $(window).mousewheel(function(event) {
+    //        console.log(event.deltaX, event.deltaY, event.deltaFactor);
+    //    });
+
+    $(function () {
+        //使用on监听滚轮事件
+        $('#cube').on('mousewheel', function (event) {
+            //输出滚轮事件响应结果
+            console.log(event.deltaX, event.deltaY, event.deltaFactor);
+            //上下滚动时让鼠标垂直移动
+            var newTop = $(this).position().top - event.deltaY*event.deltaFactor + "px";
+            $(this).css("top", newTop);
+            //左右滚动时让鼠标水平移动
+            var newLeft = $(this).position().left + event.deltaX + "px";
+            $(this).css("left", newLeft);
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .app{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app"></div>
+<input type="text">
+
+<script src="jquery-1.11.1.js"></script>
+
+<script>
+/*    $(function () {
+        $(".app").click(function (event) {
+//            console.log(event.keyboard);
+//            console.log(event);
+        });
+        $("input").keydown(function (event) {
+//            console.log(event.key);
+//        });
+    })*/
+
+
+    var inp=document.getElementsByTagName("input")[0];
+
+//    inp.oninput= function (event) {
+//        console.log(event.keyCode);
+//    }
+
+    inp.onkeydown= function (event) {
+        console.log(event);
+    }
+
+
+</script>
+
+</body>
+</html>

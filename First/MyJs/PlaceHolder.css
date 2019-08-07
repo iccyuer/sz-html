@@ -1,0 +1,10 @@
+p{
+    margin-left: 50px;
+    position: relative;
+}
+.taoLabel{
+    position: absolute;
+    left: 10px;
+    color: #999;
+    cursor: text;
+}

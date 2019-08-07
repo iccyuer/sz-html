@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 200px;
+            margin: auto;
+            border: 1px solid #000;
+        }
+
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<div class="container">
+    <img src="car.jpg" alt="" height="200">
+    <img src="shan.jpg" alt="" height="200">
+</div>
+
+<script>
+    var box = document.querySelector("#box");
+    var imgList = document.querySelectorAll(".container img");
+    var imgObj;
+    for (var i = 0; i < imgList.length; i++) {
+        imgList[i].ondrag = function () {
+            imgObj=this;
+        }
+    }
+
+    box.ondragover=function(e){
+        if(e.preventDefault){
+            e.preventDefault();
+        }else{
+            e.returnValue=false;
+        }
+    }
+    box.ondrop=function(){
+        var newImg=imgObj.cloneNode();//复制一个元素
+        box.innerHTML="";
+        box.appendChild(newImg); //把当前img对象重新apped到新位置（重新渲染），如果不复制就会更改原图
+    }
+
+</script>
+</body>
+</html>

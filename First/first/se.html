@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [id][class] {
+            width: 200px;
+            height: 200px;
+            /*background: #ff0000;*/
+            border-top: 1px solid #999;
+        }
+
+        #a + i {
+            color: red;
+        }
+
+        #a ~ #name {
+            color: green;
+        }
+
+        [id~="a1"] {
+            color: yellow;
+        }
+
+        [class*="e"] {
+            /*color: aquamarine;*/
+        }
+
+        div #d1 {
+            color: #ff4bf6;
+        }
+
+    </style>
+
+</head>
+<body>
+<a href="#" id="a">aaa</a>
+<a href="#" id="a1" class="aname hh">aaaab</a>
+<i>kkk</i>
+<i id="name">kkk</i>
+
+
+<div>
+    <i>
+        <div id="d12">
+            divdiv
+        </div>
+    </i>
+</div>
+
+
+</body>
+</html>

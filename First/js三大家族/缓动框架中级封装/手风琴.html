@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 1200px;
+            height: 460px;
+            margin: 50px auto;
+            border: 1px solid firebrick;
+        }
+
+        ul > li {
+            height: 100%;
+            width: 240px;
+            float: left;
+            /*margin-right: 20px;*/
+        }
+
+        ul {
+            width: 1300px;
+            height: 100%;
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+<script>
+
+    var minWidth=100;
+    var maxWidth=800;
+    var normalWidth=240;
+
+    var box = document.getElementsByClassName("box")[0];
+    var ul = box.children[0];
+    var arrLi=ul.children;
+    for (var i = 0; i < ul.children.length; i++) {
+        arrLi[i].style.backgroundImage = "url(image/"+(i+1)+".jpg)";
+
+        arrLi[i].index=i;
+        arrLi[i].onmouseover= function () {
+            clearInterval(timer);
+            show(this);
+            index=this.index;
+        }
+    }
+
+    show(arrLi[0]);
+    var timer=setInterval(autoPlay,2000);
+
+    var index=0;
+    function autoPlay(){
+        index++;
+        if (index > arrLi.length - 1) {
+            index=0;
+        }
+        show(arrLi[index]);
+    }
+
+    ul.onmouseout= function () {
+        for(var i=0;i<arrLi.length;i++){
+            animate_SlowSpeed(arrLi[i],{
+                width:normalWidth
+            })
+        }
+        timer=setInterval(autoPlay,2000);
+    }
+
+    function show(ele){
+        for(var i=0;i<arrLi.length;i++){
+            animate_SlowSpeed(arrLi[i],{
+                width:minWidth
+            })
+        }
+        if (!ele) return;
+        animate_SlowSpeed(ele,{
+            width:maxWidth
+        })
+    }
+
+    function animate_SlowSpeed(ele, json) {
+        clearInterval(ele.timer);
+        ele.timer = setInterval(function () {
+            var boo=true;
+            for (var k in json) {
+                var nowState = parseInt(getStyle(ele, k));
+                var step = (json[k] - nowState) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                console.log(1);
+                nowState=nowState+step;
+                ele.style[k]=nowState+"px";
+
+                if (Math.abs(json[k] - nowState) > Math.abs(step)) {
+                    boo=false;
+                }
+            }
+            if (boo) {
+                clearInterval(ele.timer);
+                for(var k in json){
+                    ele.style[k] = json[k] + "px";
+                }
+            }
+        }, 20);
+    }
+
+    function getStyle(ele,attrName){
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(ele)[attrName];
+        }else{
+            return ele.currentStyle[attrName];
+        }
+    }
+
+
+</script>
+</body>
+</html>

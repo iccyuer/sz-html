@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #878185;
+        }
+
+        .nav {
+            width: 800px;
+            height: 45px;
+            border-radius: 10px;
+            margin: 100px auto;
+            background: url("images/wifi.png") right white no-repeat;
+            position: relative;
+        }
+
+        ul {
+            list-style: none;
+            /*background-color: white;*/
+            /*position: absolute;*/
+            /*float: left;*/
+            /*overflow: hidden;*/
+        }
+
+        ul > li {
+            float: left;
+            width: 84px;
+            height: 45px;
+            font: 16px/45px simsun;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        span {
+            display: inline-block;
+            width: 84px;
+            height: 45px;
+            background: url("images/cloud.gif") no-repeat;
+            position: absolute;
+            /*z-index: 1;*/
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="nav">
+    <span></span>
+    <ul>
+        <li>首页新闻</li>
+        <li>活动策划</li>
+        <li>师资力量</li>
+        <li>企业文化</li>
+        <li>招聘信息</li>
+        <li>公司简介</li>
+        <li>学员信息</li>
+        <li>建议反馈</li>
+    </ul>
+</div>
+
+<script>
+    var nav = document.getElementsByClassName("nav")[0];
+    var span = nav.firstElementChild || nav.firstChild;
+    var ul = nav.children[1];
+
+    var moveWidth=span.offsetWidth;
+
+    var index=0;
+    var liArr = ul.children;
+    for (var i = 0; i < liArr.length; i++) {
+        liArr[i].index = i;
+        liArr[i].onmouseover = function () {
+            slowAnimate_x(span,this.index*moveWidth);
+        }
+
+        liArr[i].onmouseout=function(){
+            slowAnimate_x(span,index*moveWidth);
+        }
+
+        liArr[i].onclick= function () {
+            index=this.index;
+        }
+    }
+
+    function slowAnimate_x(ele, endX) {
+        clearInterval(ele.timer);
+
+        ele.timer = setInterval(function () {
+            var step = (endX - ele.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            ele.style.left = ele.offsetLeft + step + "px";
+
+            if (Math.abs(endX - ele.offsetLeft) <= Math.abs(step)) {
+
+                clearInterval(ele.timer);
+                ele.style.left = endX + "px";
+            }
+        }, 10);
+    }
+</script>
+</body>
+</html>

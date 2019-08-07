@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    var per = {};
+
+    per.fn = function () {
+        console.log("hehe");
+    }
+    per.fn();
+
+    function show() {
+        console.log("show");
+    }
+    console.log(show);
+
+
+    var go = function () {
+        console.log("go");
+    }
+    console.log(go);
+
+
+    function out() {
+        function inner() {
+            console.log("inner");
+        }
+        return inner;
+    }
+
+    per.in = out();
+    per.in();
+</script>
+</body>
+</html>

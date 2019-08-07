@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form action="http://www.baidu.com" target="_blank">
+    <input id="enter" type="text" maxlength="6" multiple>
+    <input type="email" name="email" >
+    <textarea name="" id="" cols="10" rows="10"></textarea>
+    <meter min="0" max="100" value="0" low="20" high="80" optimum="0"></meter>
+    <progress min="0" max="100" value="0"></progress>
+
+    <output for="enter">sss</output>
+
+    <!-- datalist 不在页面当中显示  使用时 在普通的input框当中 使用list属性 与datalist的id做关联 此处用的是 optiong当中的value值-->
+    <datalist id="menu">
+        <option value="你吃啥我吃啥"></option>
+        <option value="黄焖鸡米饭"></option>
+        <option value="大盘鸡"></option>
+    </datalist>
+    <input type="text" list="menu">
+    <button>xxxx</button>
+</form>
+
+<script>
+    //定时器   分为周期性定时器与一次性定时器（延时器）
+    var met = document.querySelector("meter");
+    var num = 0;
+    /*周期性定时器*/
+    var timer = setInterval(function () {
+        num++;
+        met.value = num;
+        if (num >= 100) {
+            clearInterval(timer)    //当使用定时器时 一定要注意 什么情况下 清除掉定时器
+        }
+        console.log(num);
+    }, 100)
+</script>
+
+
+<!--<form action="http://www.baidu.com" id="f1">-->
+<!--<input type="text" required class="user_name"> <br>-->
+<!--<button type="button" class="btn1">测试</button>-->
+<!--<input type="submit">-->
+<!--</form>-->
+
+<script>
+    var inp1 = document.querySelector(".user_name");
+    /* inp1.validity.valid 判断表单当中的内容是否符合条件  此处的条件为 required(必填的)
+     *  如果填写过 则返回true
+     *  如果未填写 则返回false
+     * */
+
+    //       inp1.setCustomValidity("牛景辉 记得写点东西")  自定义提示信息
+
+    if (inp1.validity.valid) {
+
+    } else {
+        inp1.setCustomValidity("牛景辉 记得写点东西")
+    }
+
+    //      inp1.validity.valueMissing 测试表单当中是否满足required
+
+    var btn = document.querySelector(".btn1")
+    btn.onclick = function () {
+        if (inp1.validity.valueMissing) {
+            alert('用户名称不能为空');
+        } else {
+            alert("通过");
+        }
+    }
+
+</script>
+</body>
+</html>

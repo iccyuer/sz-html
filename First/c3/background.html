@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            background: aqua;
+            padding: 10px;
+            border: 10px dotted #cccccc;
+            background-image: url("sweet.png") ;
+            background-repeat: no-repeat;
+            background-size: 3%;
+            margin-bottom: 10px;
+        }
+
+        .div1 {
+            background-origin: content-box;
+            background-clip: content-box;
+        }
+
+        .div2 {
+            background-origin: padding-box;
+            background-clip: padding-box;
+        }
+
+        .div3 {
+            background-origin: border-box;
+            background-clip: border-box;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="div1">
+    Lorem ipsum dolor sit amet
+</div>
+<div class="div2">
+    Lorem ipsum dolor sit amet
+</div>
+<div class="div3">
+    Lorem ipsum dolor sit amet
+</div>
+
+</body>
+</html>

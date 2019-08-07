@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 350px;
+            height: 500px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            overflow: hidden;
+            position: relative;
+
+        }
+
+        .content {
+            width: 320px;
+            padding: 5px;
+            font: 20px/30px simsun;
+
+        }
+
+        .scroll {
+            width: 30px;
+            height: 80%;
+            background-color: #ccc;
+            position: absolute;
+            right: 0;
+            top: 10%;
+        }
+
+        .bar {
+            width: 30px;
+            /*height: 150px;*/
+            background-color: hotpink;
+            border-radius: 15px;
+            cursor: pointer;
+            position: absolute;
+            top:0;
+
+        }
+
+
+    </style>
+    <script src="jQuery-my-1.0.1.js"></script>
+</head>
+<body>
+<script>
+    /*
+           需求:    滚动条的高度是动态确定的 有一个公式
+                    点击bar上下滚动 内容文字跟着上下滚动
+
+
+            分析:
+                   公式:
+
+     动态设置滚动条的高度 scrollBarHeight =
+     （ 容器的高度 / 内容的高度*滚动条容器(灰色背景)的高度 ）
+
+     滚动条滚动一次    内容移动的距离
+     (内容的高度 - 容器的高度)   / (bar容器的高度 - 滚动条的高度)* 滚动条移动的距离
+
+        比例=(内容的高度 - 容器的高度)   / (bar容器的高度 - 滚动条的高度)
+
+
+        内容移动的距离公式:
+        内容移动的距离=bar移动的距离*比例
+
+
+
+
+        步骤:
+
+            1.获取元素
+            1.5.动态确定bar的高度
+            2.bar鼠标按下事件  document的鼠标移动事件
+            3.获取鼠标在body里面的y的值
+            4.鼠标在bar 的坐标值
+            5.针对bar上下移动的最大值以及最小值的判断
+            6.根据公式移动内容
+            7.鼠标抬起解绑事件
+
+
+
+
+
+
+     */
+    window.onload= function () {
+        //1.获取元素
+        var box=document.getElementsByClassName("box")[0];
+        var content=box.firstElementChild || box.firstChild;
+        var scrollDiv=box.children[1];
+        var bar=scrollDiv.children[0];
+
+        //动态设置滚动条的高度 scrollBarHeight =
+//        （ 容器的高度 / 内容的高度*bar容器的高度 ）
+        //  1.5.动态确定bar的高度
+
+        bar.style.height=box.offsetHeight/content.offsetHeight*scrollDiv.offsetHeight+"px";
+
+
+
+
+//        2.bar鼠标按下事件  document的鼠标移动事件
+        bar.onmousedown= function (event) {
+            var event=event || window.event;
+            // 4.鼠标在bar 的坐标值
+            //先获取 鼠标在body的位置
+            var mouseDownY=event.pageY || event.clientY+scroll().top;
+            //鼠标在bar里面的y值
+            var mouseBarY=mouseDownY-bar.offsetTop;
+
+//            console.log(mouseDownY - bar.offsetTop);
+//            console.log(mouseDownY - bar.offsetTop - scrollDiv.offsetTop);
+
+            document.onmousemove= function (event) {
+                var event=event || window.event;
+//                3.获取鼠标在body里面的y的值
+                var mouseMoveY=event.pageY || event.clientY+scroll().top;
+                //bar要移动的距离
+                var barMoveY=mouseMoveY-mouseBarY;
+//                5.针对bar上下移动的最大值以及最小值的判断
+                if(barMoveY<=0){
+                    barMoveY=0;
+                }
+                //最大值就是 灰色背景的高度 减去 bar的高度
+                if(barMoveY>=scrollDiv.offsetHeight-bar.offsetHeight){
+                    barMoveY=scrollDiv.offsetHeight-bar.offsetHeight;
+                }
+
+
+                //3.5  移动bar   鼠标距离body的距离减去鼠标在bar里面的距离
+                bar.style.top=barMoveY+"px";
+
+//                6.根据公式移动内容
+                /*
+                 比例=(内容的高度 - 容器的高度)   / (bar容器的高度 - 滚动条的高度)
+
+
+                 内容移动的距离公式:
+                 内容移动的距离=bar移动的距离*比例
+
+                 */
+                var bili=(content.offsetHeight-box.offsetHeight)/(scrollDiv.offsetHeight-bar.offsetHeight);
+                content.style.marginTop=-barMoveY*bili+"px";
+
+
+
+                //清除选中内容的效果
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+
+            }
+
+
+        }
+
+
+//        7.鼠标抬起解绑事件
+
+        document.onmouseup= function () {
+            document.onmousemove=null;
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+</script>
+<div class="box">
+    <div class="content">
+        ------------首行-------------<br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        桃花坞里桃花庵,桃花庵下桃花仙. <br>
+        桃花仙人种桃树,又摘桃花换酒钱. <br>
+        ------------末尾-------------<br>
+
+    </div>
+
+    <div class="scroll">
+        <div class="bar"></div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

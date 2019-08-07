@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="arrow"></div>
+<div id="arrow1"></div>
+<script>
+    window.addEventListener("deviceorientation", orientationHandler, false);
+    var arr = [];
+    var arr1 = [];
+    function orientationHandler(event) {
+        text = "";
+        var arrow = document.getElementById("arrow");
+        var arrow1 = document.getElementById("arrow1");
+        text += "左右旋转：rotate alpha{" + Math.round(event.alpha) + "deg)<p>";
+        text += "前后旋转：rotate beta{" + Math.round(event.beta) + "deg)<p>";
+        text += "扭转设备：rotate gamma{" + Math.round(event.gamma) + "deg)<p>";
+        arrow.innerHTML = text;
+
+//        var prevBeta = Math.round(event.beta);
+        var beta;
+        var beta1;
+        var nowBeta = event.beta;
+        var nowGamma = event.gamma;
+        arr.unshift(nowBeta);
+        arr1.unshift(nowGamma);
+        if (arr.length > 4) {
+            arr.pop();
+            arr[0] > arr[3] ? beta = "下" : beta = "上";
+        }
+        if (arr1.length > 4) {
+            arr1.pop();
+            arr1[0] > arr1[3] ? beta1 = "右" : beta1 = "左";
+        }
+        arrow1.innerHTML = arr.length + "    "+arr1.length+"    " + beta+"   "+beta1 ;
+    }
+</script>
+</body>
+</html>

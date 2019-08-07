@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+<!--<a href="http://www.baidu.com">百度</a>-->
+<!--<a href="http://www.baidu.com">百度</a>-->
+<!--<a href="http://www.baidu.com">百度</a>-->
+
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+</div>
+<button>gogo</button>
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        /*
+         $("div").on("contextmenu ", function (e) {
+         e.preventDefault();
+         console.log("右击了");
+         });
+         $("button").click(function () {
+         //            $("div").trigger("contextmenu");
+         //        $("div").triggerHandler("contextmenu");
+
+         })
+         */
+        /*
+         $("a:first").click(function () {
+         console.log("hehe1");
+         });
+         $("a:nth-child(2)").click(function () {
+         console.log("hehe2");
+         });
+         $("a:last").click(function () {
+         console.log("hehe3");
+         });
+
+         $("button").click(function () {
+         //            $("a").click();
+         //            $("a").trigger("click");
+         //            $("a").triggerHandler("click");
+
+         });
+         */
+        $("input").on("click", function () {
+            console.log("click checkbox");
+        });
+
+        $("div").on("click", function () {
+            console.log("click div");
+        });
+
+        $("button").click(function () {
+//            $("input").click();
+            $("input").trigger('click');
+//            $("input").triggerHandler('click');
+        })
+    })
+</script>
+
+</body>
+</html>

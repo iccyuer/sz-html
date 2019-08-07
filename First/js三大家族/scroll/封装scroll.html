@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100px;
+            background-color: #2aff23;
+        }
+
+        .nav {
+            width: 100%;
+            height: 80px;
+            background-color: #ffa772;
+        }
+
+        .main {
+            width: 100%;
+            height: 200%;
+            background-color: #729bff;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="banner"></div>
+<div class="nav"></div>
+<div class="main">ssss</div>
+
+<script>
+
+    var banner = document.getElementsByClassName("banner")[0];
+    var nav = document.getElementsByClassName("nav")[0];
+    var main = document.getElementsByClassName("main")[0];
+    var bannerHeight = banner.offsetHeight;
+    var navHeight = nav.offsetHeight;
+    window.onscroll = function () {
+        if (scroll().top >= bannerHeight) {
+            nav.classList.add("fixed");
+            main.style.paddingTop = navHeight + "px";
+        } else {
+            nav.classList.remove("fixed");
+            main.style.paddingTop = 0;
+        }
+    };
+
+    //被卷去左侧，头部的封装
+    function scroll() {
+        if (window.pageYOffset !== undefined) {
+            return {
+                top: window.pageYOffset,
+                left: window.pageXOffset
+            }
+        } else {
+            return {
+                top: document.documentElement.scrollTop,
+                left: document.documentElement.scrollLeft
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 450px;
+            height: 450px;
+            border: 1px solid #000;
+            position: relative;
+            top: 50px;
+            left: 100px;
+        }
+
+        .big {
+            width: 540px;
+            height: 540px;
+            border: 1px solid #000;
+            overflow: hidden;
+            position: absolute;
+            left: 451px;
+            top: 0;
+            /*display: none;*/
+        }
+
+        .mask {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: rgba(255, 255, 0, .4);
+            cursor: move;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="small">
+        <img src="img/small.jpg" alt="">
+        <div class="mask"></div>
+    </div>
+
+    <div class="big">
+        <img src="img/big.jpg" alt="">
+    </div>
+</div>
+<script src="../../MyJs/jQuery.js"></script>
+<script>
+
+    var box = document.getElementsByClassName("box")[0];
+    var small = document.getElementsByClassName("small")[0];
+    var mask = document.getElementsByClassName("mask")[0];
+    var big = document.getElementsByClassName("big")[0];
+
+    console.log(big.offsetWidth);
+    var bigImg = new Image();
+    bigImg.src = "img/big.jpg";
+    var bigImgWidth=0;
+    bigImg.onload = function () {
+//        console.log(bigImg.width);
+        bigImgWidth = bigImg.width;
+        var maskWidth = small.offsetWidth * big.offsetWidth / bigImgWidth;
+        mask.style.width = maskWidth+"px";
+        mask.style.height = maskWidth+"px";
+    };
+
+    box.onmouseenter= function () {
+        mask.style.display="block";
+        big.style.display="block";
+    }
+    box.onmouseleave= function () {
+        big.style.display="none";
+        mask.style.display="none";
+    }
+
+    box.onmousemove= function (event) {
+        var event=event||window.event;
+
+        var pageX=event.pageX||event.clientX+scroll().left;
+        var pageY=event.pageY||event.clientY+scroll().top;
+
+//        console.log(pageX + " " + mask.style.offsetWidth/2);
+
+        var moveX=pageX-box.offsetLeft-mask.offsetWidth/2;
+        var moveY=pageY-box.offsetTop-mask.offsetHeight/2;
+
+        if (moveX <= 0) {
+            moveX=0;
+        }
+        if (moveY <=0) {
+            moveY=0;
+        }
+        if (moveX >= box.offsetWidth - mask.offsetWidth) {
+            moveX=box.offsetWidth-mask.offsetWidth;
+        }
+        if(moveY>=box.offsetHeight-mask.offsetHeight){
+            moveY=box.offsetHeight-mask.offsetHeight;
+        }
+
+        mask.style.left=moveX+"px";
+        mask.style.top=moveY+"px";
+
+        var smallImg=small.children[0];
+        var bigImgL=big.children[0];
+//        console.log(smallImg);
+
+        var bili=bigImgWidth/smallImg.offsetWidth;
+//        console.log(bili);
+
+        var bigMoveX=bili*moveX;
+        var bigMoveY=bili*moveY;
+
+        bigImgL.style.marginLeft=-bigMoveX+"px";
+        bigImgL.style.marginTop=-bigMoveY+"px";
+    }
+
+
+
+
+</script>
+</body>
+</html>

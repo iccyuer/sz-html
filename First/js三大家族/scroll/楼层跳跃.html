@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        body, html, ul, .box {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        ul > li {
+            height: 100%;
+        }
+
+        .box {
+            /*position: relative;*/
+        }
+
+        ol {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            height: 200px;
+            width: 60px;
+            margin: 0;
+        }
+
+        ol > li {
+            width: 60px;
+            height: 39px;
+            border: 1px solid #000;
+            text-align: center;
+            font: 16px/39px simsun;
+            cursor: pointer;
+        }
+
+        ul > li {
+            font: 40px simsun;
+        }
+        #banner{
+            height: 200px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="banner">heheheh</div>
+<div class="box">
+
+    <ol>
+        <li>服装区</li>
+        <li>食品区</li>
+        <li>电子区</li>
+        <li>厨房区</li>
+        <li>妇婴区</li>
+    </ol>
+
+    <ul>
+        <li>服装区域</li>
+        <li>食品区域</li>
+        <li>电子区域</li>
+        <li>厨房区域</li>
+        <li>妇婴区域</li>
+    </ul>
+
+
+</div>
+
+<script src="../../MyJs/jQuery.js"></script>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    var ol = box.firstElementChild || box.firstChild;
+    var ul = box.children[1];
+
+
+    for (var i = 0; i < ul.children.length; i++) {
+        var color = randomColor();
+//        console.log(color);
+        ul.children[i].style.backgroundColor = color;
+        ol.children[i].style.backgroundColor = color;
+
+        ol.children[i].index=i;
+        ol.children[i].onclick= function () {
+            slowAnimate_scroll(ul.children[this.index].offsetTop);
+        }
+    }
+
+    document.body.onscroll = function () {
+        if (scroll().top > 0) {
+            slowAnimate_y(ol,scroll().top+100);
+
+//            console.log(scroll().top + 100);
+
+
+        }
+    };
+
+
+
+    function slowAnimate_scroll(endY) {
+        clearInterval(window.timer);
+        window.timer = setInterval(function () {
+            console.log(1);
+            var step = (endY - scroll().top) / 10;
+            step=step>0?Math.ceil(step):Math.floor(step);
+            var nowY=scroll().top+step;
+            console.log(nowY);
+            window.scrollTo(0,nowY);
+            if (Math.abs(endY - scroll().top) <= Math.abs(step)) {
+                clearInterval(window.timer);
+                window.scrollTo(0,endY);
+            }
+        }, 10);
+    }
+
+
+</script>
+</body>
+</html>

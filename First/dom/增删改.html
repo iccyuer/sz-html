@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">
+
+    <ul>
+        <li>都锁成这样的，哪又弄了一副新眼镜带啊</li>
+        <li>明哥只是想搞事情，他知道个屁</li>
+        <li>近海之王啊</li>
+    </ul>
+
+    <p>明哥眼镜哪里配的？</p>
+    <button id="btn">add</button>
+</div>
+
+<script>
+
+    var box=document.getElementById("box");
+    var btn=document.getElementById("btn");
+
+    var ul=box.firstElementChild||box.firstChild;
+    var li1=ul.children[0];
+    btn.onclick=function () {
+//        ul.innerHTML="<h1>因为他路痴天下第一，所以很喜欢</h1>";
+        var span=document.createElement("span");
+        span.innerHTML="我是span";
+//        ul.appendChild(span);
+
+//        ul.insertBefore(span,li1);
+
+//        ul.removeChild(li1);
+
+//        li1.parentNode.removeChild(li1);
+//        ul.replaceChild(span,li1);
+        var clone_box=box.cloneNode(true);
+
+        var clone_btn=btn.cloneNode(true);
+        document.body.appendChild(clone_btn);
+
+
+    }
+
+
+
+</script>
+
+
+</body>
+</html>

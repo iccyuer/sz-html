@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: #ffff00;
+            display: none;
+        }
+    </style>
+</head>
+
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        $("button").eq(0).click(function () {
+//            $("div").slideDown(1000,"linear", function () {
+//                console.log(1);
+//            })
+
+//            $("div").show("slow", function () {alert(1)});
+            $("div").fadeIn("slow");
+            $("div").fadeTo(10000,0.4);
+
+
+
+        })
+        $("button").eq(1).click(function () {
+            $("div").slideUp(1000, function () {
+                console.log(1);
+            })
+            $("div").hide();
+        })
+    })
+</script>
+<body>
+<button>ckckck</button>
+<button>ckckck</button>
+<div class="box"></div>
+</body>
+</html>

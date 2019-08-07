@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            border: 1px solid #000;
+            padding: 5px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<img src="img/img.jpg" alt="" width="100">
+<script src="../../MyJs/jQuery.js"></script>
+<script>
+    var img = document.getElementsByTagName("img")[0];
+
+
+    document.onclick = function (event) {
+        var imgWidth = img.offsetWidth;
+        var imgHeight = img.offsetHeight;
+        var event=event||window.event;
+        slowAnimate(img,event.clientX+scroll().left-imgWidth/2,event.clientY+scroll().top-imgHeight/2);
+
+    }
+
+    function slowAnimate(ele,endX,endY){
+        clearInterval(ele.timer);
+        ele.timer=setInterval(function () {
+            var stepX=(endX-ele.offsetLeft)/10;
+            var stepY=(endY-ele.offsetTop)/10;
+            stepX=stepX>0?Math.ceil(stepX):Math.floor(stepX);
+            stepY=stepY>0?Math.ceil(stepY):Math.floor(stepY);
+            ele.style.left=ele.offsetLeft+stepX+"px";
+            ele.style.top=ele.offsetTop+stepY+"px";
+            console.log(stepX + "   " + stepY);
+            if (Math.abs(ele.offsetLeft - endX) <= Math.abs(stepX) && Math.abs(ele.offsetTop - endY) <= Math.abs(stepY)) {
+                clearInterval(ele.timer);
+                ele.style.left=endX+"px";
+                ele.style.top=endY+"px";
+            }
+        },20);
+    }
+
+
+</script>
+
+</body>
+</html>

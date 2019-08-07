@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            border: 1px solid #000;
+        }
+
+        .drop {
+            background-color: #cccccc;
+            cursor: move;
+        }
+
+        .close {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="box">
+    <div class="drop">
+        <i>可以拖拽</i>
+        <span class="close">[close]</span>
+    </div>
+    <div class="bd"></div>
+</div>
+
+<script src="../../MyJs/jQuery.js"></script>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    var drop = box.firstElementChild || box.firstChild;
+
+
+    drop.onmousedown = function (event) {
+        var event = event || window.event;
+        var downX = event.pageX || event.clientX + scroll().left;
+        var downY = event.pageY || event.clientY + scroll().top;
+
+        //必须在down的一瞬间拿到鼠标在盒子中的位置
+        var mouseX = downX - box.offsetLeft;
+        var mouseY = downY - box.offsetTop;
+        document.onmousemove = function (event) {
+            var event = event || window.event;
+            var moveX = event.pageX || event.clientX + scroll().left;
+            var moveY = event.pageY || event.clientY + scroll().top;
+
+            var x = moveX - mouseX;
+            var y = moveY - mouseY;
+
+            console.log(x + "   " + y);
+            box.style.left = x + "px";
+            box.style.top = y + "px";
+            //清除选中内容的效果
+            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+
+        }
+    };
+
+    drop.onmouseup = function () {
+        document.onmousemove = null;
+    };
+</script>
+</body>
+</html>

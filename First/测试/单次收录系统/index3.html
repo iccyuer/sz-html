@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<h2>测试</h2>
+
+<div class="container"></div>
+
+<button class="look">提交</button>
+
+<script>
+    var container=document.getElementsByClassName("container")[0];
+    var look=document.getElementsByClassName("look")[0];
+
+    var text='';
+    for(var i=0;i<localStorage.length;i++){
+        var key=localStorage.key(i);
+        text+=`<p>
+            ${key}: <input type="text">
+        </p>`
+    }
+    container.innerHTML=text;
+
+    look.onclick=function(){
+        var count=0;
+        var inp_list=document.querySelectorAll(".container input");
+        for(var i=0;i<inp_list.length;i++){
+            if(inp_list[i].value===localStorage.getItem(localStorage.key(i))){
+                count++;
+            }
+        }
+        sessionStorage.setItem("score",count);
+        location.href="index1.html";
+    }
+</script>
+
+</body>
+</html>

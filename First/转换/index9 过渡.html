@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background: #f00;
+            transition: width 2000ms linear,
+            height 2s linear 2s,
+            background 2s linear 4s ;
+            transition: all 4s linear;; /*linear 匀速的  默认值 ease-in-out （开始慢 中间快 快结束时慢）ease-out（快到慢） ease-in（慢到快）*/
+        }
+
+        .box1:hover {
+            width: 400px;
+            height: 400px;
+            background: #0f0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+</body>
+</html>

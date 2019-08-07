@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .left, button, .right {
+            float: left;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .selected {
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="left">
+    <li>草莓</li>
+    <li>香蕉</li>
+    <li>火龙果</li>
+    <li>杨桃</li>
+    <li>梨</li>
+</ul>
+<button>>>></button>
+<button><<<</button>
+<button>></button>
+<button><</button>
+
+<ul class="right">
+
+</ul>
+
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        $("li").click(function () {
+            if (this.innerHTML.length > 0) {
+                $(this).toggleClass("selected");
+            }
+        });
+
+        $("button").eq(0).click(function () {
+            $(".left").children("li").appendTo($(".right"));
+        });
+        $("button").eq(1).click(function () {
+            $(".right").children("li").appendTo($(".left"));
+        });
+        $("button").eq(2).click(function () {
+//            if ($(".left").children("li").hasClass("selected")) {
+//                $(this).appendTo($(".right"));
+//            }
+            for(var i=0;i<$(".left").children("li").length;i++){
+                if ($(".left").children("li").eq(i).hasClass("selected")) {
+                    $(".left").children("li").eq(i).appendTo($(".right"));
+                    i--;
+                }
+            }
+            $(".right").children("li").removeClass("selected");
+//            console.log($(".left").children("li").length);
+//            console.log();
+
+        });
+        $("button").eq(3).click(function () {
+            for(var i=0;i<$(".right").children("li").length;i++){
+                if ($(".right").children("li").eq(i).hasClass("selected")) {
+                    $(".right").children("li").eq(i).appendTo($(".left"));
+                    i--;
+                }
+            }
+            $(".left").children("li").removeClass("selected");
+        });
+    })
+</script>
+</body>
+</html>

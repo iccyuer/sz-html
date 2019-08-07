@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        $("button").eq(0).click(function () {
+            $("div").slideDown(3000).slideUp(3000);
+        });
+        $("button").eq(1).click(function () {
+//            $("div").stop(false,false);
+            $("div").stop(false);
+        })
+    })
+</script>
+<button>开始</button>
+<button>停止</button>
+<div class="box"></div>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .out {
+            width: 490px;
+            height: 170px;
+            padding: 5px;
+            margin: 100px auto;
+            border: 1px solid #000;
+        }
+
+        .inner {
+            width: 490px;
+            height: 170px;
+            overflow: hidden;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+            position: absolute;
+            width: 600%;
+            height: 170px;
+        }
+        ul>li{
+            width: 490px;
+            float: left;
+        }
+
+        ol{
+            list-style: none;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        ol>li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            font: 16px/20px simsun;
+            background-color: #21ffb7;
+            color: white;
+            margin-right: 4px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .current{
+            background-color: #ffbe8e;
+            color: black;
+        }
+        .select{
+            position: relative;
+            top: 60px;
+            display: none;
+        }
+        .select>span{
+            display: inline-block;
+            width: 20px;
+            height: 40px;
+            font:700 20px/40px simsun;
+            text-align: center;
+            background-color: rgba(82, 82, 82, 0.79);
+            color: rgba(211, 211, 211, 0.73);
+            position: absolute;
+            cursor: pointer;
+        }
+        .select>span:last-child{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<!--颜宽-->
+<div class="out">
+    <div class="inner">
+        <ul>
+            <li><img src="images/01.jpg" alt=""></li>
+            <li><img src="images/02.jpg" alt=""></li>
+            <li><img src="images/03.jpg" alt=""></li>
+            <li><img src="images/04.jpg" alt=""></li>
+            <li><img src="images/05.jpg" alt=""></li>
+        </ul>
+
+        <ol>
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+
+        <div class="select">
+            <span><</span>
+            <span>></span>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+    var inner=document.getElementsByClassName("inner")[0];
+    var out=inner.parentNode;
+    var ul=inner.firstElementChild||inner.firstChild;
+    var ol=ul.nextElementSibling||ul.nextSibling;
+    var selectBtn=inner.children[2];
+
+    var firstLi=ul.firstElementChild||ul.firstChild;
+    ul.appendChild(firstLi.cloneNode(true));
+    var moveWidth=firstLi.offsetWidth;
+
+    out.onmouseover= function () {
+        selectBtn.style.display="block";
+        clearInterval(timer);
+    }
+    out.onmouseout= function () {
+        selectBtn.style.display="none";
+        timer=setInterval(autoPlay,2000);
+    }
+
+
+    var timer=setInterval(autoPlay,2000);
+
+    var index=0;
+    var roundIndex=0;
+    function autoPlay(){
+        index++;
+        roundIndex++;
+        if (index > ul.children.length - 1) {
+            ul.style.left=0;
+            index=1;
+        }
+        animate_speed_x(ul,-index*moveWidth);
+
+        if (roundIndex > ol.children.length-1) {
+            roundIndex=0;
+        }
+        for(var i=0;i<ol.children.length;i++){
+            ol.children[i].removeAttribute("class");
+        }
+        ol.children[roundIndex].setAttribute("class","current");
+    }
+
+
+    var liArr=ol.children;
+    for(var i=0;i<liArr.length;i++){
+        liArr[i].index=i;
+        liArr[i].onmouseover= function () {
+            for(var i=0;i<liArr.length;i++){
+                liArr[i].removeAttribute("class");
+            }
+            this.setAttribute("class","current");
+            animate_speed_x(ul,-this.index*moveWidth);
+            roundIndex=index=this.index;
+        }
+    }
+
+    var btns=selectBtn.children;
+    btns[0].onclick= function () {
+
+        index--;
+        roundIndex--;
+
+        if (index < 0) {
+            ul.style.left=-(ul.children.length-1)*moveWidth+"px";
+            index=ul.children.length-2;
+        }
+        animate_speed_x(ul,-index*moveWidth);
+
+        if (roundIndex < 0) {
+            roundIndex=ol.children.length-1;
+        }
+
+        for(var i=0;i<ol.children.length;i++){
+            ol.children[i].removeAttribute("class");
+        }
+        ol.children[roundIndex].setAttribute("class","current");
+
+
+    }
+    btns[1].onclick= function () {
+        autoPlay();
+    }
+
+    function animate_speed_x(ele,endX){
+        clearInterval(ele.timer);
+        var speed=endX-ele.offsetLeft>0?10:-10;
+        ele.timer=setInterval(function () {
+            ele.style.left=ele.offsetLeft+speed+"px";
+            if (Math.abs(ele.offsetLeft - endX) <= Math.abs(speed)) {
+                clearInterval(ele.timer);
+                ele.style.left=endX+"px";
+            }
+        },10);
+    }
+</script>
+</body>
+</html>

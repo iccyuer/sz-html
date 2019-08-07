@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            /*width: 200px;*/
+            height: 200px;
+            background-color: hotpink;
+            padding:20px;
+            border: 3px solid #000;
+        }
+        .a{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        $("button").eq(0).click(function () {
+            console.log($("input").val("text"));
+            console.log($(".box").text());
+
+//            $(".box").attr("title","div").attr("class","a");
+            console.log($(".box").attr("title", "div").attr("title"));
+//            $("input:checkbox").attr("disabled","disabled");
+//            $("input:checkbox").attr("checked","checked");
+            $("input:checkbox").prop("disabled","disabled");
+
+            console.log($(".box").height());
+        });
+        $("button").eq(1).click(function () {
+
+//            console.log($(".box").attr("class"));
+//            console.log($(".box").removeAttr("class"));
+            $(".box").height(30+"px");
+        });
+        $("button").eq(2).click(function () {
+
+            console.log($(".box").css("height"));
+            console.log($(".box").height());
+
+//            $("input:checkbox")
+//            $("input:checked")
+
+//            $("#input:checkbox").prop("checked",true);
+        })
+    })
+</script>
+
+<button>ggg</button>
+<button>ggg</button>
+<button>ggg</button>
+<input type="checkbox">
+<input type="text" value="ml">
+<div class="box">i am a div <i>我是i</i></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn1">打开</button>
+<button id="btn2">关闭</button>
+<script>
+
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+
+    var windowObjectReference;
+    btn1.onclick = function () {
+        //在新窗口打开一个页面
+        windowObjectReference = window.open(
+            "http://www.baidu.com",
+            "DescriptiveWindowName",
+            "width=420,height=230,resizable,scrollbars=yes,status=1"
+        );
+        //可以移动这个新窗口的位置
+        windowObjectReference.moveTo(50, 50);
+
+    }
+
+    btn2.onclick = function () {
+        //关闭打开的新窗口
+        windowObjectReference.close();
+        //关闭当前页面，(强制请求一个空页面然后关闭)
+        window.open("about:blank", "_self").close()
+    }
+
+
+</script>
+</body>
+</html>

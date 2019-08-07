@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .wrap{
+            position: relative;
+            top:50px;
+            left: 50px;
+        }
+        .small{
+            position: absolute;
+            border: 1px solid #000;
+            width: 450px;
+            height: 450px;
+        }
+        .big{
+            position: absolute;
+            left:451px ;
+            border: 1px solid #000;
+            overflow: hidden;
+            top:0;
+            width: 567px;
+            height: 567px;
+        }
+        .mask{
+            position: absolute;
+            /*top:0;*/
+            /*left: 0;*/
+            /*width: 100px;*/
+            /*height: 100px;*/
+            background-color: rgba(255,255,0,.4);
+            cursor: move;
+        }
+
+    </style>
+</head>
+<body>
+<!--颜宽  time:15:01  lastTime:15:23-->
+
+
+<div class="wrap">
+    <div class="small">
+        <img src="img/small.jpg" alt="">
+        <div class="mask"></div>
+    </div>
+
+    <div class="big">
+        <img src="img/big.jpg" alt="">
+    </div>
+</div>
+
+<script>
+    var wrap=document.getElementsByClassName("wrap")[0];
+    var small=wrap.firstElementChild||wrap.firstChild;
+    var big=small.nextElementSibling||small.nextSibling;
+    var mask=document.getElementsByClassName("mask")[0];
+    var smallImg=small.children[0];
+    var bigImg=big.children[0];
+
+    wrap.onmouseenter=function(){
+        big.style.display="block";
+        mask.style.width=big.offsetWidth/bigImg.offsetWidth*small.offsetWidth+"px";
+        mask.style.height=big.offsetHeight/bigImg.offsetHeight*small.offsetHeight+"px";
+        mask.style.display="block";
+    };
+    wrap.onmouseleave=()=>{
+        big.style.display="none";
+        mask.style.display='none';
+    };
+
+
+    wrap.onmousemove=function(e){
+        var pageX= e.pageX;
+        var pageY= e.pageY;
+
+        var moveX=pageX-small.offsetLeft-mask.offsetWidth/2;
+        var moveY=pageY-small.offsetTop-mask.offsetHeight/2;
+
+        if (moveX <= 0) {
+            moveX=0;
+        }
+        if (moveY <= 0) {
+            moveY=0;
+        }
+        if (moveX >= small.offsetWidth - mask.offsetWidth) {
+            moveX=small.offsetWidth-mask.offsetWidth;
+        }
+        if (moveY >= small.offsetHeight - mask.offsetHeight) {
+            moveY=small.offsetHeight-mask.offsetHeight;
+        }
+
+        mask.style.left=moveX+"px";
+        mask.style.top=moveY+"px";
+
+        var bili=smallImg.offsetHeight/bigImg.offsetHeight;
+
+        var bigMoveX=moveX/bili;
+        var bigMoveY=moveY/bili;
+
+        bigImg.style.marginLeft=-bigMoveX+"px";
+        bigImg.style.marginTop=-bigMoveY+"px";
+    }
+
+</script>
+</body>
+</html>

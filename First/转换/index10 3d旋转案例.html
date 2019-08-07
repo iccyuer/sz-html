@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .container{
+            width: 500px;
+            height: 300px;
+            /*border:1px solid #f00;*/
+            margin:150px auto;
+            perspective: 1000px;
+        }
+        /*.container:hover .parent{*/
+            /*transform:rotatex(-45deg) rotatey(3600deg);*/
+        /*}*/
+
+        .parent:hover  {
+            transform: rotatex(-45deg) rotatey(3600deg);
+        }
+        .parent{
+            list-style: none;
+            position: relative;
+            width:500px;
+            height: 300px;
+           /* border:1px solid #999;*/
+            transform: rotatex(-45deg) rotatey(0deg);
+            transform-style: preserve-3d;
+            transition:all 20s linear;
+          /*  display: table-cell; */       /*是将容器转换为 td*/
+           /* text-align: center;  */           /*强调 此处必须将容器改为td格式后才可以使用此属性*/
+          /*  vertical-align: middle;*/
+        }
+
+        .parent li{
+            width: 120px;
+            height: 160px;
+            background:lightpink;
+            border:1px solid #999;
+            position: absolute;
+
+            /*top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);*/
+            /*第二种让一个元素在另一个元素当中居中的方法*/
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+            /*如果已知元素的宽高 则可以使用以下方法*/
+          /*  top:50%;
+            left:50%;
+            margin-left:-60px;
+            margin-top:-80px;*/
+            /*第四种方式 将父元素改为td格式 然后子元素改为行内块 然后进行相应处理*/
+           /* display: inline-block;*/
+
+
+        }
+        .parent :nth-child(1){
+            transform: rotatey(0deg) translatez(200px);
+        }
+        .parent :nth-child(2){
+            transform: rotatey(60deg) translatez(200px);
+        }
+        .parent :nth-child(3){
+            transform: rotatey(120deg) translatez(200px);
+        }
+        .parent :nth-child(4){
+            transform: rotatey(180deg) translatez(200px);
+        }
+        .parent :nth-child(5){
+            transform: rotatey(240deg) translatez(200px);
+        }
+        .parent :nth-child(6){
+            transform: rotatey(300deg) translatez(200px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="parent">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+</body>
+</html>

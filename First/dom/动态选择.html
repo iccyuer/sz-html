@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="add">add</button>
+
+<ul id="box"></ul>
+
+<script>
+    var add =document.getElementById("add");
+    var box =document.getElementById("box");
+
+    var strs=["貂蝉拜月","贵妃醉酒","昭君出塞","西施挽纱"];
+    add.onclick=function(){
+        for(var i=0;i<strs.length;i++){
+            var li=document.createElement("li");
+            li.innerHTML=strs[i];
+            box.appendChild(li);
+        }
+
+        var lis=box.children;
+        for(var i=0;i<lis.length;i++){
+            lis[i].onmouseenter= function () {
+                for(var i=0;i<lis.length;i++){
+                    lis[i].style.opacity="0.2";
+                }
+                this.style.opacity="1";
+            }
+
+        }
+    }
+    box.onmouseleave= function () {
+        var lis=box.children;
+        for(var i=0;i<lis.length;i++){
+            lis[i].style.opacity="1";
+        }
+
+    }
+</script>
+</body>
+</html>

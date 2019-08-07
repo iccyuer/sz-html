@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select {
+            width: 150px;
+            height: 300px;
+            border: 1px solid #000;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+<body>
+
+<select name="" id="seleft" multiple>
+    <option value="">香蕉</option>
+    <option value="">榴莲</option>
+    <option value="">丑橘</option>
+    <option value="">火龙果</option>
+    <option value="">西红柿</option>
+    <option value="">草莓</option>
+</select>
+
+<button>>>></button>
+<button><<<</button>
+<button>></button>
+<button><</button>
+<select name="" id="seright" multiple></select>
+
+<script>
+
+    var seLeft = document.getElementById("seleft");
+    var seRight = document.getElementById("seright");
+
+    var btns = document.getElementsByTagName("button");
+
+
+    btns[0].onclick = function () {
+        var length = seLeft.children.length;
+        for (var i = 0; i < length; i++) {
+            seRight.appendChild(seLeft.children[0]);
+        }
+        noSel(seRight)
+
+    }
+    btns[1].onclick = function () {
+        var length = seRight.children.length;
+        for (var i = 0; i < length; i++) {
+            seLeft.appendChild(seRight.children[0]);
+        }
+        noSel(seLeft)
+    }
+    btns[2].onclick = function () {
+        for (var i = 0; i < seLeft.children.length; i++) {
+            if (seLeft.children[i].selected) {
+                seRight.appendChild(seLeft.children[i]);
+                i--;
+            }
+        }
+        noSel(seRight)
+
+    }
+    btns[3].onclick = function () {
+        for (var i = 0; i < seRight.children.length; i++) {
+            if (seRight.children[i].selected) {
+                seLeft.appendChild(seRight.children[i]);
+                i--;
+            }
+        }
+        noSel(seLeft)
+    }
+
+    function noSel(eles) {
+        for (var i = 0; i < eles.length; i++) {
+            eles.children[i].selected = false;
+        }
+    }
+
+
+</script>
+</body>
+</html>

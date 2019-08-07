@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="400" height="400">您的浏览器不支持canvas标签</canvas>
+
+<script>
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+
+    //准备一条新路径，多条路径时必须写上
+    ctx.beginPath();
+    //路径起始点
+    ctx.moveTo(100,50);
+    //路径途径点
+    ctx.lineTo(300,300);
+    //途径点可以多了
+    ctx.lineTo(300,100);
+    //封闭路径，用直线将最后一个点与原点相连
+    ctx.closePath();
+    //画路径轮廓
+    ctx.stroke();
+    //填充，自动closePath()
+    ctx.fill();
+
+
+    ctx.beginPath();
+    //画圆或弧
+    //(x,y,radius,startAngle,endAngle,direction)direction表示true为逆时针，false为顺时针
+    //Math.PI为180°
+    ctx.arc(100,200,50,0,Math.PI/180*210,true);
+    //画矩形，和strokeRect一样
+    ctx.rect(10,10,30,30);
+    //不会封闭弧
+    ctx.closePath();
+    ctx.stroke();
+
+
+</script>
+</body>
+</html>

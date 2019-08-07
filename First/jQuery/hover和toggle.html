@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: aqua;
+        }
+        .in{
+            background-color: antiquewhite;
+        }
+        .out{
+            background: violet;
+        }
+    </style>
+</head>
+<body>
+
+<script src="jquery-1.11.1.js"></script>
+
+<script>
+    $(function () {
+
+        $("div").hover(function () {
+            $(this).attr("class","in");
+        },function(){
+            $(this).attr("class","out");
+        });
+
+        //toggle()里为enter和leave的组合，回调函数里面多用toggle切换类方法
+        $("div").hover(function () {
+            $(this).toggleClass("in");
+        });
+
+
+        //无参数 根据display属性切换元素的显示与隐藏
+        $("div").toggle();
+
+        //boolean参数，根据boolean值控制display属性的显示与隐藏
+        $("div").toggle(true);
+
+        //.toggle( [duration ] [, complete ] )
+        $("div").toggle(1000,function(){});
+
+        //.toggle( duration [, easing ] [, complete ] )
+        $("div").toggle(1000,"liear", function () {});
+
+        //.toggle( options )
+        $("div").toggle({
+            duration:2000,
+            easing:'linear',
+            complete: function () {
+                console.log('complete');
+            }
+        });
+
+    })
+</script>
+
+
+
+<div>
+
+</div>
+</body>
+</html>

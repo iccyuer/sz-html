@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function f5() {
+        f5.f=undefined;
+        var ff=function () {
+            return "f" in f5;
+        };
+        f5.f=ff();
+        return f5.f;
+    }
+    console.log(f5());
+</script>
+</body>
+</html>

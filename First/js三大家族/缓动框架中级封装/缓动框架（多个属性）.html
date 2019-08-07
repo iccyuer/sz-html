@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+        #box {
+            width: 50px;
+            height: 50px;
+            background-color: #f00;
+            position: absolute;
+            left: 0;
+        }
+
+        #box1 {
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+            position: absolute;
+            left: 50px;
+            top:50px
+        }
+    </style>
+</head>
+<body>
+
+<button id="btn">vvvv</button>
+<div id="box"></div>
+<div id="box1"></div>
+<!--<a href="#" onclick="alert('hehe')">aaa</a>-->
+<script src="../../MyJs/jQuery.js"></script>
+<script>
+
+
+    var json1 = {
+        top: 201,
+        left: 50,
+        width: 200,
+        height: 200,
+        "border-top-left-radius": 50,
+        "border-top-right-radius": 50,
+        "border-bottom-left-radius": 50,
+        "border-bottom-right-radius": 50,
+        opacity: 50,
+    };
+    var json2 = {
+        top: 31,
+        left: 8,
+        width: 100,
+        height: 100,
+        "border-top-left-radius": 0,
+        "border-top-right-radius": 0,
+        "border-bottom-left-radius": 0,
+        "border-bottom-right-radius": 0,
+        opacity: 100
+    };
+
+    var btn = document.getElementById("btn");
+    var box = document.getElementById("box");
+    var box1 = document.getElementById("box1");
+    btn.onclick = function () {
+        animate_SlowSpeed(box, {
+            top: 201,
+            left: 50,
+            width: 200,
+            height: 200,
+
+//            "border-radius": 50,
+
+            "border-top-left-radius": 50,
+            "border-top-right-radius": 50,
+            "border-bottom-left-radius": 50,
+            "border-bottom-right-radius": 50,
+
+//            borderTopLeftRadius:50,
+//            borderTopRightRadius:50,
+//            borderBottomLeftRadius:50,
+//            borderBottomRightRadius:50,
+            zIndex:10,
+            opacity: 50
+//            opacity:0.2
+        }
+//            , function () {
+//            animate_SlowSpeed(box, json2, function () {
+//                animate_SlowSpeed(box, json1, function () {
+//                    animate_SlowSpeed(box, json2)
+//                })
+//            })
+//        }
+        )
+
+        animate_SlowSpeed(box1,{
+            top: 201,
+            left: 50,
+            width: 200,
+            height: 200,
+
+//            "border-radius": 50,
+
+            "border-top-left-radius": 50,
+            "border-top-right-radius": 50,
+            "border-bottom-left-radius": 50,
+            "border-bottom-right-radius": 50,
+
+//            borderTopLeftRadius:50,
+//            borderTopRightRadius:50,
+//            borderBottomLeftRadius:50,
+//            borderBottomRightRadius:50,
+            opacity: 50
+//            opacity:0.2
+        })
+    };
+
+    function animate_SlowSpeed(ele, json, callback) {
+        clearInterval(ele.timer);
+        ele.timer = setInterval(function () {
+            var boo = true;
+            for (var k in json) {
+                var nowState;
+                if (k === "opacity") {
+                    nowState = parseFloat(getStyle(ele, k)) * 100 || 100;
+                } else {
+                    console.log(getStyle(ele, k) + "   " + k);
+                    nowState = parseInt(getStyle(ele, k)) || 0;
+                }
+
+                var step = (json[k] - nowState) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                console.log(1);
+                nowState = nowState + step;
+
+                if (k === "opacity") {
+                    ele.style[k] = nowState / 100;
+                    ele.style.filter = "alpha(opacity=" + nowState + ")";
+                } else if (k === "z-index" || k === "zIndex") {
+                    ele.style[k] = json[k];
+                } else {
+                    ele.style[k] = nowState + "px";
+                }
+
+                if (Math.abs(json[k] - nowState) > Math.abs(step)) {
+                    boo = false;
+                }
+            }
+            if (boo) {
+                clearInterval(ele.timer);
+                for (var k in json) {
+                    if (k === "opacity") {
+                        ele.style[k] = json[k] / 100;
+                        ele.style.filter = "alpha(opacity=" + json[k] + ")";
+                    } else if (k === "z-index" || k === "zIndex") {
+                        ele.style[k] = json[k];
+                    } else {
+                        ele.style[k] = json[k] + "px";
+                    }
+                }
+                if (typeof callback === "function") {
+                    callback();
+                }
+            }
+        }, 80);
+
+    }
+</script>
+</body>
+</html>

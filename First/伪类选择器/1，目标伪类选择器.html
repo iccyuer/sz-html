@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>目标伪类</title>
+    <style type="text/css">
+        /*
+        目标为类选择器: 和a标签的锚点配合使用
+        他选择的是 被锚点a链接指向的元素 被激活的a链接所指向的元素 会被选中
+         当a跳转到锚点的时候 锚点显示的样是就会发生改变，这样会更加明显
+        */
+        :target {
+            /*div:target{   !*同时还可以和属性选择器一样在前面添加内容 ，这样会更加的精确*!*/
+            color: red;
+            background: cyan;
+        }
+    </style>
+</head>
+<body>
+<a href="#shipin">跳转到食品区</a>
+<a href="#fuzhuang">跳转到服装区</a>
+<a href="#ff">跳转到服装区</a>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div id="shipin">食品区</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div id="fuzhuang">服装区</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<span id="ff">ff</span>
+</body>
+</html>

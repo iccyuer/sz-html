@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            margin-top: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: #ffff00;
+        }
+    </style>
+
+</head>
+<body>
+
+<button id="btn1">add</button>
+<button id="btn2">remove</button>
+<div id="box"></div>
+
+
+<script src="../MyJs/jQuery.js"></script>
+<script>
+    var box = document.getElementById("box");
+    var add = document.getElementById("btn1");
+    var remove = document.getElementById("btn2");
+
+    function ev() {
+        alert("一夜饱雨树和风");
+    }
+    function ev2() {
+        alert("满地槐花地飘零");
+    }
+
+    add.onclick = function () {
+//        没有兼容问题
+//        box.onclick = ev;
+//        console.log("box.onclick---->" + box.onclick);
+
+//        适用于谷歌火狐IE9+
+//        box.addEventListener("click",ev);
+//        box.addEventListener("click",ev2);
+      //  console.log("addEventListener--->"+box.addEventListener);
+
+//        只适用于IE，IE6/7/8添加顺序会反过来
+//        box.attachEvent("onclick",ev);
+       box.attachEvent("onclick",function(){
+           alert("lll");
+       });
+        console.log("attachEvent-->"+box.attachEvent);
+           // addEvent(box,"click",ev);
+    };
+
+    remove.onclick = function () {
+//        box.onclick = null;
+//        console.log("box.onclick---->" + box.onclick);
+
+
+//        box.removeEventListener("click",ev);
+//        console.log("removeEventListener--->"+box.removeEventListener);
+
+//        box.detachEvent("onclick",ev);
+//        console.log("detachEvent-->"+box.detachEvent);
+        removeEvent(box,"click",ev);
+    };
+
+</script>
+
+</body>
+</html>

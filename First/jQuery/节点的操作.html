@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        $("button").eq(0).click(function () {
+
+//            console.log($("<span>hehe</span>"));
+//            var i=;
+//            $(".box").append(i);
+//
+//            i.appendTo($(".box"));
+//
+//            $(".box").prepend($("<i>我是i</i>"));
+//
+//            $(".box").before($("<i>我是i</i>"));
+
+//            $(".box").after($("<i>我是i</i>"));
+
+//            $(".box").append("<h2>我是h2</h2>");
+//            $(".box").append($("<h1>我是jQ对象</h1>"));
+//            var h3=document.createElement("h3");
+//            h3.innerHTML="我是dom对象";
+//            $(".box").append(h3);
+//            $(".box").html("<h2>我是h2</h2>");
+            $(".box").html("hehehehehe");
+//            $(".box").html($("<h1>我是jQ对象</h1>"));
+//            $(".box").html(h3);
+
+
+//            $("<span>我是span，appendTo到这的</span>").appendTo($(".box"));
+        });
+        $("button").eq(1).click(function () {
+//            $(".box").empty();
+//            $(".box").html("");
+//            $(".box").remove();
+
+            $( ".hello" ).remove();
+            $( "div" ).remove( ".hello" );
+            $( "p" ).remove( ":contains('Hello')" );
+        });
+        $("button").eq(2).click(function () {
+            var box1=document.getElementsByClassName("box1")[0];
+            var box=$(".box").clone(box1,false,false);
+            $("body").append(box);
+        });
+
+        $(".box")[0].date="box-date";
+
+        $(".box").click(function(){
+            console.log("box");
+            console.log(this.date);
+        });
+        $("span").click(function () {
+            console.log("span");
+        })
+    })
+</script>
+<button>vvv</button>
+<button>清除</button>
+<button>克隆</button>
+<div class="box">1
+    <span>我是span</span>
+</div>
+<div class="box1">2
+    <span>我是span2</span>
+</div>
+
+</body>
+</html>

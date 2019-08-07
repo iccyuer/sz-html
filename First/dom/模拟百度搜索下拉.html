@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: auto;
+            width: 400px;
+            position: relative;
+            top: 200px;
+            text-align: center;
+        }
+
+        input {
+            outline: none;
+            height: 20px;
+            width: 200px;
+        }
+
+        button {
+            background: #317EF3;
+            height: 24px;
+            outline: none;
+            border: none;
+            vertical-align: bottom;
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+            width: 257px;
+            margin: auto;
+            text-align: left;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        ul li:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="box">
+        <input type="text">
+        <button id="button">百度一下</button>
+    </div>
+
+    <ul>
+
+    </ul>
+</div>
+
+<script>
+
+    var str = ['a', 'ab', 'c', 'cx', 'aac', 'bbc', 'cab', 'bba', 'bc'];
+
+
+    var input = document.getElementsByTagName("input")[0];
+    var ul = document.getElementsByTagName("ul")[0];
+
+    input.oninput = function () {
+        console.log("chaxun");
+        var text = input.value;
+
+        var liArr = [];
+        for (var i = 0; i < str.length; i++) {
+            if (str[i].indexOf(text) === 0) {
+                liArr.push('<li>' + str[i] + '</li>');
+            }
+        }
+        console.log(liArr);
+        if (text.length === 0) {
+            ul.style.display = "none";
+        } else {
+            ul.innerHTML = liArr.join("");
+            ul.style.display = "block";
+            for (var i = 0; i < liArr.length; i++) {
+                ul.children[i].onmousedown = function () {
+//                    console.log("x");
+                    input.value = this.innerHTML;
+//                    ul.style.display = "none";
+                    boo=true;
+                }
+            }
+        }
+
+
+    }
+    var boo=false;
+    input.onblur = function () {
+        ul.style.display = "none";
+        console.log(ul);
+    }
+    input.onfocus = function () {
+        ul.style.display = "block";
+        if (boo) {
+            input.oninput();
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

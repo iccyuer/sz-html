@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: auto;
+        }
+
+        .box {
+            width: 500px;
+            height: 400px;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+
+        ul li {
+            float: left;
+            width: 100px;
+            height: 50px;
+            /*//border: 1px solid #ddd;*/
+            background: pink;
+            line-height: 50px;
+            text-align: center;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        span {
+            width: 500px;
+            height: 450px;
+            /*//border:1px solid #ddd;*/
+            background: hotpink;
+            display: none;
+            text-align: center;
+            line-height: 350px;
+        }
+
+        .hide {
+            background-color: hotpink;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul id="little">
+        <li class="hide">暖壶</li>
+        <li>水桶</li>
+        <li>衣架</li>
+        <li>洗衣机</li>
+        <li>冰箱</li>
+    </ul>
+    <span class="show">NuanHu</span>
+    <span>ShuiTong</span>
+    <span>YiJia</span>
+    <span>XiYiJi</span>
+    <span>BingXiang</span>
+
+</div>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+    var ul = box.firstElementChild || box.firstChild;
+    var spanArr = document.getElementsByTagName("span");
+    var liArr = ul.children;
+    console.log(spanArr);
+    console.log(liArr);
+    for (var i = 0; i < liArr.length; i++) {
+        liArr[i].index = i;
+        liArr[i].onmouseover = function () {
+            for (var c = 0; c < spanArr.length; c++) {
+                console.log("xx");
+                liArr[c].className = "";
+                spanArr[c].className = "";
+                liArr[c].removeAttribute("class");
+                spanArr[c].removeAttribute("class");
+            }
+            spanArr[this.index].className = "show"
+            spanArr[this.index].setAttribute("class", "show")
+            this.className = "hide";
+            this.setAttribute("class", "hide");
+        }
+    }
+</script>
+</body>
+</html>

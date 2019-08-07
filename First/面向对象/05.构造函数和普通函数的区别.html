@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+
+
+
+     构造函数和普通函数的区别:
+
+     同样:
+
+     定义的格式:都是function 定义 (){}
+
+
+
+     区别:
+     方法名
+     构造函数的方法名 必须大写(命名规范  潜规则)  因为要和普通函数区分开
+
+     总结:
+        构造函数和普通函数 本质上没有任何区别  其实就是调用上面有却别
+
+        但是有时候我们分不清到底这个函数 是用构造函数的new调用方式 还是 直接方法名()调用方式
+
+        所以我们的构造函数要大写 并且 里面用this绑定属性  绑定方法
+
+
+        问题: 如果混用了,会怎么样?  行不行?  能不能用?
+
+
+     */
+    //格式错误的
+//    function per(name){
+//        this.name=name;
+//    }
+//
+//    var aaa=new per("xx");
+//    console.log(aaa.name);
+
+
+//    function show(){
+//        console.log("大钊同学,请坐下十万行代码");
+//    }
+
+//    show();
+    //普通函数 如果我们去new会怎么样
+    //的确创建了一个对象 但是 这个对象 什么都没有  没有任何属性和方法  而且 还会顺带着 把函数里面的代码执行了
+//    var q=new show();
+//    console.log(typeof q);
+
+
+    //构造函数如果用普通函数调用方式呢
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+        this.show= function () {
+            console.log("请开始你的表演!!");
+        }
+    }
+
+    //普通调用方式 会出现什么情况:  不会出现任何的功能  并且 也不会创建出来对象
+   // var aaa=Person();//此种情况下 this不生效   没有new 也就没有开辟空间  也就没有心对象产生 也就不会返回对象
+                    //而这个方法本身又没有声明return  返回任何数据 所以我们接受返回值 只能接受到undefined
+
+   // console.log(aaa.name);//Cannot read property 'name' of undefined
+
+//总结:  普通函数就是普通调用 构造函数 就是new对象调用
+
+    var per=new Person("王旭",12);
+    console.log(typeof per);
+
+</script>
+
+</body>
+</html>

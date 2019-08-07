@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css-1.css">
+    <style type="text/css">
+        /*div标签选择器*/
+        div {
+            font-size: 20px;
+            /*背景色，和background-color有区别，a：1完全不透明，0完全透明*/
+            background: rgba(123, 44, 67, 1);
+            /*北京图，默认在指定区域平铺，no-repeat为不平铺*/
+            background: url(1.jpg) no-repeat;
+        }
+
+        /*span标签选择器*/
+        span {
+            background-color: orange;
+            /*color: firebrick !important;*/
+        }
+
+        /*id选择器*/
+        #dl {
+            width: 20px;
+            color: hotpink;
+            background-color: blue;
+        }
+
+        /*calss选择器*/
+        .nl {
+            text-align: center;
+            color: #8b8767;
+            background-color: crimson;
+        }
+
+        /*通用选择器，范围最大，包含了html标签*/
+        * {
+            font-size: large;
+        }
+
+        /*属性选择器*/
+        [title] {
+            background-color: #5fff13;
+        }
+
+        /*群组选择器，逗号隔开，使用相同样式*/
+        h2, s {
+            color: #5fff13;
+        }
+
+        /*后代选择器，空格隔开，div层里面的p里面的class为inner的生效,可循环嵌套多层*/
+        div p .inner {
+            color: blueviolet;
+        }
+
+        /*子选择器，>隔开，只能嵌套一层*/
+        div > p {
+            color: #998d1a;
+        }
+
+        /*id位dl标签下的第三个子代*/
+        #dl > :nth-child(3) {
+            font-size: 26px;
+        }
+
+        #ddl {
+            color: red;
+        }
+
+        /*伪类选择器,name:伪类，符合条件才改变样式*/
+        /*常见伪类有，对超链接来说，link--hover--active--visited*/
+        /*还有focus，触发焦点时*/
+        [class]:hover {
+            color: green;
+        }
+
+        #in:focus {
+            color: red;
+        }
+        /*同级元素选择器，多与伪类选择器一起同，当触发第一个选择器，同类选择器触发效果*/
+        /*+该选择相邻的下一个div，~w为该选择器后所有的div*/
+        p:hover ~ div {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+<body>
+<div>kkkk</div>
+<span id="dl" class="nl" title="">ooooo</span>
+<span class="nl" style="color: red">jjjj</span>
+<span>ll</span>
+<h2>kkk</h2>
+<s>llll</s>
+<div>ggg
+    <p>kkkkk
+    <div class="inner">inner
+        <p>hhhh</p>
+    </div>
+    <span>llll</span>
+    </p>
+</div>
+
+<div id="ddl">i am Chinese</div>
+<form action="">
+    <input type="text" id="in">
+</form>
+
+<p>kkkkk
+<div>inner</div>
+<div>inner2</div>
+</p>
+<ss style="color: red">ggg</ss>
+</body>
+</html>

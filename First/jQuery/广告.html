@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            /*top:56%;*/
+            display: none;
+        }
+
+        .box, .ad {
+            width: 492px;
+        }
+
+        .x {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+//        $(".box").show(1000, function () {
+//            alert("我是渣渣辉");
+//        });
+
+        $(".box").slideDown(1000);
+
+
+        $(".x").click(function () {
+            $(this).parent().slideUp(1000);
+        })
+    })
+</script>
+
+<div class="box">
+    <img src="image/ad.jpg" alt="" class="ad">
+    <img src="image/h.jpg" alt="" class="x">
+</div>
+
+</body>
+</html>

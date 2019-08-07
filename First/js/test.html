@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    function go() {
+        console.log("GOGO");
+    }
+    var per = {
+        "name": "tutu",
+        age: 10,
+        go: go,
+        show: function () {
+            console.log(this.name);
+        }
+    };
+    per.go();
+    per.show();
+
+    function create(name, age) {
+        var per = new Object();
+        per.name = name;
+        per.age = age;
+        per.go = go;
+        return per;
+    }
+    create("hehe", 10).go();
+    var p = create("nn", 20);
+    p.go();
+    console.log(p);
+
+
+    console.log("------------");
+
+    function fn(name) {
+        this.name = name;
+        console.log("my name is " + this.name);
+        console.log(this);
+    }
+    //调用普通函数，其实是window对象调用的
+    window.fn("tutu");
+
+
+</script>
+</body>
+</html>

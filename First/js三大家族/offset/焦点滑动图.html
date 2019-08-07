@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 490px;
+            height: 170px;
+            padding: 5px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+
+        .inner {
+            width: 490px;
+            height: 170px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        ul {
+            list-style: none;
+            width: 2450px;
+            position: absolute;
+        }
+
+        ul > li {
+            float: left;
+        }
+
+        ol {
+            position: absolute;
+            list-style: none;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        ol > li {
+            /*list-style: none;*/
+            width: 20px;
+            height: 20px;
+            font: 16px/20px simsun;
+            float: left;
+            background: orange;
+            color: white;
+            margin-right: 5px;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .current {
+            background: hotpink;
+            color: black;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="inner">
+        <ul>
+            <li><img src="images/01.jpg" alt=""></li>
+            <li><img src="images/02.jpg" alt=""></li>
+            <li><img src="images/03.jpg" alt=""></li>
+            <li><img src="images/04.jpg" alt=""></li>
+            <li><img src="images/05.jpg" alt=""></li>
+        </ul>
+        <ol>
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+    </div>
+</div>
+
+
+<script>
+    var inner = document.querySelector(".inner");
+    var ul = inner.firstElementChild || inner.firstChild;
+    var ol = inner.children[1];
+
+
+    var li = ol.children;
+    var liWidth = ul.children[0].offsetWidth;
+    console.log(liWidth);
+    for (var i = 0; i < li.length; i++) {
+        li[i].index = i;
+        li[i].onmouseover = function () {
+            for (var i = 0; i < li.length; i++) {
+                li[i].removeAttribute("class");
+                animate_speed_x(ul, -this.index * liWidth);
+            }
+            this.setAttribute("class", "current");
+        }
+
+    }
+
+    var glyphicon = document.getElementsByClassName("glyphicon")[0];
+    //    glyphicon.innerHTML="\e079";
+
+
+    //x匀速动画的封装
+    function animate_speed_x(ele, endX) {
+        //1.清除上一次定时器
+        clearInterval(ele.timer);
+        //2.计算步长
+        var speed = endX - ele.offsetLeft > 0 ? 10 : -10;
+        ele.timer = setInterval(function () {
+            console.log(speed);
+            ele.style.left = ele.offsetLeft + speed + "px";
+
+            if (Math.abs(ele.offsetLeft - endX) < Math.abs(speed)) {
+                clearInterval(ele.timer);
+                ele.style.left = endX + "px";
+            }
+        }, 25);
+
+    }
+</script>
+
+</body>
+</html>

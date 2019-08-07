@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+     js对象是个什么东西
+     是多个键值对的组合
+
+     */
+
+    //对象创建方式
+
+
+    //第一种 创建一个空白对象   等同于  var p=new Object();
+
+    /*
+        缺点:
+                每创建一个对象 就要单独绑定属性和方法  对象的复用性很差
+
+     */
+
+
+    //但是有一丢丢区别   属性和方法的绑定有却别
+
+
+    //    var per={};
+    //    console.log(typeof per);
+    //绑定属性和方法   键和值   都可以加双引号  标准来说 要加    值如果是基本数据类型 可以不用(除了字符串)
+    //    var per={
+    //        "name":"阿黄",
+    //        "age":16,
+    //        "length":172,
+    //        walk: function () {
+    //            console.log("走路")
+    //        }
+    //
+    //
+    //    };
+    //
+    //    var boo=true;
+    //    var num=16;
+    //    var str="xx";
+
+
+    //    console.log(per.name);
+    //    per.walk();
+
+
+    //第二种 创建对象的方式:  通过Object创建
+    /*
+
+            确定:  同上一个  复用性差  每次创建都得去绑定属性和方法
+                而且 比上一种还麻烦
+
+     */
+
+
+    var per = new Object();
+    per.name = "阿绿";
+    per.age = 13;
+    per.eat= function () {
+        console.log("吃零食!!!")
+    }
+//    console.log(per.name);
+//    per.eat()
+
+/*
+    上面两种创建对象的优点就是 快速创建一个对象  简单使用即可
+*/
+
+
+
+
+    //第三种   通过工厂函数创建对象
+    /*
+        优点:
+            解决了无法反复使用属性和方法绑定的 弊端
+
+            属性和方法的绑定只需要写一遍 然后不停的调用工厂函数 去创建对象即可
+
+
+         缺点:
+            对象类型不明确
+
+
+     */
+
+    //工厂函数
+    function createObject(){
+        //在方法中定义的变量交局部变量  在方法外面无法使用   在js中 唯一能够限制变量生命周期的只有函数
+        var stu=new Object();
+        stu.name="可怕的小学生";
+        stu.age=28;
+        stu.length=155;
+
+
+        stu.study= function () {
+            console.log("新学了一招加血的方法")
+        }
+        //把创建出来的对象以返回值 的形式 返回给外面调用者 去使用
+        return stu;
+    }
+
+    var s=createObject();
+//    console.log(typeof s);
+//    console.log(s.name)
+//    console.log(s.age);
+//    s.study();
+
+
+    var s1=createObject();
+
+
+    console.log(s1.name)
+
+
+
+//    工厂函数的改进:
+
+    function createPerson(name,age){
+        var obj=new Object();
+        obj.name=name;
+        obj.age=age;
+
+        obj.eat= function () {
+            console.log("怎么吃也不胖符!!")
+        }
+        return obj;
+    }
+
+    var p=createPerson("大枪",65);
+
+//    console.log(p.name);
+//    p.eat();
+
+    var p1=createPerson("小白",66);
+    console.log(p1.name);
+    p1.eat();
+    /*
+            总结:
+                三种创建对象的方式:
+                    1.var per={};
+                        缺点: 键值对绑定属性和方法  不能反复使用
+
+                     2.var per=new Object();
+                        缺点: 属性和方法的绑定比第一种还麻烦
+
+                      3.工厂函数
+                           优点: 解决属性和方法 反复绑定的弊端
+                           缺点: 对象类型不明确
+                        4.构造函数 就是为了解决以上问题
+
+
+
+
+     */
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- 声明头 告诉页面以何种方式读取页面内容   -->
+<!-- document(文档) type(类型)  -->
+<html lang="en">
+<head>
+    <!-- 编码格式  --->
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span {
+            font-size: 10px;
+            width: 100px;
+            height: 100px;
+            /*display: block;*/
+            /*display: inline;*/
+            /*display: inline-block;*/
+        }
+        div{
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<span id="maodian">232</span>
+<br>
+<span>jj</span>
+<h1>orange</h1>
+<!--有h1--h6各种形态。h1最大，往后面越小。-->
+<div align="center">123
+    <!--align块级元素水平居中，center,left,right，在style标签里面是text-align-->
+    <span>666</span>
+    <!--块级元素可以包含行内元素和块级元素，但是块级元素p不能包含其他块级元素-->
+</div>
+<p>呵呵呵呵</p>
+<!--段落标签，只能写文字等具体的内容，可以写<br/>换行标签。不会首行缩进，需要自己css定制-->
+<div></div>
+<span id="bo" class="gg hh" title="hello" style="color: green" >hello!</span>
+<!--一个基本标签都会有这四种属性,css可以多个写在一起，不可以分开写-->
+<img src="1.webp" alt="错误信息1" title="你壕" width="500px" >
+<!--src可以相对路径，绝对路径，根路径，../2.png表示上一层，  alt位当图片显示错误的信息-->
+<!--可以指定宽和高，只指定一个另一个会等比缩放-->
+<a href="http://www.baidu.com" target="_blank">百度</a>
+<!--跳转其他网页或者其他html页面，_blank重新打开一个网页跳转-->
+<a href="#maodian">锚点</a>  <a href="../b.html#maodian">网页+锚点</a>
+<!--跳锚点，top时用，#+标签的id，也可以跳页面+锚点-->
+<a href="#" >跳自己</a>  <a href="3.zip" >下载3.zip</a>
+<!--#挑自己，不是刷新。zip后缀可以出发下载，只有zip-->
+</body>
+</html>

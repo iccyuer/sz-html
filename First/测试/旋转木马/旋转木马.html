@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .wrap{
+            width: 1200px;
+            margin: 10px auto;
+        }
+        .slide{
+            width: 500px;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+        }
+        ul>li{
+            position: absolute;
+            top: 0;
+            left:200px;
+        }
+        .arrow{
+            opacity: 0;
+        }
+        .next,.prev{
+            width: 76px;
+            height: 112px;
+            position: absolute;
+            top:50%;
+            margin-top: -38px;
+            background: url("img/prev.png") no-repeat;
+            z-index: 99;
+        }
+        .next{
+            background: url("img/next.png") no-repeat;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!--颜宽 time:17:12 lastTime:17:24-->
+
+<div class="wrap">
+    <div class="slide">
+        <ul>
+            <li><a href="javascript:;"><img src="img/slidepic1.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src="img/slidepic2.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src="img/slidepic3.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src="img/slidepic4.jpg" alt=""></a></li>
+            <li><a href="javascript:;"><img src="img/slidepic5.jpg" alt=""></a></li>
+        </ul>
+    </div>
+
+    <div class="arrow">
+        <a href="javascript:;" class="prev"></a>
+        <a href="javascript:;" class="next"></a>
+    </div>
+</div>
+
+<script src="缓动框架.js"></script>
+<script>
+    var arr = [
+        {   //  1
+            width:400,
+            top:70,
+            left:50,
+            opacity:20,
+            zIndex:2
+        },
+        {  // 2
+            width:600,
+            top:120,
+            left:0,
+            opacity:80,
+            zIndex:3
+        },
+        {   // 3
+            width:800,
+            top:100,
+            left:200,
+            opacity:100,
+            zIndex:4
+        },
+        {  // 4
+            width:600,
+            top:120,
+            left:600,
+            opacity:80,
+            zIndex:3
+        },
+        {   //5
+            width:400,
+            top:70,
+            left:750,
+            opacity:20,
+            zIndex:2
+        }
+    ];
+    var wrap=document.getElementsByClassName('wrap')[0];
+    var slide=document.getElementsByClassName("slide")[0];
+    var arrow=document.getElementsByClassName("arrow")[0];
+
+    var liArr=slide.children[0].children;
+
+    wrap.onmouseenter=function(){
+        animate_SlowSpeed1(arrow,{opacity:100});
+    }
+    wrap.onmouseleave=()=>{
+        animate_SlowSpeed1(arrow,{opacity:0});
+    }
+
+    var boo=true;
+    setStyle();
+
+    arrow.children[0].onclick=function(){
+        if (boo) {
+            boo=false;
+            arr.push(arr.shift());
+            setStyle();
+        }
+    };
+
+    arrow.children[1].onclick=()=>{
+        if (boo) {
+            boo=false;
+            arr.unshift(arr.pop());
+            setStyle();
+        }
+    }
+
+    function setStyle(){
+        for(var i=0;i<arr.length;i++){
+            animate_SlowSpeed1(liArr[i],arr[i],()=>{
+                boo=true;
+            })
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: hotpink;
+            position: absolute;
+            /*left: 30px;*/
+        }
+    </style>
+</head>
+<body>
+
+<button id="btn1">运动到200</button>
+<button id="btn2">运动到500</button>
+
+<div id="box" style="left: 10px"></div>
+
+<script>
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var box = document.getElementById("box");
+
+    btn1.onclick = function () {
+//        animate_speed_x(box, 200);
+        console.log(box.style.left);
+    }
+    btn2.onclick = function () {
+        animate_speed_x(box, 500);
+    };
+
+
+    //x匀速动画的封装
+    function animate_speed_x(ele, endX) {
+        //1.清除上一次定时器
+        clearInterval(ele.timer);
+        //2.计算步长
+        var speed = endX - ele.offsetLeft > 0 ? 10 : -10;
+        ele.timer = setInterval(function () {
+            console.log(speed);
+            ele.style.left = ele.offsetLeft + speed + "px";
+
+            if (Math.abs(ele.offsetLeft - endX) < Math.abs(speed)) {
+                clearInterval(ele.timer);
+                ele.style.left = endX + "px";
+            }
+        }, 25);
+
+    }
+
+
+    //弃用
+    function animate_speed_x1(ele, endX) {
+        console.log(name);
+        if (name.length != 0) {
+            clearInterval(tt);
+        } else {
+            var tt;
+            name = "xx";
+        }
+
+        var speed = endX - ele.offsetLeft > 0 ? 10 : -10;
+        tt = timer();
+        function timer() {
+            var timer = setInterval(function () {
+                console.log(speed);
+                ele.style.left = ele.offsetLeft + speed + "px";
+
+                if (Math.abs(ele.offsetLeft - endX) < Math.abs(speed)) {
+                    clearInterval(timer);
+
+                    ele.style.left = endX + "px";
+                }
+            }, 25);
+            return timer;
+        }
+
+
+    }
+
+
+</script>
+</body>
+</html>

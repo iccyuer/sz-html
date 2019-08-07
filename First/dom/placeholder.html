@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../MyJs/PlaceHolder.css">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        p{
+            margin-left: 50px;
+            position: relative;
+        }
+        #taoLabel{
+            position: absolute;
+            left: 10px;
+            color: #999;
+            cursor: text;
+        }
+
+        #jdLabel {
+            position: absolute;
+            left: 10px;
+            color: #999;
+            cursor: text;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<p>
+    <input type="text" id="tao"> <label for="tao" id="taoLabel">11</label>
+</p>
+<p>
+    <input type="text" id="jd"> <label for="jd" id="jdLabel">22</label>
+</p>
+<p>
+    <input type="text" id="tao1"> <label for="tao1" class="taoLabel">淘宝特惠</label>
+</p>
+<p>
+    <input type="text" id="tao2"> <label for="tao2" class="taoLabel">淘宝特惠11</label>
+</p>
+
+<script src="../MyJs/jQuery.js"></script>
+<script>
+    taoBaoPlaceHolder("tao","taoLabel","淘宝钜惠");
+    jdPlaceHolder("jd","jdLabel","京东钜惠");
+
+    var taoLabel=document.getElementsByClassName("taoLabel");
+    for(var i=0;i<taoLabel.length;i++){
+        taoLabel[i].innerHTML="hehehe";
+    }
+
+</script>
+
+</body>
+</html>

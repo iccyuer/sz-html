@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:300px;
+            height:200px;
+            border:1px solid #aaa;
+        }
+        p{
+            display: block;
+            margin-left:50px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<p>r: <input type="range"max="255" min="0" step="1" class="Range" id="a"> <span class="Span"></span></p>
+<p>g: <input type="range"max="255" min="0" step="1" class="Range" id="b"> <span class="Span"></span></p>
+<p>b: <input type="range"max="255" min="0" step="1" class="Range" id="c"> <span class="Span"></span></p>
+
+<script>
+    var Ranges=document.getElementsByClassName("Range");
+    var Span=document.getElementsByClassName("Span");
+    var box=document.getElementById("box");
+    for(var i=0;i<Ranges.length;i++){
+        //网页加载时，我们将i的每一个值储存起来
+        Ranges[0].index=0;
+        Ranges[1].index=1;
+        Ranges[2].index=2;
+        Ranges[i].index=i;
+        //当页面加载完成后，for循环已经执行完了，并且已经将i=1 2 3；分别对应了对象
+        console.log(i);// 0 1 2
+        Ranges[i].onchange=function(){
+            //接收颜色的返回值
+            var rgb=getColor();
+            //当然我们getColor方法返回值可以不拼接，但在这里也要进行拼接
+            box.style.background=rgb;
+
+            //这个元素的下一个元素，将它显示的值变成当前元素的value
+            //this.nextElementSibling.innerHTML=this.value;
+            //这里不能再使用Range[i]表示当前操作的对象，只能用this表示
+            Span[this.index].innerHTML=this.value;
+            //这个地方的i永远等于3，因为页面加载完之后，for循环已经执行完了。
+            //因为我们知道i++是在循环体结束之后执行的，所以当for循环执行完之后，这里的i=3.
+            //所以Range[i]=Range[3],找不到自然就报错了。所以用this表示当前操作的对象
+            console.log(i);//3
+            console.log(this);
+        }
+    }
+    function getColor(){
+        var r=Ranges[0].value;
+        var g=Ranges[1].value;
+        var b=Ranges[2].value;
+        //返回一个特殊的格式，能让他更好的使用
+        return 'rgb('+r+','+g+','+b+')';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--宽高只是设置的播放器，视频不会失真-->
+<!--loop循环播放-->
+<!--controls：激活浏览器默认播放器-->
+<!--poster:视频的封面-->
+<video controls loop width="400" height="300" poster="1.png">
+    <!--<source src="Zootopia.mp4">-->
+    <source src="1.mp4">
+    您的浏览器不支持视频标签
+</video>
+<video poster="1.png">
+    <source src="1.mp4">
+    您的浏览器不支持视频标签
+</video>
+<button> 播放</button>
+
+<script>
+    var video = document.querySelector("video");
+    var btn = document.querySelector("button");
+    btn.onclick = function () {
+        if (video.paused) {
+            video.play();
+//            video.volume += 0.2;
+//            video.playbackRate += 0.2;
+//            return;
+        }else {
+            video.pause();
+//            video.volume -= 2;
+//            video.playbackRate -= 0.2;
+//            video.currentTime;
+        }
+    }
+</script>
+</body>
+</html>

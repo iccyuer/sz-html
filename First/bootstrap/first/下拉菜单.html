@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="../css/phone.css">
+    <link rel="stylesheet" media="screen and (min-width:769px) and (max-width:991px)" href="../css/pad.css">
+    <link rel="stylesheet" media="screen and (min-width:992px)" href="../css/pc.css">
+
+    <!-- [if lt IE9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![end if]-->
+</head>
+<body>
+
+<div class="container">
+    <!--这里的dropdown或者dropup写了一个position: relative;让下拉菜单定位用的，可以不写，会定位到body-->
+    <div class="dropdown">
+        <!--data-toggle是jQuery中的写法-->
+        <button class=" btn btn-success" data-toggle="dropdown">
+            今天晚上吃什么？
+            <!--caret配合下拉菜单使用，向下的箭头-->
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <!--内容一般是li嵌套a链接使用-->
+            <li class="dropdown-header">想吃的东西</li>
+            <li class="disabled"><a href="">大盘鸡</a></li>
+            <li class="divider"></li>
+            <li><a href="">鸡腿</a></li>
+            <li><a href="">羊杂</a></li>
+        </ul>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="dropup">
+        <!--data-toggle是jQuery中的写法-->
+        <button class=" btn btn-success" data-toggle="dropdown">
+            今天夜宵吃什么？
+            <!--caret配合下拉菜单使用，向下的箭头-->
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>大盘鸡</li>
+            <li>鸡腿</li>
+            <li>羊杂</li>
+        </ul>
+    </div>
+</div>
+
+<!--<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>-->
+<script src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

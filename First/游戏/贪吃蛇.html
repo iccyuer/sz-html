@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+
+        .direction > button {
+            width: 200px;
+            height: 50px;
+            color: #0095dd;
+        }
+    </style>
+</head>
+<body>
+<canvas height="500" width="800"></canvas>
+
+<!--<div class="direction">-->
+    <!--<button>左</button>-->
+    <!--<button>上</button>-->
+    <!--<button>又</button>-->
+    <!--<button>下</button>-->
+<!--</div>-->
+<script>
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var img = new Image();
+    img.src = "image/op.png";
+    var x = 300;
+    var y = 200;
+    var dx = 2;
+    var dy = 0;
+
+    var rightPressed = true;
+    var leftPressed = false;
+    var upPressed = false;
+    var downPressed = false;
+    window.addEventListener("deviceorientation", orientationHandler, false);
+
+    function orientationHandler(event) {
+
+        var nowBeta = event.beta;
+        var nowGamma = event.gamma;
+
+        if (Math.abs(nowBeta) > Math.abs(nowGamma)) {
+            if (nowBeta > 0) {
+                dy = 2;
+                dx = 0;
+            }else{
+                dy = -2;
+                dx = 0;
+            }
+        }else{
+            if (nowGamma > 0) {
+                dx = 2;
+                dy = 0;
+            }else{
+                dx = -2;
+                dy = 0;
+            }
+        }
+    }
+    /*
+    var btns = document.getElementsByTagName("button");
+    btns[0].onclick = function () {
+        dx = -2;
+        dy = 0;
+    };
+    btns[1].onclick = function () {
+        dy = -2;
+        dx = 0;
+    };
+    btns[2].onclick = function () {
+        dx = 2;
+        dy = 0;
+    };
+    btns[3].onclick = function () {
+        dy = 2;
+        dx = 0;
+    };
+    */
+
+    document.addEventListener("keydown", keyDownHandler, false);
+
+    function keyDownHandler(e) {
+        if (e.keyCode === 40) {
+//            console.log("down");
+            rightPressed = false;
+            leftPressed = false;
+            upPressed = false;
+            downPressed = true;
+            dy = 2;
+            dx = 0;
+//            drawSnakeHead();
+        } else if (e.keyCode === 37) {
+            rightPressed = false;
+            leftPressed = true;
+            upPressed = false;
+            downPressed = false;
+            dx = -2;
+            dy = 0;
+//            drawSnakeHead();
+//            console.log("left");
+        } else if (e.keyCode === 38) {
+            rightPressed = false;
+            leftPressed = false;
+            upPressed = true;
+            downPressed = false;
+            dy = -2;
+            dx = 0;
+//            drawSnakeHead();
+//            console.log("up");
+        } else if (e.keyCode === 39) {
+            rightPressed = true;
+            leftPressed = false;
+            upPressed = false;
+            downPressed = false;
+            dx = 2;
+            dy = 0;
+//            drawSnakeHead();
+//            console.log("right");
+        }
+    }
+    img.onload = function () {
+        drawSnakeHead();
+        drawFood();
+        drawScore();
+    };
+
+
+    //    var timer=setInterval(function () {
+    //        x+=50;
+    //        y+=50;
+    //    },500);
+
+    var xFood = 0;
+    var yFood = 0;
+    function drawFood() {
+        xFood = randonXY().x;
+        yFood = randonXY().y;
+        ctx.drawImage(img, xFood, yFood, 50, 50);
+        boo = true;
+    }
+    var boo = true;
+    var nowLength = 1;
+    var pathArr = [];
+    function drawSnakeHead() {
+        x += dx;
+        y += dy;
+
+        if (x < -50) {
+            ctx.clearRect(0, y, 50, 50);
+            x = 800;
+        } else if (x > 800) {
+//            ctx.clearRect(x, y, 50, 50);
+            x = -50;
+        }
+        if (y < -50) {
+            ctx.clearRect(x, 0, 50, 50);
+            y = 500;
+        } else if (y > 500) {
+//            ctx.clearRect(x, y, 50, 50);
+            y = -50;
+        }
+//        console.log(x + '   ' + y);
+
+//        console.log(x + "   " + y);
+
+        pathArr.unshift({x: x, y: y});
+        if (pathArr.length > 25 * nowLength) {
+            pathArr.pop();
+        }
+        console.log(pathArr.length);
+        ctx.clearRect(x, y, 50, 50);
+        ctx.drawImage(img, x, y, 50, 50);
+
+//        console.log(calculateDistence(x, y, xFood, yFood));
+
+        if (calculateDistence(x, y, xFood, yFood) < 30 && boo) {
+            ctx.clearRect(xFood, yFood, 50, 50);
+            boo = false;
+            drawFood();
+            nowLength++;
+            console.log(nowLength);
+            drawSnakeBody();
+            drawScore();
+        }
+
+        requestAnimationFrame(drawSnakeHead);
+    }
+
+    function drawSnakeBody() {
+        for (var i = 1; i < nowLength; i++) {
+            var x = pathArr[25 * (i) - 1].x;
+            var y = pathArr[25 * (i) - 1].y;
+
+            ctx.clearRect(x, y, 50, 50);
+            ctx.drawImage(img, x, y, 50, 50);
+        }
+        requestAnimationFrame(drawSnakeBody);
+    }
+
+    function drawScore() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095dd";
+        ctx.clearRect(0, 0, 70, 20);
+        ctx.fillText("Score: " + (nowLength - 1), 0, 20);
+    }
+
+    function calculateDistence(x1, y1, x2, y2) {
+        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+    }
+
+    function randonXY() {
+        return {
+            x: Math.random() * 750,
+            y: Math.random() * 450
+        }
+    }
+
+</script>
+</body>
+</html>

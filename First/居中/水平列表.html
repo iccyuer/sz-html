@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul > li {
+            width: 100px;
+            height: 100px;
+            border: 0.25px solid #000;
+            text-align: center;
+            background: #cccccc;
+        }
+
+        li:hover {
+            cursor: pointer;
+            background: white;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .container > div {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            position: absolute;
+            left: 100px;
+            top: -400px;
+            text-align: center;
+            line-height: 400px;
+            display: none;
+        }
+
+        .container > div:nth-child(1) {
+            background: red;
+            display: block;
+        }
+
+        .container > div:nth-child(2) {
+            background: darkmagenta;
+            /*display: block;*/
+        }
+
+        .container > div:nth-child(3) {
+            background: chartreuse;
+            /*display: block;*/
+        }
+
+        .container > div:nth-child(4) {
+            background: #ff4bf6;
+            /*display: block;*/
+        }
+
+
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<div class="container">
+    <div class="aa" id="11">1</div>
+    <div>2</div>
+    <div>3</div><!--<div>4</div>-->
+</div>
+
+<script>
+    var lis = document.querySelectorAll("ul li");
+    var aa = document.querySelector(".container :nth-child(1)");
+    console.log(aa);
+    var divs = document.querySelectorAll(".container div");
+
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].index = i;
+        lis[i].onmouseover = function () {
+//            console.log(this.index);
+//            for (var a = 0; a < divs.length; a++) {
+//                divs[a].style.display = "none";
+//            }
+            var boxs = divs[this.index].parentNode.childNodes;
+            console.log(boxs.length);
+            console.log(divs[this.index].nodeType);
+            for (var b = 0; b < boxs.length; b++) {
+                boxs[b].style.display = "none";
+            }
+            divs[this.index].style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

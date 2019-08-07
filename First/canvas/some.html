@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="500" height="500"></canvas>
+<script>
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+    var canvasHeight = canvas.height;
+    var sweetHeight = 30;
+    var sweetList = [];
+
+    canvas.onmousedown = function (e) {
+        console.log(e.offsetX + " " + e.offsetY);
+
+        var mouseX = e.offsetX;
+        var mouseY = e.offsetY;
+
+        var sweet = new Image();
+        sweetList.push(sweet);
+        sweet.src = "sweet.png";
+        sweet.onload = function () {
+            var sweetX = mouseX - sweet.width / 2;
+            var sweetY = mouseY - sweet.height / 2;
+            sweet.sweetX = sweetX;
+            sweet.sweetY = sweetY;
+            sweet.time = 0;
+            sweetDraw(this);
+        }
+    };
+    function sweetDraw(sweet) {
+        var sweetX = sweet.sweetX;
+        var sweetY = sweet.sweetY;
+        console.log(sweetY);
+//        if (sweet.sweetY <= canvas.height - sweet.height) {
+        ctx.drawImage(sweet, sweetX, sweetY);
+//        }
+    }
+
+    function sweetMove(sweet) {
+//        var sweetX = sweet.sweetX;
+//        var sweetY = sweet.sweetY;
+        if (sweet.sweetY <= canvas.height - sweet.height) {
+            sweet.time += 41;
+            sweet.sweetY = g(sweet);
+        }
+
+    }
+
+
+    /*自由露体*/
+    function g(sweet) {
+        /*h=1/2*g*t*t*/
+        sweet.time += 20;
+        var time = sweet.time / 1000;
+        var g = 9.8;
+        sweet.sweetY = sweet.sweetY + 1 / 2 * g * time * time;
+        return sweet.sweetY + 1 / 2 * g * time * time;
+    }
+
+    var isFly=false;
+    /*自由露体带蹦蹦*/
+    function g(sweet) {
+        /*h=1/2*g*t*t*/
+        var g = 9.8;
+        var isDown=false;
+        if (sweet.sweetY <= canvasHeight -sweetHeight &&!isDown) {
+            sweet.time += 20;
+            var time = sweet.time / 1000;
+            sweet.sweetY = sweet.sweetY + 1 / 2 * g * time * time;
+            console.log("我在下落");
+            return sweet.sweetY + 1 / 2 * g * time * time;
+        }else if(sweet.sweetY > canvasHeight -sweetHeight){
+            if (!isFly) {
+                sweet.time = 0;
+                console.log("00000");
+                isFly=true;
+            }
+            sweet.time = 0;
+            sweet.time += 20;
+            var time = sweet.time / 1000;
+            sweet.sweetY = sweet.sweetY - 1 / 2 * g * time * time;
+            console.log("我要飞了");
+            return sweet.sweetY - 1 / 2 * g * time * time;
+        }
+    }
+
+//    var timer = setInterval(function () {
+//        ctx.clearRect(0, 0, 500, 500);
+//        for (var i = 0; i < sweetList.length; i++) {
+//            sweetDraw(sweetList[i]);
+//            sweetMove(sweetList[i]);
+//        }
+//    }, 10);
+
+//    var timerSpeed = setInterval(function () {
+//        for (var i = 0; i < sweetList.length; i++) {
+//            g(sweetList[i]);
+//        }
+//    }, 1);
+
+
+    function xx(){
+        ctx.clearRect(0, 0, 500, 500);
+        for (var i = 0; i < sweetList.length; i++) {
+            sweetDraw(sweetList[i]);
+            sweetMove(sweetList[i]);
+        }
+        requestAnimationFrame(xx)
+    }
+    xx();
+
+</script>
+</body>
+</html>

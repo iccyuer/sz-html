@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //        me();
+        var jk = "bbb";
+        console.log("i am");
+        function me() {
+//            var result=alert("hehe");
+//            var result1=confirm("haha");
+//            var result2=prompt("enter");
+
+//            console.log("result"+result);
+//            console.log("result1"+result1);
+//            console.log("result2"+result2);
+
+//            var str=prompt("renter a number");
+//            console.log(typeof str);
+//            console.log(typeof parseInt(str));
+//            str=parseInt(str);
+//            console.log(typeof str);
+//            console.log(str)
+
+            var arr = new Array(1, 3, 4, "xx", true);
+//            for (var i= 0;i<arr.length;i++){
+//                console.log(arr[i]);
+//            }
+//            for(var i in arr){
+//                console.log(arr[i]);
+//            }
+            console.log(arr.slice(1, 3));
+            console.log(new Array(3).join("abc"));
+        }
+        me();
+    </script>
+</head>
+<body>
+<input type="button" value="clice me" onclick="me()">
+
+</body>
+<script>
+    console.log("----------");
+//    foo();
+    //        var foo;
+//    var foo = function () {
+//        var a = 9;
+//        console.log(1);
+//    }
+    //    var foo = console.log(a);
+
+    //        var foo=function(){
+    //            console.log(2);
+    //        }
+
+//        setInterval(function me(){
+//            console.log("ll");
+//        },1000);
+//        var mm=function () {
+    //            console.log("jkjk");
+    //        }
+    //
+    //        setInterval("mm()",1000);
+
+    function me(a,b,type){
+        return type(a,b);
+    }
+    var result=me(2,3,function(a,b){
+        return a+b;
+    })
+    console.log(result);
+</script>
+</html>

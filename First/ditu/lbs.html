@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lbs</title>
+</head>
+<body>
+<script>
+    navigator.geolocation.getCurrentPosition(function success(pos){
+        console.log("经度："+pos.coords.longitude);
+        console.log("维度："+pos.coords.latitude);
+        console.log("海拔："+pos.coords.altitude);
+        console.log("时间戳："+pos.coords.timestamp);
+        console.log("速度："+pos.coords.speed);
+
+    },function error(err){
+        console.log("错误码："+err.code);
+        console.log("错误信息"+err.message);
+    });
+
+</script>
+</body>
+</html>

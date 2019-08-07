@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+        }
+        body{
+            background-color:#ccc;
+        }
+        .container>p>a{
+            text-decoration:none;
+            color:hotpink;
+        }
+        .container li{
+            list-style: none;
+            float: left;
+            width: 100px;
+            margin-right: 20px;
+        }
+        .container{
+            width: 700px;
+            margin-top:30px;
+            margin-left:150px;
+        }
+        h2,p,ul{
+            margin-bottom: 30px;
+        }
+        .container ul img{
+            width: 100px;
+            margin-right: 30px;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--颜宽   美女相册作业  -->
+
+
+<div class="container">
+    <h2>美女相册</h2>
+
+    <p>
+        <a href="#">注册</a>
+    </p>
+
+    <ul>
+        <li><a href="img/1.jpg" title="美女1"><img src="img/1-small.jpg" alt=""></a></li>
+        <li><a href="img/2.jpg" title="美女2"><img src="img/2-small.jpg" alt=""></a></li>
+        <li><a href="img/3.jpg" title="美女3"><img src="img/3-small.jpg" alt=""></a></li>
+        <li><a href="img/4.jpg" title="美女4"> <img src="img/4-small.jpg" alt=""></a></li>
+    </ul>
+    <div style="clear:both"></div>
+
+    <p>
+        <img src="img/placeholder.png" alt="" id="mmShow" width="400" class="mmShow">
+    </p>
+
+    <p class="mmName">美女名字</p>
+
+    <script>
+
+        var aList=document.querySelectorAll(".container ul a");
+        var mmShow=document.querySelector(".mmShow");
+        var mmName=document.querySelector(".mmName");
+
+
+        for(var i=0;i<aList.length;i++){
+            aList[i].onclick=function(){
+
+                mmShow.src=this.href;
+                mmName.innerHTML=this.title;
+                return false;
+            }
+        }
+
+
+
+    </script>
+
+</div>
+</body>
+</html>

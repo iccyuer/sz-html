@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lanlinear="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="500" height="400">您的浏览器不支持canvas标签</canvas>
+
+<script>
+    //    Array();
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+
+    //线性渐变
+    var linear = ctx.createLinearGradient(0, 0, 10, 100);//(x1,y1,x2,y2)定义了一条线性渐变线
+    //给这条线性渐变线设置停顿点，根据停顿点做线性渐变
+    linear.addColorStop(0, "#f00");
+    linear.addColorStop(1, "#f0f");
+    //把画笔样式设置为线性渐变线
+    ctx.fillStyle = linear;
+//    ctx.fillRect(0, 0, 10, 100);
+
+    //    渐变范围：渐变线长度内的所有垂直区域
+
+    //径向渐变
+    //同心圆：外围圆到内圆之间做渐变
+    //(x1,y1,r1,x2,y2,r2)
+    var radial = ctx.createRadialGradient(200, 200,10,200,200,100);
+    // 不同心圆：两个圆做切线，围起来的区域做渐变(超出部分没有，及时画了也没有东西)
+    var radial = ctx.createRadialGradient(100, 100,10,200,200,100);
+    radial.addColorStop(0,"red");
+    radial.addColorStop(1,"orange");
+    ctx.fillStyle=radial;
+    ctx.fillRect(0,0,500,400);
+
+
+
+
+</script>
+</body>
+</html>

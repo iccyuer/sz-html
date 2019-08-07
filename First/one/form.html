@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--action为提交的地址，method选择是get还是post(默认get)-->
+<!--enctype指定表单以什么方式上传，-->
+<!--enctype="application/x-www-form-urlencoded"  默认是字符的编码格式-->
+<!--enctype="multipart/form-data"  表单以流的方式上传  在表单里面包含文件上传时必须使用该属性-->
+
+<form action="http://www.baidu.com" target="_blank" method="get" enctype="multipart/form-data">
+    <!--type指定表单控件为text类型，name为标识，valus为提交的值，也就是key-value-->
+    <!--type类型有text，password，radio，checkbox，file，checkbox，submit等，默认text-->
+    <!--可以使用value做提示，但不友好，h5推荐placeholder-->
+    <!--readonly只读，可以提交；disabled不可用，不可提交-->
+    用户名<input type="text" name="username"  placeholder="please enter your username" readonly><br>
+    密码 <input type="password" name="password" disabled maxlength="6"><br>
+    <!--单选框，name值一样则为一组-->
+    性别 <input type="radio" name="gender" value="man">男
+    <input type="radio" name="gender" value="woman">女 <br>
+    爱好 <input type="checkbox" name="hoby" value="1">吃饭
+    <input type="checkbox" name="hoby" value="2">睡觉
+    <input type="checkbox" name="hoby" value="3">打豆豆 <br>
+
+    <input type="file" name="photo">
+
+    <!--hidden为隐藏控件，传一些默认的值，或者动态获取的值，在jsp中这样使用↓↓↓-->
+    <!--<input type="hidden" name="indexValue" value="<%=request.getParameter("username")%>">-->
+    <input type="hidden" name="hidd" value="hidden data"> <br>
+
+    <!--label可以做普通的文字标签，也可以与表单控件联动，两种方式-->
+    <input type="checkbox" id="agree"> <label for="agree">我已经阅读过了</label> <br>
+    <label>
+        <input type="checkbox" id="agree2">我已经阅读过了2
+    </label> <br>
+
+    <!--多行文本域 rows默认行数，超过自动再加-->
+    <textarea name="" id="" cols="5" rows="5"></textarea> <br>
+
+    <!--选择框,size同时能显示多少，multiple可以通过ctrl或者shift多选-->
+    <select name="language" id="" size="2" multiple >
+        <option value="1">中文</option>
+        <option value="2">English</option>
+        <option value="3">日本語</option>
+    </select> <br>
+
+    <!--fieldset分组控件，打包，生成一组相关表单的字段。legend为标题-->
+    <fieldset>
+        <legend>title</legend>
+        用户名<input type="text" name="username" ><br>
+        密码 <input type="password" name="password" >
+    </fieldset>
+
+    <!--button两种方式，第一种就是单纯按钮，无效果可与js交互-->
+    <!--第二种，type可以是button，reset，submit，-->
+    <!--在form表单中实测button和reset无效果-->
+    <!--空着或者submit为提交; value值按钮文字效果-->
+    <input type="button" value="a button">
+    <button  type="submit" value="htt" ></button>
+
+    <!--重置-->
+    <input type="reset" value="reset"> <br>
+    <!--提交，value修改按钮提示符，默认'提交'-->
+    <input type="submit" content="submit" value="submit">
+</form>
+</body>
+</html>

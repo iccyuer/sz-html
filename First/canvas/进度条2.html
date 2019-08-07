@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+            background-color: #3D4145;
+        }
+    </style>
+</head>
+<body>
+
+
+<canvas width="400" height="400">您的浏览器不支持canvas标签</canvas>
+
+请输入0~360整数：<input type="text">
+<button>开始</button>
+<script>
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+
+
+    var input = document.getElementsByTagName("input")[0];
+    var btn = document.getElementsByTagName("button")[0];
+
+
+    drawBg();
+
+    function drawBg() {
+        ctx.beginPath();
+        ctx.lineWidth = 15;
+        ctx.strokeStyle = "#644D3E";
+        ctx.arc(200, 200, 150, 0, Math.PI * 2);
+        //    ctx.arc(200, 200, 150, Math.PI / 180 * 135, Math.PI / 180 * 45);
+        ctx.stroke();
+    }
+    btn.onclick = function () {
+        ctx.clearRect(0,0,400,400);
+        drawBg();
+        var start = 270;
+        var values = input.value - 0;
+        values=270-values;
+        var end = 270;
+        ctx.strokeStyle = "#FE7E22";
+        ctx.lineCap = "round";
+        var bibi=false;
+        var timer = setInterval(function () {
+            ctx.beginPath();
+            start -= 1;
+            ctx.arc(200, 200, 150, Math.PI / 180 * start, Math.PI / 180 *end );
+            ctx.stroke();
+            if (start <= values) {
+                clearInterval(timer);
+            }
+        }, 20);
+    };
+
+
+</script>
+</body>
+</html>

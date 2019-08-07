@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .out {
+            width: 490px;
+            height: 170px;
+            padding: 5px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+
+        .inner {
+            width: 490px;
+            height: 170px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        ul {
+            list-style: none;
+            width: 600%;
+            position: absolute;
+        }
+
+        ul > li {
+            float: left;
+            width: 490px;
+        }
+
+        ol {
+            position: absolute;
+            list-style: none;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        ol > li {
+            /*list-style: none;*/
+            width: 20px;
+            height: 20px;
+            font: 16px/20px simsun;
+            float: left;
+            background: orange;
+            color: white;
+            margin-right: 5px;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .current {
+            background: hotpink;
+            color: black;
+        }
+
+        .select {
+            position: relative;
+            display: none;
+        }
+
+        .select > span {
+            display: inline-block;
+            width: 30px;
+            height: 40px;
+            cursor: pointer;
+            background-color: rgba(84, 84, 84, 0.58);
+            color: rgba(255, 253, 253, 0.6);
+            font: 700 20px/40px simsun;
+            text-align: center;
+            position: absolute;
+            top: 60px;
+        }
+
+        .select > span:last-child {
+            right: 0;
+        }
+
+        .select > span:first-child {
+            left: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="out">
+    <div class="inner">
+        <ul>
+            <li><img src="images/01.jpg" alt=""></li>
+            <li><img src="images/02.jpg" alt=""></li>
+            <li><img src="images/03.jpg" alt=""></li>
+            <li><img src="images/04.jpg" alt=""></li>
+            <li><img src="images/05.jpg" alt=""></li>
+        </ul>
+
+        <ol>
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+        <div class="select">
+            <span><</span>
+            <span>></span>
+        </div>
+    </div>
+</div>
+
+<script src="../../jQuery/jquery-1.11.1.js"></script>
+
+<script>
+
+    $.fn.lunbo = function (current,isFocus,isLeftAndRight) {
+        var that=this;
+
+        var ul=that.find("ul");
+        var ol=that.find("ol");
+        var selectBtn=that.find(".select");
+
+        ul.children("li").eq(0).clone().appendTo(ul);
+
+        var moveWidth=ul.children("li").eq(0).width();
+
+
+        that.on("mouseover", function () {
+            if (isLeftAndRight)selectBtn.show(0);
+            clearInterval(timer);
+        });
+
+        that.on("mouseout", function () {
+            if (isLeftAndRight)selectBtn.hide(0);
+            timer=setInterval(autoPlay,2000);
+        });
+
+        var timer=setInterval(autoPlay,2000);
+
+        if (isLeftAndRight){
+            selectBtn.children("span").eq(0).on("click", function () {
+                left();
+            });
+            selectBtn.children("span").eq(1).on("click", function () {
+                autoPlay();
+            })
+        }
+
+        var index=0;
+        if(isFocus){
+            var roundIndex=0;
+            ol.on("mouseover","li", function () {
+                var pos=$(this).index();
+                $(this).addClass(current).siblings().removeClass(current);
+                ul.animate({left:-pos*moveWidth},400);
+                index=roundIndex=pos;
+            });
+        }
+
+        function autoPlay(){
+            index++;
+            if (index > ul.children("li").length-1) {
+                ul.animate({left:0},0);
+                index=1;
+            }
+            ul.animate({left:-index*moveWidth},400);
+
+            if(!isFocus) return;
+            roundIndex++;
+            if (roundIndex > ol.children("li").length-1) {
+                roundIndex=0;
+            }
+            ol.children("li").eq(roundIndex).addClass(current).siblings().removeClass(current);
+        }
+
+        function left(){
+            index--;
+            if(index<0){
+                ul.animate({left:-(ul.children("li").length-1)*moveWidth},0);
+                index=ul.children("li").length-2;
+            }
+            ul.animate({left:-index*moveWidth});
+
+            if(!isFocus) return;
+            roundIndex--;
+            if (roundIndex < 0) {
+                roundIndex=ol.children("li").length-1;
+            }
+            ol.children("li").eq(roundIndex).addClass(current).siblings().removeClass(current);
+
+        }
+    };
+
+
+    $(".out").lunbo("current",true,false);
+
+
+</script>
+
+
+</body>
+</html>

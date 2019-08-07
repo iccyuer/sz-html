@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #d1 {
+            width: 200px;
+            height: 200px;
+            /*0deg从下到上，90deg从左到右，180deg从上向下，270deg从右向左*/
+            /*标是从10-40从绿变到蓝，范围之外为纯色*/
+            background-image: linear-gradient(90deg, #0f0 10%, #00f 40%, #f00 80%);
+        }
+
+        #d2 {
+            width: 200px;
+            height: 200px;
+            /*size at position*/
+            background-image: radial-gradient(100px at 100px 100px, #0f0 10%, #00f 40%, #f00 80%);
+        }
+
+        #d3 {
+            width: 200px;
+            height: 200px;
+            background-image: repeating-linear-gradient(90deg, #0f0 10%, #00f 40%, #f00 80%);
+        }
+
+        #d4 {
+            width: 200px;
+            height: 200px;
+            background-image: repeating-radial-gradient(100px at 100px 100px, #0f0 10%, #00f 40%, #f00 80%);
+        }
+
+        #d5 {
+            width: 200px;
+            height: 200px;
+            /*需要在特定浏览器中显示不同样式，有问题报错？？？*/
+            /*-webkit-background-image: linear-gradient(#f00, #00f);*/
+            /*-webkit-background-image: linear-gradient(45deg,#f00, #00f);*/
+        }
+
+        span {
+            /*可跟多个，第一个生效，不存在顺延，支持中文 */
+            font-family: "宋体","Microsoft YaHei", Arial;
+            /*最小8px，默认16px，偶数，无限大*/
+            font-size: 24px;
+            /*normal不加粗，bold加粗，0-900之间整百值，0-500不加粗，600-900加粗*/
+            font-weight: 100;
+            /*italic斜体，normal*/
+            font-style: italic;
+            /*small-caps所有字母大写，normal*/
+            font-variant: small-caps;
+
+            /*继承性，子元素继承父元素样式*/
+            /*文本属性基本上都可以被继承，还有line-height,a标签的颜色*/
+
+            /*块级元素水平居中，垂直居中可以把line-height设置和块级元素等高*/
+            text-align: center;
+            /*行高*/
+            line-height: 20px;
+            /*下划线，没有none，可以去除a标签下划线*/
+            text-decoration: underline;
+            /*块级元素文本缩进，行内元素无效果*/
+            text-indent:90px;
+            /*阴影，x，y，blur color x和y是0px与原文本重合，blur阴影程度*/
+            text-shadow: 20px 20px 5px #f00;
+
+        }
+        i{
+            font:normal small-caps 600 16px "";
+        }
+
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            /*边框折叠，适用于table，table一个边框，td一个边框，这样把两个边框合起来*/
+            border-collapse: collapse;
+            /*td与其他元素之间的距离，当table使用border-collapse则无效*/
+            border-spacing: 20px;
+            /*用在tr td中，td中文本垂直对齐方式，middle，top，bottom*/
+            vertical-align: middle;
+            /*table表格宽度会随着内容增加而撑开，写了width也无效*/
+            /*使用了table-layout，浏览器不再计算去适应内容大小，该多大就多大，显示速度会快一些*/
+            table-layout: fixed;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="d1"></div>
+<br>
+<div id="d2"></div>
+<br>
+<div id="d3"></div>
+<br>
+<div id="d4"></div>
+<br>
+<div id="d5"></div>
+<!--<span>你好，hh呐呐呐</span>-->
+<i>我斜了吗</i>
+<a href="">kkkk</a>
+<div id="d6">
+    <div></div>
+</div>
+</body>
+</html>

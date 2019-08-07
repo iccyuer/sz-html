@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    console.log(Number(NaN));
+    console.log(Number(null));
+    console.log(Number(undefined));
+    console.log(Number(false));
+    console.log(Number(0));
+    console.log(Number(""));
+    console.log(Number("xxx"));
+    //    console.log(Number(NaN));
+    console.log(parseInt("1ag", 16));
+
+    console.log(true && 10);
+    console.log(true && false);
+
+    var str = "hehehe";
+    //    console.log(str.prototype.);
+    str = "nwnew";
+    console.log(str);
+    var strr = new String("string");
+    console.log(strr.ha);
+
+
+    console.log("--------------");
+    var sex = 1;
+    console.log(sex = sex === 1 ? "男" : "女");
+
+    console.log("--------------");
+    var arr = ["王旭", "牛静辉", "张国军", "董伟", "杨过", "周杰伦", , , , "汪峰"];
+    arr[5] = "周杰";
+    console.log(arr[5]);
+    arr[9] = "汪峰";
+    console.log(arr[8]);
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="../css/phone.css">
+    <link rel="stylesheet" media="screen and (min-width:769px) and (max-width:991px)" href="../css/pad.css">
+    <link rel="stylesheet" media="screen and (min-width:992px)" href="../css/pc.css">
+
+    <!-- [if lt IE9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![end if]-->
+</head>
+<body>
+
+<div class="container">
+    <div class="dropdown">
+        <button data-toggle="" class="btn btn-success">
+            下拉
+            <span class="caret"></span>
+        </button>
+
+        <ul class="dropdown-menu">
+            <li><a href="">大碗面</a></li>
+            <li><a href="">小碗面</a></li>
+            <li><a href="">中碗面</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>-->
+<script src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+
+<script>
+    /*关闭jQ提供的关闭 data 属性 API 的方法*/
+    $(document).off(".data-api");
+    /*boot插件提供了纯 JavaScript 方式的 API，无需在页面写data-toggle属性*/
+    $('button[class*=btn]').dropdown();
+
+</script>
+</body>
+</html>

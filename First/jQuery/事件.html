@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            width: 50px;
+            height: 50px;
+        }
+
+        .cursor {
+            display: none;
+        }
+
+        span {
+            line-height: 30px;
+            height: 30px;
+            /*vertical-align: middle;*/
+        }
+
+        div {
+            height: 30px;
+            background-color: hotpink;
+            /*position: relative;*/
+        }
+
+        .container {
+            background-color: orange;
+            /*position: absolute;*/
+            /*top:0;*/
+        }
+    </style>
+</head>
+<body>
+
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+//        $("ul").delegate("li", "click", function () {
+//            $(this).remove();
+//        });
+
+        $("ul").on("click","li" , function () {
+            $(this).remove();
+        });
+        $("body").on("click","ul",function(){
+            console.log("hehe");
+        })
+
+//        $("ul").bind("click mouseenter", function(e){
+//            $(this).remove();
+//        });
+
+        $(".bi").click(function(){
+            $("ul").unbind("mouseenter");
+            $("ul").undelegate("click");
+            $("ul").off("click","li");
+
+        });
+
+    });
+
+
+    $(function () {
+        var timer;
+        $("button").click(function () {
+            clearInterval(timer);
+            var val = $("input:text").val() || "红鲤鱼与绿鲤鱼与驴";
+            var text = "";
+            var num = 0;
+//            $(".cursor").get(0).style.display="none";
+//            console.log($(".cursor").get(0));
+//            $(".cursor").get(0).style.display="inline";
+//            console.log($(".cursor").get(0));
+
+//            var cursor = document.getElementsByClassName("cursor")[0];
+//            cursor.style.display = "none";
+//            console.log(cursor);
+//            var date = new Date().getTime();
+//
+//            do {
+//                var newDate = Date.now();
+//            } while (newDate - date < 1000);
+//
+//            cursor.style.display = "inline";
+//            console.log(cursor);
+            timer = setInterval(function () {
+
+                $(".cursor").show();
+//                $(".cursor").get(0).style.display = "inline";
+//                console.log($(".cursor").get(0));
+                if (num >= val.length) {
+                    clearInterval(timer);
+//                    $(".cursor").hide(100);
+                    $(".cursor").get(0).style.opacity = 0;
+                    return;
+                }
+                text += val[num];
+                num++;
+                $(".container").html(text);
+                //                $(".cursor").hide(100);
+//                $(".cursor").get(0).style.display = "none";
+//                console.log($(".cursor").get(0));
+            }, 400);
+        });
+
+//        $("button").click();
+    });
+
+
+</script>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<button class="bi">gogo</button>
+
+<div>
+    <span class="container"></span> <span class="cursor">|</span> <br> <br>
+</div>
+
+<input type="text">
+<button>gogo</button>
+
+</body>
+</html>

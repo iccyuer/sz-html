@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        svg {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+
+<svg width="600" height="500">
+
+    <defs id="linear_list">
+
+    </defs>
+
+    <!--绘制出 x y轴-->
+    <polyline points="50,50 50,450 550,450" fill="transparent" stroke="black" stroke-width="2"></polyline>
+    <polyline points="40,60 50,50 60,60" fill="transparent" stroke="black" stroke-width="2"></polyline>
+    <polyline points="540,440 550,450 540,460" fill="transparent" stroke="black" stroke-width="2"></polyline>
+
+    <!--分个组-->
+    <g id="line_list">
+    </g>
+
+    <g id="rect_list"></g>
+</svg>
+
+
+<script>
+    var strData = `[
+    {"HTML":"3"},
+    {"CSS":"5"},
+    {"CSS3":"6"},
+    {"JS":"7"},
+    {"H5":"6"}
+    ]`;
+
+    /*将字符串对象JSON 转换成哈希数组数组对象，需要for in循环遍历*/
+    var data = JSON.parse(strData);
+    console.log(data);
+
+
+    /*绘制刻度*/
+    for (var i = 0; i < 9; i++) {
+        var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        var x1 = 50;
+        var y1 = 450 - (400 / 10) * (i + 1);
+        line.setAttribute("x1", x1);
+        line.setAttribute("y1", y1);
+        line.setAttribute("x2", x1 + 500);
+        line.setAttribute("y2", y1);
+        line.setAttribute("stroke", "#ddd");
+        var line_list = document.querySelector("#line_list");
+        line_list.appendChild(line);
+
+        var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("x", x1 - 20);
+        text.setAttribute("y", y1 + 6);
+        text.innerHTML = i + 1;
+        line_list.appendChild(text);
+    }
+
+    /*画柱子*/
+    for (var i = 0; i < data.length; i++) {
+        for (var key in data[i]) {
+            var h = data[i][key] * (400 / 10);
+            var inner = key;
+        }
+        var w = 500 / (data.length * 2 + 1); //计算一个块的距离
+        var x = 50 + w * (i * 2 + 1);
+        var y = 400 - h + 50;
+        var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        rect.setAttribute("x", x);
+        rect.setAttribute("y", y);
+        rect.setAttribute("width", w);
+        rect.setAttribute("height", h);
+        rect.setAttribute("fill", "url(#linear"+i+")");
+        var rect_list = document.querySelector("#rect_list");
+        rect_list.appendChild(rect);
+
+        var txt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        txt.setAttribute("x", x);
+        txt.setAttribute("y", 470);
+        txt.innerHTML = inner;
+        rect_list.appendChild(txt);
+
+        var txt1 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        txt1.setAttribute("x", x + 6);
+        txt1.setAttribute("y", y - 10);
+        txt1.innerHTML = h / (400 / 10);
+        rect_list.appendChild(txt1);
+    }
+
+    /*渐变*/
+
+    for(var i=0;i<data.length;i++){
+        var linear = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+        //    var box=document.createElement("div");//这里大小写都可以
+        //    console.log(box);
+        var idName = "linear"+i;
+        linear.setAttribute("id", idName);
+        linear.setAttribute("x1", "0");
+        linear.setAttribute("y1", "0");
+        linear.setAttribute("x2", "0");
+        linear.setAttribute("y2", "100%");
+
+        var stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+        stop1.setAttribute("offset", 0);
+        stop1.setAttribute("stop-color", randomColor());
+        linear.appendChild(stop1);
+        var stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+        stop2.setAttribute("offset", 1);
+        stop2.setAttribute("stop-color", "#ddd");
+        linear.appendChild(stop2);
+
+        var linear_list = document.getElementById("linear_list");
+        linear_list.appendChild(linear);
+//    console.log(linear_list);
+    }
+
+
+    function randomColor() {
+        var r = parseInt(Math.random() * 255);
+        var g = parseInt(Math.random() * 255);
+        var b = parseInt(Math.random() * 255);
+        return `rgb(${r},${g},${b})`;
+    }
+</script>
+</body>
+</html>

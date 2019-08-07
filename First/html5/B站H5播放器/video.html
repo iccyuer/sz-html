@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="video.css">
+    <link rel="stylesheet" href="../../bootstrap/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+<div class="player">
+    <div class="player-area video-state-pause">
+        <div class="player-video-message">
+            <div class="player-video-message-container">
+                <a href="">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <div class="player-video-message-panel">bug反馈传送门</div>
+                <a href="">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="player-video-wrap">
+            <div class="player-video-state"></div>
+            <div class="player-video-panel">
+                <div class="player-video-panel-image"></div>
+                <div class="player-video-panel-text"></div>
+            </div>
+            <div class="player-video-danmuku"></div>
+            <div class="player-video">
+                <video>
+                    <source src="video/pr.mp4">
+                    <!--<source src="../1.mp4">-->
+                </video>
+            </div>
+        </div>
+
+        <div class="player-video-control">
+            <div class="video-btn">
+                <i class="glyphicon glyphicon-play"></i>
+                <i class="glyphicon glyphicon-pause"></i>
+            </div>
+            <div class="video-progress ">
+                <!--<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">-->
+                    <!--60%-->
+                <!--</div>-->
+
+                <div class="video-progress-slider"></div>
+                <div class="video-progress-pb"></div>
+                <div class="video-progress-buffer"></div>
+
+            </div>
+
+            <div class="video-time">
+                <span class="video-time-now">00:00</span>
+                <span class="video-time-divider">/</span>
+                <span class="video-time-total">00:00</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<script src="video.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 5000px;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+
+    //    console.log(document);
+    //    console.log(document.documentElement);document.compatMode
+
+    //    window.onscroll = function () {
+    //        console.log(document.body.scrollTop);
+    //            console.log("window");
+    //            document.title=scrollTop();
+    //        }
+    //    document.documentElement.onscroll = function () {
+    //        console.log("html");
+    //    }
+    //    document.body.onscroll = function () {
+    //        console.log("body");
+    //    }
+
+
+    //    function scrollTop(ele) {
+    //        if (window.pageYOffset !== undefined) {
+    //            return window.pageYOffset;
+    //        } else {
+    //            return document.documentElement.scrollTop
+    //        }
+    //    }
+
+    //    box.scrollWidth
+    //    box.scrollHeight
+
+
+    /*
+
+
+     谷歌/火狐 IE8+
+     如果内容超出盒子宽高  那么scrollWidth/Height 获取的是内容的高度
+     如果内容不超出盒子宽高  那么scrollWidth/Height获取的是盒子自身的宽高+padding
+
+     IE6/7
+     如果内容超出盒子宽高  那么scrollWidth/Height 获取的是内容的高度
+     如果内容不超出盒子宽高  那么scrollWidth/Height获取的还是内容高度
+
+     所以: IE6.7内容超不超出都是  内容高度
+     高度是按照上面的效果
+     宽度在IE67 里面是超出获取内容 不超出获取 盒子本身
+     */
+</script>
+<style>
+    #box {
+        width: 200px;
+        height: 200px;
+        background-color: salmon;
+        border: 2px solid #000;
+    }
+
+    #inner {
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+        border: 1px solid #000;
+    }
+</style>
+
+<div id="box">
+    <div id="inner"></div>
+</div>
+<script>
+    var box = document.getElementById("box");
+    var inner = document.getElementById("inner");
+
+    console.log("box.scrollHeight:" + box.scrollHeight);
+    console.log("inner.scrollHeight:" + inner.scrollHeight);
+    console.log("box.scrollWidth:" + box.scrollWidth);
+    console.log("inner.scrollWidth:" + inner.scrollWidth);
+
+</script>
+</body>
+</html>

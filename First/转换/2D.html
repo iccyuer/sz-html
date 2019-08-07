@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #d1 {
+            width: 200px;
+            height: 200px;
+            background: #ffff00;
+            border: 1px solid #000;
+            transform: translate(100px);
+        }
+
+        #d2 {
+            width: 100px;
+            height: 100px;
+            background: #00ff00;
+            border: 1px solid #000;
+            /*transform: translate(20px, 100px);*/
+            transform: translate(40px, 50px) rotate(45deg) translate(10px,10px); /*rotate更改了坐标系*/
+        }
+    </style>
+</head>
+<body>
+<div id="d1">1
+    <div id="d2">2</div>
+</div>
+</body>
+</html>

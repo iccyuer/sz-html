@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*div + p {*/
+        /*!*background: orangered;*!*/
+        /*}*/
+
+        /*div:hover ~ p {*/
+        /*!*background: red;*!*/
+        /*}*/
+
+        /*[name^="s"] {*/
+        /*background: firebrick;*/
+        /*}*/
+
+        /*[name$="c"] {*/
+        /*background: #b2568f;*/
+        /*}*/
+
+        /*[name*="v"] {*/
+        /*background: #4bb219;*/
+        /*}*/
+
+        /*?????*/
+        /*[class~=" c11 "] {*/
+        /*!*background: fuchsia;*!*/
+        /*}*/
+
+        /*a[href] {*/
+        /*color: red;*/
+        /*}*/
+
+        /*!*????*!*/
+        /*p[name][class] {*/
+        /*color: crimson;*/
+        /*}*/
+
+        /*#id3 {*/
+        /*height: 1000px;*/
+        /*}*/
+
+        /*!*????*!*/
+        /*p:target {*/
+        /*text-decoration: underline;*/
+        /*}*/
+
+        /*!*--------------------------------------*!*/
+
+        /*:disabled {*/
+        /*background-color: gold;*/
+        /*}*/
+
+        /*:enabled {*/
+        /*color: deeppink;*/
+        /*}*/
+
+        /*:checked {*/
+        /*color: brown;*/
+        /*}*/
+
+        /*#container > div:nth-child(2) {*/
+        /*color: #5fff13;*/
+        /*}*/
+
+        /*#container > div:last-child {*/
+        /*color: #9a3fff;*/
+        /*}*/
+
+        /*#container > div:first-child {*/
+        /*color: #ff913a;*/
+        /*}*/
+        /*div:first-child{*/
+        /*background-image: url("1.jpg");*/
+        /*}*/
+        /*:empty{*/
+        /*width: 50px;*/
+        /*height: 50px;*/
+        /*border: 1px solid violet;*/
+        /*background-color: #d7ff26;*/
+        /*}*/
+
+        /*:only-child {*/
+        /*width: 50px;*/
+        /*height: 50px;*/
+        /*border: 1px solid violet;*/
+        /*background-color: #d7ff26;*/
+        /*}*/
+        /*p:not(#id2){*/
+        /*color: red;*/
+        /*}*/
+        .pp:first-line {
+            font-size: 30px;
+        }
+
+        p::selection {
+            color: yellow;
+            background: violet;
+        }
+
+        h2:before {
+            content: url("1.jpg");
+        }
+
+        h2:after {
+            content: "after";
+        }
+
+        body {
+            counter-reset: c1 0 c2 5;
+        }
+
+        h3:before {
+            content: counter(c1);
+        }
+
+        h3:after {
+            content: counter(c2);
+        }
+
+        h3 {
+            counter-increment: c1 1 c2 -1;
+        }
+
+        #id4 {
+            column-count: 3;
+            column-gap: 50px;
+            column-rule: 1px solid orange;
+            /*各浏览器*/
+            -webkit-column-count: 2;
+            ...
+        }
+
+
+    </style>
+</head>
+<body>
+<div>dd</div>
+<p id="id1" name="scs" calss="c1 c11 c22">sss</p>
+<p id="id2" name="csc" class="c11">sss2</p>
+<p name="xvc"></p>
+<p>kkk</p>
+<a href="1.jpg">1.jpg</a>
+<div id="id3">vvv</div>
+<!--<a href="#id1">锚点</a>-->
+<!--<a href="#id2">锚点2</a>-->
+<input type="text" value="2">
+<div id="container">
+    <div>1</div>
+    <!--<div>2</div>-->
+    <!--<div>3</div>-->
+</div>
+<div>
+    <p>only-child</p>
+</div>
+
+<p class="pp" title="hh">dsadas <br>kk
+</p>
+<h2>jjj</h2>
+<h3> n </h3>
+<h3> n </h3>
+<h3> n </h3>
+<h3> n </h3>
+<h3> n </h3>
+<h3> n </h3>
+<h3> n </h3>
+<h3> n </h3>
+
+<div id="id4">当我年轻的时候，我梦想改变这个世界；当我成熟以后，我发现我不能够改变这个世界，我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，我突然意识到：如果一开始我仅仅去改变我自己</div>
+</body>
+</html>

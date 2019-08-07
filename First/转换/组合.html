@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3d效果</title>
+    <style type="text/css">
+        .wai {
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            border: 1px solid red;
+            position: relative;
+            perspective: 90px;       /*给.wai 中的内容添加3d效果， 值越小  3d效果越明显*/
+        }
+
+        /*默认情况下 元素的2d旋转是绕着z轴旋转的*/
+        .nei {
+            width: 218px;
+            height: 146px;
+            border: 1px solid black;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            /*此时是围绕 y轴 旋转*/
+            transition: 3s;
+        }
+        .nei:hover{
+
+            transform: rotatey(80deg) translate(50px) ; /*注意：先选转在位移  和 先位移在旋转的效果是不一样的*/
+            /*-webkit-transform: translate(100px);*/
+        }
+    </style>
+</head>
+<body>
+<div class="wai">
+    <div class="nei"><img src="a.jpg" alt=""></div>
+</div>
+</body>
+</html>

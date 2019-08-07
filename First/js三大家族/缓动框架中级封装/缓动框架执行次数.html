@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<button>1</button>
+<button>2</button>
+
+<div class="box"></div>
+<script>
+    var box = document.getElementsByClassName("box")[0];
+
+    var btns = document.getElementsByTagName("button");
+    btns[0].onclick = function () {
+        animate_slowSpeed(box, 100);
+    }
+    btns[1].onclick = function () {
+        animate_slowSpeed(box, 400);
+    }
+
+    /*
+     400  40
+     300  37
+     200  33
+     100  26
+     50  21
+
+    推导不出来  -。-
+     */
+
+    function animate_slowSpeed(ele, endX) {
+        var count = 0;
+        clearInterval(ele.timer);
+        ele.timer = setInterval(function () {
+            var step = (endX - ele.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            ele.style.left = ele.offsetLeft + step + "px";
+            console.log(1);
+            count++;
+            if (Math.abs(ele.offsetLeft - endX) <= Math.abs(step)) {
+                clearInterval(ele.timer);
+                console.log(count + 1);
+                ele.style.left = endX + "px";
+            }
+        }, 50);
+
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        var per = {
+            name: "nn",
+            age: 15,
+            go: function () {
+                console.log("gogo");
+                return "gogo";
+            }
+        };
+
+        var per = {
+            "name": "nn",
+            "age": "15"
+        };
+
+        for(var k in per){
+            console.log(per[k]);
+            var kk=k;
+            console.log(per[kk]);
+
+        }
+
+        var per = '{"name":"nn","age":"15"}';
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

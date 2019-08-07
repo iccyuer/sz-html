@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>IE监听事件</title>
+    <!--备注：这段代码测试失败-->
+    <script type="text/javascript">
+        function show(){
+            alert("Hello IE");
+        }
+
+        window.onload=function(){//当整个HTML文档加载好之后就会触发onload事件
+//            document.getElementById("test1").attachEvent("onclick",show);//给第一个按钮注册了onclick事件
+            document.getElementById("test2").onclick=function(){//解除第一个按钮的onclick事件
+//                document.getElementById("test1").detachEvent("onclick",show);
+            }
+        };
+
+    </script>
+</head>
+<body>
+<input type="button" id="test1" value="测试1">
+<button type="button" id="test2"><b>测试2</b></button>
+
+</body>
+</html>

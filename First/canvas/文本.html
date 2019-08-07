@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="400" height="400">您的浏览器不支持canvas标签</canvas>
+
+<script>
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+
+    ctx.textBaseline = "top";
+    //必须设置字体，否则样式不生效
+    ctx.font = "bold 40px 'Microsoft YaHei','宋体'";
+    //想相对(x,y)点
+    ctx.textAlign = "right";
+
+    var str = "hello,jk";
+    //读取文本的宽度，不能读取高度
+    var textWidth = ctx.measureText(str).width;
+    //画板的宽度
+    var canvasWidth = canvas.width;
+    //文字颜色是填充颜色才可以
+    ctx.fillStyle="orange";
+    //同样可以用渐变
+    var radial = ctx.createRadialGradient(200, 200,10,200,200,100);
+    radial.addColorStop(0,"red");
+    radial.addColorStop(1,"green");
+    ctx.fillStyle=radial;
+    ctx.fillText("hhhg哈哈", 400, 0);
+
+</script>
+</body>
+</html>

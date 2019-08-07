@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>gogo</button>
+
+<div id="out">
+    <div id="inner">
+        <span>我是span</span>
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+
+<script>
+    var out=document.getElementById("out");
+
+    var inner=out.firstElementChild||out.firstChild;
+
+    var ul=out.children[1];
+
+    var span=document.getElementsByTagName("span")[0];
+
+
+    var btn=document.getElementsByTagName("button")[0];
+    btn.onclick= function () {
+//        inner.removeChild(span);
+
+//        inner.removeNode(false);
+
+
+    }
+
+</script>
+
+</body>
+</html>

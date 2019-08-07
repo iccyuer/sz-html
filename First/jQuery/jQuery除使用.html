@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery-1.11.1.js"></script>
+    <!--
+    <script>
+        $(function () {
+            //如果不写eq，则匹配所有
+            $("button").eq(0).click(function () {
+                $("span").css("display", "inline-block").css("width", "50px").html("hehe").css("background", "red");
+            });
+            $("button").eq(1).click(function () {
+                $("span").hide();
+            });
+
+            $(".pi").css({"width":"100px","height":"100px","background-color":"hotpink"});
+
+            $("button").eq(2).click(function () {
+                $(".pi").fadeIn("slow", function () {
+                    $(".pi").css({"width":"200px","height":"200px","background-color":"red"});
+                });
+            });
+            console.log($ === jQuery);
+        })
+    </script>-->
+
+
+    <script>
+        $(document).ready(function () {
+            $(".pi").css({width:"20px",height:"20px","background":"red"});
+        })
+    </script>
+
+    <script>
+        $(function () {
+            console.log(typeof $);
+
+//            $("div")
+//            $(".box")
+//            $("#d1")
+//            $("div span")
+//            $("div>p")
+
+
+        })
+    </script>
+</head>
+<body>
+
+<button>bbbb</button>
+<button>bbbb</button>
+<button>bbbb</button>
+<span>4</span>
+<span>3</span>
+<span>2</span>
+<span>1</span>
+
+<div class="pi"></div>
+</body>
+</html>

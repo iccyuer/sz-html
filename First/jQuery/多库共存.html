@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="jquery-1.11.1.js"></script>
+<script src="jquery-2.2.3.js"></script>
+
+<script>
+    $(function () {
+        var $c=$.noConflict();  //无参数，交出$，参数为true，两个都交出来
+        console.log($.fn.jquery);  //1.11.1
+        console.log(jQuery.fn.jquery);  //2.2.3
+        console.log($c.fn.jquery); //2.2.3
+    })
+</script>
+
+
+</body>
+</html>

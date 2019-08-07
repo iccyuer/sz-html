@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div>i am a div</div>
+<span id="sm">i am a span</span>
+<p class="sn"></p>
+<div>i am a div2</div>
+
+</body>
+
+<script>
+    var div = document.querySelector("div");
+    var span = document.querySelector("#sm");
+    var p = document.querySelector(".sn");
+    var divs = document.querySelectorAll("div");
+    //    console.log(dd);
+    div.innerHTML = "i am new div";
+    span.innerHTML = "i am new span";
+    p.innerHTML = "i am new input";
+
+    divs[0].innerHTML="new";
+    divs[1].innerHTML="new2";
+
+
+</script>
+</html>

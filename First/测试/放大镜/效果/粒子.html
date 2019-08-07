@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="500" height="400"></canvas>
+<button>gg</button>
+<script>
+    var canvas = document.getElementsByTagName("canvas")[0];
+    var ctx=canvas.getContext("2d");
+    var btn=document.getElementsByTagName("button")[0];
+    btn.onclick= function () {
+        drawParticle();
+//        ctx.clearRect(0,0,500,400);
+    };
+
+   drawParticle();
+
+    var x=100;
+    var y=100;
+
+    var dx=1;
+    var dy=1;
+    function drawParticle(){
+        ctx.clearRect(0,0,500,400);
+        x+=dx;
+        y+=dy;
+        ctx.beginPath();
+        ctx.fillStyle="#00FF00";
+        ctx.shadowOffsetX="1";
+        ctx.shadowOffsetY="1";
+        ctx.shadowColor="orange";
+        ctx.shadowBlur="1";
+        ctx.arc(x,y,5,0,Math.PI*2);
+        ctx.closePath();
+        ctx.fill();
+        requestAnimationFrame(drawParticle);
+    }
+
+</script>
+
+</body>
+</html>

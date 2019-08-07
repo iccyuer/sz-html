@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单中的伪类选择器</title>
+    <style type="text/css">
+        :disabled{               /*禁用的表单元素*/
+            color: cyan;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        :checked{               /*单选钮或者多选钮  被用户选中的元素，会被选择器选中*/
+            width:50px;
+            height:50px;
+        }
+        :enabled{              /*没有被禁用的表单元素*/
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<form action="http://www.baidu.com">
+    <input type="text" name="user_name" value="张三" disabled><br><!--该元素不可使用-->
+    <input type="text" name="usr" value="李四"><br>
+    <hr>
+    <!--单选钮-->
+    <input type="radio" name="sex" value="man">男
+    <input type="radio" name="sex" value="wonman">女
+    <hr>
+    <!--多选钮-->
+    <input type="checkbox" name="like" value="chou">抽烟
+    <input type="checkbox" name="like" value="he">喝酒
+    <input type="checkbox" name="like" value="tang">烫头
+    <hr>
+    <button>提交</button>
+</form>
+</body>
+</html>

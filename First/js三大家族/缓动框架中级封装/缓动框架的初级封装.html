@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            margin-top: 30px;
+            background-color: hotpink;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button>x200</button>
+<button>x400</button>
+<button>y200</button>
+<button>y400</button>
+<button>x300</button>
+<div class="box" style="left: 0;top: 0"></div>
+<script>
+    var btns = document.getElementsByTagName("button");
+    var box = document.getElementsByClassName("box")[0];
+    btns[0].onclick = function () {
+        animate_SlowSpeed(box, "left", 200);
+    };
+    btns[1].onclick = function () {
+        animate_SlowSpeed(box, "left", 400);
+    };
+    btns[2].onclick = function () {
+        animate_SlowSpeed(box, "top", 200);
+    };
+    btns[3].onclick = function () {
+        animate_SlowSpeed(box, "top", 400);
+    };
+    btns[4].onclick = function () {
+        animate_SlowSpeed(box, "left", 300);
+    };
+
+    function animate_SlowSpeed(ele, attrName, target) {
+        clearInterval(ele.timer);
+        ele.timer = setInterval(function () {
+            var nowState = parseInt(ele.style[attrName]);
+            var step = (target - nowState) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            ele.style[attrName] = nowState + step + "px";
+            console.log(1);
+            if (Math.abs(target - parseInt(ele.style[attrName])) <= Math.abs(step)) {
+                ele.style[attrName] = target + "px";
+                clearInterval(ele.timer);
+            }
+        }, 20);
+    }
+
+</script>
+</body>
+</html>

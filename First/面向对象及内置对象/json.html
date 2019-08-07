@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var json = {name: "tutu", age: 12, hobby: "walk"};
+    for (var a in json) {
+        console.log(json[a]);
+        console.log(json.a); //undefined
+    }
+
+
+    var str = "{\"name\": \"tutu\", \"age\": \"12\", \"hobby\": \"walk\"}";
+
+    var p = JSON.parse(str);
+    console.log(p);
+</script>
+</body>
+</html>

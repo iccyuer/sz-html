@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table</title>
+</head>
+<body>
+<!--border边框宽度，不设置看不出来格子实际上上是给table和td加-->
+<!--cellspacing是每一个td之间的距离，margin-->
+<!--cellpadding是td内容与边框距离，padding-->
+<!--可设置宽和高，height默认报错但是可以用-->
+<!--width可以设置100%，但是高不行，高由内容撑开，设置了也会是内容高-->
+<table border="1" cellspacing="5px" cellpadding="5px" width="200px" height="100%">
+    <tr align="center">
+        <td align="right">he</td>
+        <td bgcolor="red">hehe1</td>
+    </tr>
+    <tr valign="bottom"> <!--valign垂直居中方式，top，middle，bottom-->
+        <td align="right">hehe</td>
+        <td>hehe1</td>
+    </tr>
+    <!--caption表格的标题，表格上方居中加粗-->
+    <caption>
+        hhexxxxxxxxxx
+    </caption>
+</table>
+
+<table border="1" cellspacing="5px" cellpadding="5px" width="100%" height="200px">
+    <tr align="center">
+        <td align="right" colspan="2">he</td><!--colspan合并列，把将要合并的列位置空出来-->
+    </tr>
+    <tr>
+        <td align="right">hehe</td>
+        <td rowspan="2">hehe</td><!--rowspan合并行，把将要合并的行位置空出来-->
+    </tr>
+    <tr>
+        <td align="right">hehe</td>
+    </tr>
+</table>
+</body>
+</html>

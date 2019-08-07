@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #d1 {
+            width: 30px;
+            height: 20px;
+            border: 1px solid #000;
+        }
+        .hehe{
+            float: left;
+            background: #000;
+        }
+
+    </style>
+</head>
+<body>
+<center> hehe</center>
+
+<div id="d1">
+
+</div>
+
+<input type="text">
+<img src="../img/shayu.jpg" alt="" width="200">
+<a href="http://www.baidu.com">tititi</a>
+<button id="b1">click</button>
+<button id="b2">click</button>
+
+<script>
+    var div = document.getElementById("d1");
+    var btn1 = document.querySelector("#b1");
+    var btn2 = document.querySelector("#b2");
+    var input = document.querySelector("input");
+    var img = document.querySelector("img");
+    var a = document.querySelector("a");
+    btn1.onclick = function () {
+
+        div.className = "hehe";
+        div.title = "he";
+        div.oo = "oo";
+        img.width = "200";
+        img.src = "../img/1.jpg";
+        a.href = "http://www.sina.com.cn";
+        a.setAttribute("title", "atat");
+        a.setAttribute("gg", "atat");
+
+    };
+    btn2.onclick = function () {
+        console.log(div.getAttribute("class"));
+        console.log(div.getAttribute("title"));
+        console.log(div.getAttribute("oo"));
+        console.log(a.getAttribute("href"));
+        console.log(a.title);
+        console.log(a.gg);
+    };
+    inp.disabled="disabled";
+    cb.checked=false;
+
+
+    box.style.width="200px";
+    box.style.height="200px";
+    box.style.border="1px  solid red";
+    box.style.backgroundColor="hotpink";
+    box.style.backgroundImage="url('image/2.jpg')";
+    box.style.backgroundSize="100% 100%";
+    box.style.color="white";
+    //兼容问题   谷歌火狐IE9+
+    //    box.style.opacity="0.3";
+    //IE8及以下   百分制
+    box.style.filter="alpha(opacity=30)";
+
+
+</script>
+</body>
+</html>

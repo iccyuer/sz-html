@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrap{
+    width: 1200px;
+    margin: 20px auto;
+}
+.slide{
+    height: 500px;
+    position: relative;
+}
+.slide>ul{
+    list-style: none;
+}
+.slide li{
+    position: absolute;
+    left: 200px;
+    top: 0;
+}
+.slide li img{
+    width: 100%;
+}
+.arrow{
+    opacity: 0;
+}
+.prev,.next{
+    width: 76px;
+    height: 112px;
+    position: absolute;
+    top: 50%;
+    margin-top: -38px;
+    background: url("../images/prev.png") no-repeat;
+    z-index: 99;
+}
+.next{
+    background: url("../images/next.png") no-repeat;
+    right: 0;
+}

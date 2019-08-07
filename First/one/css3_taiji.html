@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .container:hover {
+            transform-origin: 50% 50%;
+            transform: rotate(1080deg);
+        }
+
+        .container {
+            width: 404px;
+            transition-duration: 5s;
+        }
+
+        .left {
+            width: 200px;
+            height: 400px;
+            border: 1px solid #999;
+            border-radius: 200px 0 0 200px;
+            border-right-width: 0;
+            float: left;
+            position: relative;
+        }
+
+        .right {
+            width: 200px;
+            height: 400px;
+            border: 1px solid #999;
+            border-radius: 0 200px 200px 0;
+            border-left-width: 0;
+            float: left;
+            position: relative;
+            background: black;
+        }
+
+        .left_child {
+            width: 100px;
+            height: 200px;
+            /*border: 1px solid #999;*/
+            border-radius: 100px 0 0 100px;
+            position: absolute;
+            top: 200px;
+            right: 0;
+            background: black;
+        }
+
+        .right_child {
+            width: 100px;
+            height: 200px;
+            /*border: 1px solid #999;*/
+            border-radius: 0 100px 100px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: white;
+        }
+
+        .left_child div {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 75px;
+            left: 75px;
+            background: white;
+            border-radius: 50%;
+            z-index: 99;
+        }
+
+        .right_child div {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 75px;
+            left: -25px;
+            background: black;
+            border-radius: 50%;
+            z-index: 99;
+        }
+
+        .nn {
+            clear: both;
+            width: 0;
+            height: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left">
+        <div class="left_child">
+            <div></div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="right_child">
+            <div></div>
+        </div>
+    </div>
+    <div class="nn"></div>
+</div>
+</body>
+</html>

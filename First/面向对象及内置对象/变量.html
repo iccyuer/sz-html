@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    //    console.log(window);
+    //    function fn() {
+    //    console.log(name);
+    //    //    }
+    //    var name = "ss";
+    //    console.log(name);
+
+    //windows对象默认有个name属性  name:""   小心直接使用
+
+    var per = new Object();
+    per.age = 12;
+//    per[nam] = "tutu";  //name变量
+    per["gender"] = "man";
+//    per[san] = "san";
+    console.log(per.age);  //12
+    //    console.log(per[age]);  //age is not defined
+    console.log(per["age"]);  //12
+
+    console.log(per.nam);  //undefined
+//    console.log(per[nam]);  //tutu
+    console.log(per["nam"]);  //undefined
+
+    console.log(per.gender);  //man
+    //    console.log(per[gender]);  //age is not defined
+    console.log(per["gender"]);  //man
+
+//    console.log(per.jk);
+//    console.log(per[jk]);
+    console.log(per["jk"]);
+
+    console.log(per);
+
+
+    /*
+     console.log("---------------------");
+
+     var obj = new Object();
+     var age = 12;
+     obj.age = "hehe";
+     obj[age] = "hehe1";
+     obj["age"] = "hehe2";  //obj["age"]会覆盖掉obj.age，同样obj.age也会覆盖掉obj["age"]
+     //    obj.age = "hehe";
+
+     console.log(obj.age);  //hehe2
+     //    console.log(obj.12);  //不可以这样写
+
+     console.log(obj[age]);  //hehe1
+     console.log(obj[12]);  //hehe1   是一种伪数组形式
+
+     console.log(obj["age"]);  //hehe2
+     console.log(obj["12"]);  //hehe1
+
+     console.log("----------------")
+     var name = "alias";
+     obj.name = "shanshan";
+     obj[name2] = "shanshan1";
+     obj["name"] = "shanshan2";
+     console.log(obj.name);  //shanshan2
+     console.log(obj.name2);  //shanshan2
+     console.log("???");
+     console.log(obj.alias);  //shanshan1
+
+     //    var name = "aliass";
+     console.log(obj[namee]);  //shanshan1
+     //    console.log(obj[alias]);  //alias is not defined
+
+     console.log(obj["name"]);  //shanshan2
+     console.log(obj["alias"]);  //shanshan1
+
+
+     //     console.log(obj.aliass);  //shanshan1
+
+     */
+</script>
+</body>
+</html>

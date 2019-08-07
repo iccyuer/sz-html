@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+您保存了 <span id="count"></span>个单次 <br>
+您上次的成绩是 <span id="score"></span> <br>
+<a href="index2.html">继续收录</a>
+
+<script>
+    var count=document.querySelector("#count");
+    var score=document.querySelector("#score");
+
+    count.innerHTML=localStorage.length;
+
+    var score_value=sessionStorage.getItem("score");
+    score.innerHTML=score_value;
+</script>
+</body>
+</html>

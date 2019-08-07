@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="../css/phone.css">
+    <link rel="stylesheet" media="screen and (min-width:769px) and (max-width:991px)" href="../css/pad.css">
+    <link rel="stylesheet" media="screen and (min-width:992px)" href="../css/pc.css">
+
+    <!-- [if lt IE9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![end if]-->
+</head>
+<body>
+
+<div class="container">
+    <!--bg-danger.....不同的背景颜色-->
+    <p class="bg-danger">
+        又到中午了，吃什么？
+    </p>
+
+    <!--pull-left左浮动-->
+    <div class="pull-left bg-success">左左</div>
+    <!--pull-right右浮动-->
+    <div class="pull-right bg-info">右右</div>
+    <!--clearfix清除浮动-->
+    <div class="clearfix"></div>
+    <div class="btn btn-danger">clickMe</div>
+
+    <!--块级元素居中-->
+    <div class="center-block" style="width: 200px">块级元素居中</div>
+    <!--若是作用于行内元素，会把行内元素变为块级元素-->
+    <!--行内元素居中，把它放到一个父容器，然后父容器text-center-->
+    <span class="center-block">行内元素居中</span>
+
+    <!--hidden就是display:none; show就是display:block-->
+    <span class="hidden">我要隐藏你看不到了1</span>
+    <!--invisible就是visibility:hidden-->
+    <span class="invisible">我要隐藏你看不到了2</span>
+    <span >前面的我看到你了！</span>
+</div>
+
+
+
+<!--<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>-->
+<script src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

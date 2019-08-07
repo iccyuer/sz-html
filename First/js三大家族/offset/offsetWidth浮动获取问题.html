@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            float: left;
+        }
+
+        span{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li><img src="images/01.jpg" alt="" width=""></li>
+    <li>2ssssss</li>
+</ul>
+
+<script>
+    var ul = document.querySelector("ul");
+    console.log(ul.children[0].offsetWidth);
+    console.log(ul.children[1].offsetWidth);
+
+    console.log(ul.children[0].children[0].offsetWidth);
+</script>
+</body>
+</html>

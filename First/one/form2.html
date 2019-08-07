@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--适应于ie9以上-->
+<form action="http://baidu.com" target="_blank">
+    <!--输入错误会提示邮件地址格式错误，下面这些只有输入才会检查，空着也可以提交-->
+    <input type="email" name="usermail">
+    <!--检查规则是http:-->
+    <input type="url" name="url">
+    <!--默认整数，可以是负数，右侧有上下键+1或-1，也可以配合min,max,step使用，可以写小数-->
+    <input type="number" min="0.3" max="10" step="2.3">
+    <!--电话号码，实测只写type=tel没效果，需要结合正则表达式-->
+    <input type="tel" name="tel" pattern="1[345678]\d{9}">
+    <!--提交选中的rgb颜色代码-->
+    <input type="color" name="color">
+    <!--range进度，默认0-100，步长为2。默认值在中间。可以指定范围,可以小数-->
+    <!--可通过js动态获取-->
+    <input type="range" min="-10" max="10" step="2" name="range">
+    <!--search，和text框类似，有个x可以删除输入-->
+    <input type="search" name="search">
+    <!--年月-->
+    <input type="month" name="month">
+    <!--年月日-->
+    <input type="date" name="date">
+    <!--一年中的某一周-->
+    <input type="week" name="week">
+    <!--这三个月份不推荐使用，有时不兼容，建议jqueryUi中的日历插件-->
+    <input type="submit" value="submit">
+
+</form>
+</body>
+</html>

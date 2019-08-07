@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn">add</button>
+
+<script>
+
+    var btn = document.getElementById("btn");
+    btn.onclick = function () {
+        alert("一夜饱雨树和风");
+    }
+
+
+    function addEventListenre(ele, eventName, fn) {
+        var oldEvent = ele["on" + eventName];
+        ele["on" + eventName] = function () {
+            if (oldEvent !== null) {
+                oldEvent();
+                fn();
+            } else {
+                fn();
+            }
+
+        }
+    }
+
+    addEventListenre(btn, "click", function () {
+        alert("满地槐花地飘零");
+    });
+    addEventListenre(btn, "click", function () {
+        alert("行人路上轻点水");
+    });
+    addEventListenre(btn, "click", function () {
+        alert("一洼涟漪独映人");
+    });
+</script>
+</body>
+</html>

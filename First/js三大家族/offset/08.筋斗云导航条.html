@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #3D3D3D;
+
+
+        }
+
+        .nav{
+            width: 800px;
+            height: 45px;
+            /*background-color: white;*/
+            margin: 100px auto;
+            border-radius: 10px;
+            background: url("images/wifi.png")  right white no-repeat;
+            position: relative;
+
+        }
+        ul{
+            list-style: none;
+            position: relative;
+            background-color: white;
+        }
+        li{
+            float: left;
+            width: 83px;
+            height: 45px;
+            text-align: center;
+            font: 15px/45px simsun;
+            cursor: pointer;
+        }
+        span{
+            display: inline-block;
+            width: 83px;
+            height: 45px;
+            background: url("images/cloud.gif") no-repeat;
+            position: absolute;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="nav">
+    <span></span>
+    <ul>
+        <li>首页新闻</li>
+        <li>活动策划</li>
+        <li>师资力量</li>
+        <li>企业文化</li>
+        <li>招聘信息</li>
+        <li>公司简介</li>
+        <li>学员信息</li>
+        <li>建议反馈</li>
+
+    </ul>
+
+
+
+</div>
+
+<script>
+    /*
+        需求:
+            鼠标移入导航 筋斗云缓动到指定位置
+            鼠标离开 缓动到原本位置
+            鼠标点击记录位置   永久停留在该位置
+
+
+        步骤:
+                1.三要素
+                2.鼠标移入  让span缓动到当前li的offsetLeft位置
+                3.鼠标离开  回到原本位置
+                4.鼠标点击记录索引位置 并移动到指定位置
+
+
+
+
+     */
+
+    var nav=document.getElementsByClassName("nav")[0];
+    var cloud=nav.firstElementChild || nav.firstChild;
+    var ul=nav.children[1];
+    var liArr=ul.children;
+    //获取移动宽度
+    var moveWidth=liArr[0].offsetWidth;
+
+
+    //记录筋斗云的原本位置
+    var index=0;
+
+    for(var i=0;i<liArr.length;i++) {
+        //绑定索引值
+        liArr[i].index = i;
+        //1.三要素
+
+        liArr[i].onmouseover = function () {
+//            2.鼠标移入  让span缓动到当前li的offsetLeft位置
+            animate_slowSpeed_x(cloud, this.index * moveWidth);
+
+        }
+
+        liArr[i].onmouseout = function () {
+//            3.鼠标离开  回到原本index位置
+            animate_slowSpeed_x(cloud, index * moveWidth);
+            console.log("鼠标移除:"+index);
+        }
+
+//        4.鼠标点击记录索引位置 并移动到指定位置
+        liArr[i].onclick= function () {
+            //要回到的位置就是当前点击的li的位置
+            index=this.index;
+            console.log(index);
+        }
+    }
+
+    //缓动框架 位移x的封装
+    function animate_slowSpeed_x(ele,endX){
+        //01. 要用定时器 先清除定时器
+        clearInterval(ele.timer);
+
+
+
+        //2.启动定时器
+        ele.timer=setInterval(function () {
+            //3.计算步长
+            var step=(endX-ele.offsetLeft)/10;
+            //4.对步长的二次加工   我们最后动画步长有正 有负  所以要判断步长是否大于0 大于0向上取整 小于0 向下取整
+            step=step>0?Math.ceil(step):Math.floor(step);
+
+            console.log(1);
+
+            //5.位移
+            ele.style.left=ele.offsetLeft+step+"px";
+            //6.清除定时器
+            if(Math.abs(endX-ele.offsetLeft)<=Math.abs(step)){
+                //直接拉到终点
+                ele.style.left=endX+"px";
+
+                clearInterval(ele.timer);
+
+            }
+
+
+
+        },20)
+
+
+    }
+
+</script>
+
+
+
+
+</body>
+</html>

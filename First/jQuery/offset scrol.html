@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+            position: relative;
+        }
+        .out{
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            position: absolute;
+            margin-left: 5px;
+            left: 10px;
+        }
+        .inner{
+            width: 50px;
+            height: 50px;
+            margin-left: 20px;
+            background-color: orange;
+            position: relative;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+<button></button>
+<div class="box">
+    <div class="out">
+        <div class="inner"></div>
+    </div>
+</div>
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        $("button").click(function () {
+            console.log($(".box").position());
+            console.log($(".out").position());
+            console.log($(".inner").position());
+            console.log($(".inner").scrollLeft());
+
+        })
+    })
+</script>
+</body>
+</html>

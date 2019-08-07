@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="400" height="400">您的浏览器不支持canvas标签</canvas>
+
+<script>
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+    ctx.lineCap="butt";
+    ctx.lineCap="round";
+    ctx.lineCap="square";
+
+    ctx.lineJoin="miter";
+    ctx.lineJoin="round";
+    ctx.lineJoin="bevel";
+
+    ctx.lineJoin="miter";
+    ctx.miterLimit=5;
+
+    ctx.lineWidth=10;
+    ctx.beginPath();
+    ctx.moveTo(10,10);
+
+    ctx.lineTo(30,50);
+    ctx.lineTo(70,20);
+    ctx.stroke();
+
+</script>
+</body>
+</html>

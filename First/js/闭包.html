@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //    闭包问题
+    var fns = [];
+    for (var i = 0; i < 3; i++) {
+        function inner() {
+            return i * i;
+        }
+        fns.push(inner);
+    }
+
+    console.log(fns[0]());
+    console.log(fns[1]());
+    console.log(fns[2]());
+
+    //闭包：在inner外包了一层函数
+    var fs = [];
+    for (var i = 0; i < 3; i++) {
+        function out(i) {
+            function inner() {
+                return i * i;
+            }
+            return inner;
+        }
+        fs.push(out(i))
+    }
+    console.log(fs[0]());
+    console.log(fs[1]());
+    console.log(fs[2]());
+</script>
+</body>
+</html>

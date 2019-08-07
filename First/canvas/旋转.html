@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="400" height="400">您的浏览器不支持canvas标签</canvas>
+
+<script>
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+    //位移画笔
+    ctx.translate(250, 200);
+    //旋转画笔
+    ctx.rotate(Math.PI / 180 * 5);
+    //可叠加，在前一个的基础上再次旋转，所以可以通过定时器改变画笔的转换，做成动画的效果
+    ctx.rotate(Math.PI / 180 * 5);
+    //缩放画笔
+    ctx.scale(1, 0.5);
+    ctx.fillRect(0, 0, 50, 50);
+
+
+</script>
+</body>
+</html>

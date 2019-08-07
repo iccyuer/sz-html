@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="400" height="400"></canvas>
+<script>
+
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var ballWidth = 10;
+    var ballHeight = 10;
+
+    var x = (canvas.width - ballWidth) / 2 - 10;
+    var y = (canvas.height - ballHeight) / 2 - 10;
+
+
+    var offsetCanvasLeft = x
+    var offsetCanvasRight = 0;
+    var offsetCanvasTop = y;
+    var offsetCanvasBottom = 0;
+
+
+    var dx = 3;
+    var dy = 2;
+
+    drawBall();
+
+    function drawBall() {
+        ctx.clearRect(0, 0, 400, 400);
+        ctx.beginPath();
+        ctx.arc(x, y, ballHeight / 2, 0, Math.PI * 2);
+
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+        requestAnimationFrame(drawBall);
+    }
+
+
+    canvas.onmousemove = (function (e) {
+        var mouseX = e.offsetX;
+        var mouseY = e.offsetY;
+
+        //8个条件
+        var distnce = calculateDistence(x, y, mouseX, mouseY);
+        console.log(distnce);
+
+
+        if (distnce < 50) {
+            offsetCanvasRight = canvas.width - x;
+            offsetCanvasBottom = canvas.height - y;
+
+//            offsetCanvasLeft >= offsetCanvasRight+20?x-=3:x+=3;
+//            offsetCanvasTop >= offsetCanvasBottom+20?y-=3:y+=3;
+
+            var randomNum=parseInt(Math.random()*5);
+
+            if (mouseX > x && x > 30) {
+                dx = -randomNum;
+            } else if (mouseX<x&&canvas.width-x>30) {
+                dx=randomNum;
+            }else if(x<30){
+                dx=randomNum;
+            }else if(canvas.width-x<30){
+                dx=-randomNum;
+            }
+
+            if (mouseY > y && y > 30) {
+                dy=-randomNum;
+            }else if(mouseY<y&&canvas.height-y>30){
+                dy=randomNum;
+            }else if(y<30){
+                dy=randomNum;
+            }else if(canvas.height-y<30){
+                dy=-randomNum;
+            }
+
+
+//            mouseX > x ? dx = -3 : dx = 3;
+//            mouseY > y ? dy = -3 : dy = 3;
+//
+//            x < 50 ? dx = 3 : dx = -3;
+//            canvas.width - x < 30 ? dx = -3 : dx = 3;
+//            ;
+//            y < 50 ? dy = 3 : dy = -3;
+//            canvas.height - y < 30 ? dy = -3 : dy = 3;
+
+            x += dx;
+            y += dy;
+        }
+
+    });
+
+    function calculateDistence(x1, y1, x2, y2) {
+        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+    }
+
+
+</script>
+</body>
+</html>

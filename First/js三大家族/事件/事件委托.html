@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul > li {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+<button class="btn">clickMe</button>
+<ul>
+    <li>我是土著li</li>
+    <li>我是土著li</li>
+    <li>我是土著li</li>
+</ul>
+
+<script>
+    var btn = document.getElementsByClassName("btn")[0];
+    var ul = document.getElementsByTagName("ul")[0];
+
+
+    btn.onclick = function () {
+        for (var i = 0; i < 3; i++) {
+            var newLi = document.createElement("li");
+            newLi.innerHTML = "我是新li";
+            ul.appendChild(newLi);
+        }
+    }
+
+
+    ul.onclick = function (event) {
+        var event = event || window.event;
+
+        if (event.target.nodeName === "LI") {
+            alert(event.target.innerHTML);
+        }
+    }
+</script>
+</body>
+</html>

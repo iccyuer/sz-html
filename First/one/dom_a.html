@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--javaScript:void(0) 阻止默认事件-->
+<!--<a href="javaScript:void(0)">hhh</a>-->
+<a href="javaScript:void(0)" onclick="return fn()">hhh</a>
+<img src="1.jpg" alt="">
+
+<a href="1.png"><img src="sakura.jpg" alt=""></a>
+
+<div>div1
+    <div id="id1">
+        div2
+    </div>
+</div>
+<ui>
+    <li><a href="img/alipay.png"><img src="img/alipay.png" alt="" width="20px" height="20px"></a></li>
+    <li><a href="img/qq.png"><img src="img/qq.png" alt="" width="20px" height="20px"></a></li>
+    <li><a href="img/sina.png"><img src="img/sina.png" alt="" width="20px" height="20px"></a></li>
+    <li><a href="img/wx.png"><img src="img/wx.png" alt="" width="20px" height="20px"></a></li>
+</ui>
+<img src="img/alipay.png" alt="" id="img">
+<script>
+    var as = document.querySelectorAll("a");
+    var imgg = document.querySelector("#img");
+    console.log(img);
+    for (var i = 0; i < as.length; i++) {
+        as[i].onclick = function () {
+            imgg.src = this.href;
+            return false;
+        }
+    }
+</script>
+
+
+<script>
+    var a = document.querySelector("a");
+    var img = document.querySelector("img");
+    a.onclick = function () {
+        img.src = "sakura.jpg";
+        return false; //阻止默认行为
+    }
+
+    function fn() {
+        img.src = "sakura.jpg";
+        return false; //阻止默认行为
+    }
+
+    var ds = document.querySelectorAll("div");
+    ds[0].onclick = function () {
+        alert("div1");
+    }
+    ds[1].onclick = function (event) {
+        alert("div2");
+        event.stopPropagation(); //阻止事件冒泡
+        return false; //只能阻止默认事件，不能阻止事件冒泡
+    }
+    //jQuery，既阻止默认行为又停止冒泡 ,jQuery需要库支持
+//    $("#id1").on('click', function () {
+//        return false;
+//    });
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>结构伪类选择器</title>
+    <style type="text/css">
+        div ul>li:first-child{    /*  索引的目标是：div下的ul下面的第一个li标签   将其字体颜色设置成红色
+                                                             但是将li前面添加一个p标签则就不会有效果   因为此选择器识别的目标就是第一个li */
+          color: red;
+        }
+        ul>li:last-child{        /*同理，此选择器选择 的是最后一个li标签*/
+            background: yellow;
+        }
+        span{
+            display: block;
+        }
+        .a span:nth-child(1){  /* 这种情况找到的是    类a下的 第一个位置的span标签  因为（）中的位置是从1开始的*/
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+       .a span :nth-child(1){/* 这种情况找到的是   类a下所有span标签下的所有后代中的第一个标签       因为span和:之间有一个空格*/
+            width: 100px;
+            height: 100px;
+            background: cyan;
+        }
+
+        .test>div:nth-child(2){ /*注意：包含2数字的这个div没有变化   当控制台观察发现出现两对p标签，之前说过p标签虽然是块元素，但是p中不能嵌套块元素
+                                   不然会被切开  所以此时 索引的第2个元素是p  也就是演示不生效   因为写法只有 第二个元素必须是div才可以生效*/
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <!--<p>0</p>-->
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div class="a">
+      <span>我是span1 <i>iiiiispan中的i</i></span>
+      <span>我是span2 <u>我是uuuu</u></span>
+      <span>我是span3 <b>我是bbbb</b> <b>我是22222</b></span>
+    </div>
+    <hr>
+
+    <div class="test">
+        <div>1</div>
+        <p>
+        <div>2</div>
+        </p>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</div>
+</body>
+</html>

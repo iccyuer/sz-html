@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+            border: 10px solid #000;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+<script src="../../MyJs/jQuery.js"></script>
+<script>
+    var box=document.getElementById("box");
+
+    box.onmousedown= function (event) {
+        var event=event||window.event;
+
+        var mouseBodyX=event.pageX||event.clientX+scroll().left;
+        var mouseBodyY=event.pageY||event.clientY+scroll().top;
+
+        console.log((mouseBodyX - box.offsetLeft)+"  "+(mouseBodyY - box.offsetTop));
+//        console.log("body的page："+event.pageX+"  "+event.pageY);
+//        console.log("屏幕的screen："+event.screenX+"  "+event.screenY);
+//        console.log("浏览器的client："+event.clientX+"  "+event.clientY);
+        console.log("偏移offset："+event.offsetX + "  " + event.offsetY);
+
+    }
+
+
+</script>
+
+</body>
+</html>

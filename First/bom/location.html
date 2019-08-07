@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn">条塔</button>
+<script>
+
+    var btn = document.getElementById("btn");
+
+    btn.onclick = function () {
+//      改变当前浏览器地址栏地址 然后执行跳转，改变后执行assign()
+//        location.href = "http://www.baidu.com";
+//      location.href="05.des.html#bb"
+
+//      location.assign()    改变浏览器地址栏的地址，并记录到后退历史中
+//        location.assign("http://www.sina.com.cn")
+//      location.replace()	替换浏览器地址栏的地址，不会记录到后退历史中
+
+        location.replace("bom.html");
+//
+//        location.reload()    //重新加载
+    }
+
+
+</script>
+</body>
+</html>

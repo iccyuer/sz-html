@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 400px;
+            background-color: red;
+        }
+
+        #inner {
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+        }
+
+        #hehe {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+        }
+    </style>
+
+
+</head>
+<body>
+<div id="box">
+    <div id="inner">
+        <div id="hehe"></div>
+    </div>
+</div>
+
+<script>
+    var hehe = document.getElementById("hehe");
+    var inner = document.getElementById("inner");
+    var box = document.getElementById("box");
+
+
+    hehe.addEventListener("click", function () {
+        alert("我是呵呵盒子");
+    },true);
+    inner.addEventListener("click", function (event) {
+        alert("我是inner盒子");
+
+
+    },true);
+    box.addEventListener("click", function () {
+        alert("我是box盒子");
+    },true);
+    document.addEventListener("click", function (event) {
+        alert("我是页面,你点疼我了!!!!!");
+        var event=event||window.event;
+//        event.stopPropagation();
+//        return false;
+    },true);
+
+</script>
+
+
+</body>
+</html>

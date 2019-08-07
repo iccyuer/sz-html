@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="400" height="400">您的浏览器不支持canvas标签</canvas>
+
+<script>
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var img =new Image();
+    img.src="steak.jpg";
+
+    img.onload=function(){
+        ctx.drawImage(img,0,0,365,365);
+    }
+
+    ctx.beginPath();
+    ctx.moveTo(10,10);
+    ctx.lineTo(200,250);
+    ctx.lineTo(300,100);
+    ctx.closePath();
+    ctx.lineWidth=10;
+    ctx.clip();
+
+</script>
+</body>
+</html>

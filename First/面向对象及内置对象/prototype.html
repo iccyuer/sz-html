@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<script>
+
+
+    function Show() {
+//        this.ab = ab;
+//        this.go = function () {
+//            console.log('e');
+//        }
+        goo = function () {
+            this.console.log('ee');
+        }
+    }
+
+    Show.prototype = {
+        go: function () {
+            console.log('e');
+        }
+    };
+
+
+    console.log(!Show.prototype.go);
+    var show = new Show();
+    show.go();
+    console.log(typeof  show);
+    console.log(typeof Show);
+
+    console.log(!Show.prototype.goo);
+
+    var box = document.querySelector("div");
+    console.log(typeof  box);
+
+
+</script>
+</body>
+</html>

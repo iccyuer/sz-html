@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个字</title>
+    <!--
+    表示：每一行的第一个文字   通常情况下在块级元素中是用
+     当 父容器中的一个容器是行内样是  也可以显示出效果   如果不是则不显示效果      注意：   一般使用都是块级元素
+    -->
+    <style type="text/css">
+        /*当给span标签修改成块级元素同样可以显示*/
+        span {
+            display: block;
+        }
+
+        :first-letter {
+            font-size: 10px;
+            color: red;
+            font-weight: 700;
+        }
+
+        div :first-letter { /*同样可以在前面添加内容，定位更加精确 。但是 还是  div中的u没有变化*/
+            /*若是后代中的第一个元素是行内元素则不生效*/
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<!--<h2>哈哈哈哈</h2>-->
+<b>我也是b标签</b>
+<span>在下span标签</span>
+<div>
+    <u>我是第一个字</u>
+    <i>俺也是第一个字</i>
+    <h1>不喜欢
+        <span>我是里面的span</span>
+    </h1>
+    <h2>哈哈哈哈哈</h2>
+</div>
+<p>对啊 我也是段落啊</p>
+<b>我也是b标签</b>
+
+<span>在下span标签</span>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        canvas {
+            /*border: 1px solid #000;*/
+            transition: all 6s;
+        }
+
+        .container {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 40px;
+            /*border: 1px solid #000;*/
+            position: relative;
+        }
+
+        img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-origin: 0 50%;
+            transform: rotate(-90deg) translate(20px, 1px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <canvas width="400" height="400"></canvas>
+    <img src="jt.png" alt="" width="150">
+</div>
+<button>开始抽奖</button>
+<script>
+
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+    var rewards = ['huawei p20', 'iphone x', 'mix 2s', 'vivo x21', 'oppo r15', 'galaxy s9+', 'oneplus 5t'
+        , 'iphone8', 'iphone8p', 'iphone5', 'iphone5s', 'iphone6s','a','b','c','d'];
+    /*
+     * 1.根据数组将奖项写入
+     *
+     * */
+
+    ctx.translate(200, 200);
+
+    ctx.rotate(Math.PI / 180 * -(90+360/rewards.length));
+    for (var i = 0; i < rewards.length; i++) {
+        ctx.rotate(Math.PI / 180 * (360 / rewards.length));
+//        console.log(Math.PI / 180 * 30);
+        ctx.fillStyle = randomColor(150, 230);
+        ctx.beginPath();
+        ctx.arc(0, 0, 199, 0, Math.PI / 180 * (360 / rewards.length));
+        ctx.lineTo(0, 0);
+        ctx.fill();
+
+        var text = rewards[i];
+        ctx.fillStyle = "#333";
+        ctx.font = "16px 'Microsoft YaHei'";
+        ctx.textBaseline = "top";
+        ctx.translate(190, 10);
+        ctx.rotate(Math.PI / 180 * 105);
+        ctx.fillText(text, 0, 0);
+        ctx.rotate(-Math.PI / 180 * 105);
+        ctx.translate(-190, -10);
+    }
+
+
+    //随机数字
+    function randomMum(min, max) {
+        return parseInt(Math.random() * ((max - min) + 1) + min);
+    }
+    //    console.log(randomMum(160, 170));
+
+    //随机颜色（数字越大颜色越浅）
+    function randomColor(min, max) {
+        var r = randomMum(min, max);
+        var g = randomMum(min, max);
+        var b = randomMum(min, max);
+        return 'rgb(' + r + ',' + g + ',' + b + ')';
+//        return `rgb(${r},${g},${b})`;//模板字符串
+    }
+
+
+    var btn = document.querySelector("button");
+    btn.onclick = function () {
+//        btn.disabled="disabled";
+        btn.setAttribute("disabled","true");
+        var num = randomMum(0, 1000) + 1000;
+        console.log(num);
+        canvas.style.transition = "all 6s";
+        canvas.style.transform = "rotate(" + -num + "deg)";//倒着转，方便计算
+        var reward=parseInt((num%360)/(360/rewards.length));
+        console.log(reward);
+        /*一次性定时器*/
+        setTimeout(function () {
+            alert("您获得了"+rewards[reward]);
+            //结束，回归初始状态
+            canvas.style.transition = "none";
+            canvas.style.transform = "rotate(" + 0 + "deg)";
+            btn.disabled="";
+//            btn.setAttribute("disabled","false");
+        }, 6500);
+    };
+
+
+</script>
+</body>
+</html>

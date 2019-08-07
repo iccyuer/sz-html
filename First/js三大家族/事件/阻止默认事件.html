@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    //阻止默认事件  谷歌火狐IE9+    IE8及以下 返回undefined
+    if (event.preventDefault) {
+        event.preventDefault();
+    } else {
+        //IE8及以下的兼容写法
+        event.returnValue = false;
+    }
+
+
+</script>
+</body>
+</html>

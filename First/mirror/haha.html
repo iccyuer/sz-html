@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //                console.log(top.hashCode());
+        //        console.log(self.toString());
+        //        console.log(parent.toString());
+        if (self != top) {
+            console.log(self.location+"      hhh");
+//            window.top.location.replace(self.location); //打开自己网站的页面
+//            window.open(location.href, "_top");
+            console.log(location.href);
+            console.log(self.location);
+//            window.top.location.assign(location.href+"");
+//            window.top.location.href=location.href;
+        }
+        console.log(document);
+        console.log(document.url);
+        console.log(document.domain);
+        console.log(document.referrer);
+    </script>
+
+    <!--<script type="text/javascript">//防嵌入-->
+    <!--(function () {-->
+        <!--try {-->
+            <!--if (parent != self && (parent.document.domain != document.domain || (document.referrer && !/^http(s)?:\/\/[.\w-]+\.bilibili\.com\//i.test(document.referrer)))) {-->
+                <!--throw new Error("can't be iframed");-->
+            <!--}-->
+        <!--} catch (e) {-->
+            <!--window.open(location.href, "_top");-->
+        <!--}-->
+    <!--})();-->
+    <!--</script>-->
+
+    <style>
+
+        ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul > li {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            float: left;
+        }
+
+        .container {
+            clear: both;
+            position: relative;
+        }
+
+        .container div {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            position: absolute;
+            top: 0px;
+            text-align: center;
+            line-height: 400px;
+            display: none;
+        }
+
+        .container div:nth-child(1) {
+            background: red;
+            display: block;
+        }
+
+        .container div:nth-child(2) {
+            background: palegreen;
+        }
+
+        .container div:nth-child(3) {
+            background: navy;
+        }
+
+        .container div:nth-child(4) {
+            background: hotpink;
+        }
+
+        ul > li:hover {
+            background: #999;
+        }
+
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<div class="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</div>
+
+
+<script>
+    var li_list = document.querySelectorAll("ul li");
+    var div_list = document.querySelectorAll(".container div");
+//    console.log(div_list);
+
+    for (var i = 0; i < li_list.length; i++) {
+        li_list[i].index = i;
+        li_list[i].onmouseover = function () {
+            for (var a = 0; a < div_list.length; a++) {
+                div_list[a].style.display = "none";
+            }
+            div_list[this.index].style.display = "block";
+        }
+    }
+
+</script>
+</body>
+</html>

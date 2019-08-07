@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>请输入英文与相对应的中文</h2>
+英文： <input type="text" id="en_inp"> <br>
+中文： <input type="text" id="zh_inp"> <br>
+<button id="save">保存</button>
+<button id="clear_btn">清除所有已经保存的单词</button>
+<br>
+
+<a href="index3.html"> 开始考核</a>
+
+<script>
+    var clear_btn = document.querySelector("#clear_btn");
+
+    var save = document.querySelector("#save");
+    var en_inp = document.querySelector("#en_inp");
+    var zh_inp = document.querySelector("#zh_inp");
+
+    save.onclick = function () {
+        var en = en_inp.value;
+        var zh = zh_inp.value;
+//        localStorage.setItem(en,zh);
+        localStorage.setItem(zh,en);
+        en_inp.value="";
+        zh_inp.value="";
+    };
+
+
+    clear_btn.onclick = function () {
+        if (confirm("确定要删除吗")) {
+            localStorage.clear();
+        }
+    }
+
+</script>
+
+
+</body>
+</html>

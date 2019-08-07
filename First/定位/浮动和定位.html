@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .top{
+            width: 50px;
+            height: 50px;
+            background-color: hotpink;
+            float: left;
+            position: relative;
+            /*top: 10px;*/
+            /*z-index: 99;*/
+        }
+        ul{
+            list-style: none;
+            position: absolute;
+            /*overflow: hidden;*/
+        }
+        ul>li{
+            width: 20px;
+            background-color: orange;
+            float: left;
+            /*position: absolute;*/
+            top: 30px;
+            /*z-index: 99;*/
+        }
+        .bottom{
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+        p{
+            clear: both;
+        }
+
+        .center{
+            position: absolute;
+            display: block;
+            /*width: 20px;*/
+            /*height: 20px;*/
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<!--<div class="top">   </div>-->
+<ul>
+    <li class="center">1</li>
+    <li>2</li>
+    <li>3</li>
+    <p></p>
+</ul>
+
+<p class="">我是p</p>
+<span class="center">hhh</span>
+<div class="bottom center"></div>
+
+<button class="center">asdsdasd</button>
+
+<div class="center">div</div>
+</body>
+</html>

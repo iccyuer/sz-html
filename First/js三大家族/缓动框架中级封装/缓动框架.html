@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            position: absolute;
+            left:33.2px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="btn">vvvv</button>
+<div id="box"></div>
+<script src="../../MyJs/jQuery.js"></script>
+<script>
+
+    var btn = document.getElementById("btn");
+    var box = document.getElementById("box");
+    btn.onclick = function () {
+        animate_SlowSpeed(box, {
+            top: 500,
+            left: 50,
+//            width: 50,
+//            height: 500,
+//            opacity:0.2
+        })
+    };
+
+    function animate_SlowSpeed(ele, json) {
+        clearInterval(ele.timer);
+
+//        var max = 0;
+//        var key = "";
+//        var maxStep = 0;
+//        for (var k in json) {
+//            var nowState = parseInt(getStyle(ele, k));
+//            var step = (json[k] - nowState);
+//            if (step > max) {
+//                max = step;
+//                key = k.toString();
+//                maxStep = step;
+//            }
+//        }
+
+        ele.timer = setInterval(function () {
+            var boo = true;
+            for (var k in json) {
+//                var bili=1;
+//                if (k.toString() !== key) {
+//                    var nowState = parseInt(getStyle(ele, k));
+//                    var step = (json[k] - nowState);
+//                    bili = Math.abs(step / maxStep);
+//                }
+//                console.log(bili);
+                var nowState = parseFloat(getStyle(ele, k));
+                console.log(nowState);
+                var step = (json[k] - nowState) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+//                console.log(1);
+                nowState = nowState;
+                ele.style[k] = nowState+step + "px";
+                console.log(k+"   "+nowState+"  "+step);
+                if (Math.abs(json[k] - nowState) > Math.abs(step)) {
+                    boo = false;
+                }
+            }
+            if (boo) {
+                clearInterval(ele.timer);
+                for (var k in json) {
+                    ele.style[k] = json[k] + "px";
+                }
+            }
+        }, 20);
+
+    }
+</script>
+</body>
+</html>

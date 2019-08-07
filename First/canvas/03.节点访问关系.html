@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>我是li元素1</li>
+    <li>我是li元素2</li>
+    <li id="box">我是li元素3</li>
+    <li>我是li元素4</li>
+    <li>我是li元素5</li>
+
+
+    <ol>
+        <li>我是ol的li元素1</li>
+        <!--我是哈哈哈-->
+        <li>我是ol的li元素2</li>
+        <li>我是ol的li元素3</li>
+    </ol>
+    <div>我是div</div>
+    <p>我是一个p</p>
+</ul>
+<script>
+    /*
+        获取父节点
+            节点.parentNode
+
+
+         获取兄弟节点:
+                上一个兄弟 : 节点.previousElementSibling || previousSibling
+
+                下一个兄弟:  节点.nextElementSibling || nextSibling
+
+
+           获取单个子节点
+                父节点.firstChild 获取第一个子节点
+                        谷歌获取IE9+ 获取第一个子节点(包括文本节点)
+                        IE678  直接获取第一个元素子节点
+                     兼容性写法:
+                            父节点.firstElementChild || 父节点.firstChild
+
+                父节点.lastChild   获取最后一个子节点
+                    谷歌火狐IE9+ 获取最后一个子节点(包括文本节点)
+                    IE678  直接获取最后一个元素子节点
+
+                    兼容性写法:
+                            父节点.lastElementChild || 父节点.lastChild
+
+
+              获取所有子节点  两种获取方式 都没有兼容问题
+                        父节点.childNodes  返回值是一个伪数组
+                            该方法是W3C亲儿子      W3C推出的标准
+                                获取所有子节点(包括文本节点)
+
+    //获取节点类型
+     nodeType  ==  1  表示的是元素节点   记住   元素就是标签
+     nodeType  ==  2  表示是属性节点   了解
+     nodeType  ==  3  是文本节点   了解
+
+
+        通过节点对象.nodeType去判断获取的到底是元素节点 还是文本节点
+
+
+
+
+     children  IE7不兼容
+            非标准  直接获取所有的元素子节点  返回值是一个伪数组
+             children在IE6/7/8中包含注释节点
+             在IE678中，注释节点不要写在里面。
+
+
+             //获取任意子节点
+             父节点.children[index]  IE7及以下 不兼容
+
+
+
+
+     获取任意兄弟节点
+        节点.parentNode.children[index];
+
+        //获取所有兄弟节点(不包括字节)  字节封装
+
+
+
+
+
+
+     */
+    var box=document.getElementById("box");
+    var ul=box.parentNode;
+//    console.log(ul);
+    //获取下一个兄弟节点
+    var nextLi=box.nextElementSibling || box.nextSibling;
+    nextLi.style.backgroundColor="hotpink";
+    //获取上一个兄弟节点
+    var previousLi=box.previousElementSibling || box.previousSibling;
+    previousLi.style.backgroundColor="green";
+
+
+    //获取单个子节点
+//            第一个子节点
+    var firstLi=ul.firstElementChild || ul.firstChild;
+//   console.log(firstLi);
+    firstLi.style.backgroundColor="orange"
+
+    //获取最后子节点
+    var lastP=ul.lastElementChild || ul.lastChild;
+    lastP.style.backgroundColor="yellow"
+
+    //获取div
+    var divEle=lastP.previousElementSibling || lastP.previousSibling
+    //获取ol
+    var ol=divEle.previousElementSibling || divEle.previousSibling;
+
+
+
+    //获取所有子节点
+//    console.log(ol.childNodes);
+    var childArr=ol.childNodes;
+//    for(var i=0;i<childArr.length;i++){
+//        if(childArr[i].nodeType===1){
+//            console.log(childArr[i]);
+//        }
+//
+//    }
+    //直接获取所有的元素子节点  不包括文本节点
+    var childArrEle=ol.children;
+//    console.log(childArrEle);
+    for(var i=0;i<childArrEle.length;i++){
+//        console.log(childArrEle[i]);
+        childArrEle[i].style.backgroundColor="blue"
+    }
+
+    //获取任意子节点
+//    console.log(ul.children[6]);
+    console.log(ul.children);
+
+
+    //获取任意兄弟节点
+//    console.log(box.parentNode.children[4])
+
+
+    //获取所有兄弟节点的封装
+    function getAllSiblings(ele){
+        var arr=[];
+        //获取父节点下面的所有子节点
+        var allChildNodes=ele.parentNode.children;
+        for(var i=0;i<allChildNodes.length;i++){
+            if(allChildNodes[i]!==ele){
+                arr.push(allChildNodes[i]);
+            }
+        }
+
+        return arr;
+
+
+    }
+
+
+    var arr=getAllSiblings(box);
+    for(var i=0;i<arr.length;i++){
+//        console.log(arr[i]);
+    }
+
+
+</script>
+
+
+
+</body>
+</html>

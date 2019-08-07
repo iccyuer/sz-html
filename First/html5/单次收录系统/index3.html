@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <!--<p>-->
+        <!--pink: <input type="text">-->
+    <!--</p>-->
+</div>
+<button id="look">查看成绩</button>
+<script>
+    var look = document.querySelector("#look");
+    var div = document.querySelector('.container');
+    for (var i = 0; i < localStorage.length; i++) {
+        /*通过一个个标签拼接*/
+//        var p = document.createElement("p");
+//        var span = document.createElement("span");
+//        span.innerHTML = localStorage.key(i) + ":"
+//        var zh_inp = document.createElement("input");
+//        p.appendChild(span);
+//        p.appendChild(zh_inp);
+//        console.log(p);
+//        div.appendChild(p);
+
+        /*通过模板字符串拼接*/
+        var key = localStorage.key(i);
+        var text = `<p>
+        ${key}:<input type="text" id="${key}">
+        </p>`;
+
+        div.innerHTML += text;
+
+    }
+
+    look.onclick = function () {
+        var inp_list=document.querySelectorAll(".container input");
+        var count=0;
+        for(var i=0;i<inp_list.length;i++){
+            if (inp_list[i].value === localStorage.getItem(localStorage.key(i))) {
+                count++;
+            }
+        }
+        console.log(count);
+        var score=parseInt(count/localStorage.length*100);
+        console.log(score);
+        sessionStorage.setItem("score",score);
+
+        location.href="index1.html";
+    }
+</script>
+
+
+</body>
+</html>

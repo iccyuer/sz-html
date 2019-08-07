@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    li{
+        width: 30px;
+        height: 30px;
+        background-color: purple;
+    }
+    i{
+        width: 30px;
+        height: 30px;
+        background-color: purple;
+        display: block;
+    }
+</style>
+
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        $("li:last").prevAll().css("color","white");
+        $("li:last").prevAll("li").css("color","white").end().css("color","orange");
+    })
+</script>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <i>i</i>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+</body>
+</html>

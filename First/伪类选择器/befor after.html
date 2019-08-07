@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*:before {*/
+        /*content: "qian";*/
+        /*}*/
+
+        /*:after {*/
+        /*content: "hou";*/
+        /*}*/
+
+        /*i:before {*/
+        /*content: "qian";*/
+        /*}*/
+
+        /*i:after {*/
+        /*content: "hou";*/
+        /*}*/
+
+    </style>
+</head>
+<body>
+<!--<i>i1</i>-->
+<!--<i>i2</i>-->
+<!--<i>i3</i>-->
+<style>
+    #d1 {
+        width: 200px;
+        height: 200px;
+        background: #ffff00;
+        /*border: 1px solid #000;*/
+    }
+
+    #d2 {
+        width: 100px;
+        height: 100px;
+        background: #00ffff;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    #d1 {
+        /*content: "";*/
+        display: table;
+    }
+
+</style>
+
+<div id="d1">
+<div id="d2"></div>
+</div>
+
+<style>
+    #c1 {
+        width: 100px;
+        height: 100px;
+        background: #00ffff;
+        border: 1px solid #000;
+        float: left;
+    }
+
+    #c2 {
+        width: 150px;
+        height: 100px;
+        background: #ff00ff;
+        border: 1px solid #000;
+    }
+
+    #c1:after {
+        content: "";
+        /*display: block;*/
+        height: 0px;
+        clear: both;
+    }
+
+</style>
+
+<div id="c1"></div>
+<div id="c2"></div>
+<style>
+    ul {
+        list-style: none;
+        border: 1px solid #000;
+    }
+
+    ul > li {
+        width: 100px;
+        height: 100px;
+        background: #ff00ff;
+        float: left;
+    }
+
+    ul {
+        /*content: "";*/
+        display: table;
+        /*height: 0px;*/
+        /*clear: both;*/
+    }
+
+    /*p{*/
+    /*clear: both;*/
+    /*}*/
+    p {
+        clear: both;
+        float: none;
+        width: 0;
+        height: 0;
+        border: 0;
+    }
+
+</style>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <!--<p></p>-->
+</ul>
+<div style="width: 200px;height: 200px;background: firebrick"></div>
+</body>
+</html>

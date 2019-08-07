@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .o {
+            width: 1200px;
+            height: 600px;
+            border: 1px solid #000;
+            margin: auto;
+            position: relative;
+        }
+
+        .ball1, .ball2 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: hotpink;
+            position: absolute;
+        }
+
+        .ball2 {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        var b1Lef = Math.random() * 1000;
+        var b1Top = Math.random() * 500;
+        var b2Lef = Math.random() * 1000;
+        var b2Top = Math.random() * 500;
+
+        $(".ball1").css({left: b1Lef, top: b1Top});
+        $(".ball2").css({left: b2Lef, top: b2Top});
+
+        $("button").click(function a() {
+            var rX=Math.random()*80;
+            var rY=Math.random()*80;
+            rX>rY?b1Lef=b2Lef-rX:b1Lef=b2Lef+rX;
+            b1Lef=b2Lef-rX;
+            b1Top=b2Top+rY;
+            $(".ball1").animate({
+                left:b1Lef,
+                top:b1Top
+            }, function b() {
+                var rX=Math.random()*80;
+                var rY=Math.random()*80;
+                rY<rY?b1Lef=b2Top=b1Top-rY:b2Top=b1Top+rY;
+                b2Lef=b1Lef-rX;
+                b2Top=b1Top-rY;
+                $(".ball2").animate({
+                    left:b2Lef,
+                    top:b2Top
+                }, function () {
+                    var rX=Math.random()*80;
+                    var rY=Math.random()*80;
+                    rY>rY?b1Lef=b2Top=b1Top-rY:b2Top=b1Top+rY;
+                    b2Lef=b1Lef+rX;
+                    b2Top=b1Top-rY;
+                    $(".ball2").animate({
+                        left:b2Lef,
+                        top:b2Top
+                    },a);
+                })
+            })
+        })
+
+    })
+</script>
+<button>bling</button>
+<div class="o">
+    <div class="ball1"></div>
+    <div class="ball2"></div>
+</div>
+</body>
+</html>

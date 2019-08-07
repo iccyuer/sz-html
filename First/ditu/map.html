@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--wVTPtet3h7OGeqZaKLTfOYqpmr2zf7OZ-->
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/api?v=2.0&ak=wVTPtet3h7OGeqZaKLTfOYqpmr2zf7OZ"></script>
+    <style>
+        #allmap {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+<div id="allmap"></div>
+<button>a</button>
+<button>b</button>
+<button>c</button>
+<script type="text/javascript">
+    //    var arrpos = '{"x":116.819484,"y":39.959615},' +
+    //        '{"x":122.819484,"y":19.959615},' +
+    //        '{"x":144.819484,"y":45.959615}'
+    var arrpos = `[
+    {"x":116.819484,"y":39.959615},
+    {"x":116.732321,"y":39.953535},
+    {"x":116.35302,"y":40.011143}
+]`;
+    var date = JSON.parse(arrpos);
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    var pos = new BMap.Point(116.819484, 39.959615);
+    var pos1 = new BMap.Point(116.732321, 39.953535);
+    var pos2 = new BMap.Point(116.35302, 40.011143);
+    var poss = new BMap.Point(116.742813, 39.971453);
+
+    map.centerAndZoom(poss, 10);  // 初始化地图,设置中心点坐标和地图级别
+    var marks = [new BMap.Marker(pos), new BMap.Marker(pos1), new BMap.Marker(pos2)]
+    for (var i = 0; i < 3; i++) {
+        map.addOverlay(marks[i]);
+    }
+    //    var marker = new BMap.Marker(pos);  // 创建标注
+    //    map.addOverlay(marker);
+    //    var marker1 = new BMap.Marker(pos1);  // 创建标注
+    //    map.addOverlay(marker1);
+    //    var marker2 = new BMap.Marker(pos2);  // 创建标注
+    //    map.addOverlay(marker2);
+    //添加地图类型控件
+    //    map.addControl(new BMap.MapTypeControl({
+    //        mapTypes: [
+    //            BMAP_NORMAL_MAP,
+    //            BMAP_HYBRID_MAP
+    //        ]
+    //    }));
+    map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+    var bts = document.querySelectorAll("button");
+    for (var i = 0; i < bts.length; i++) {
+        bts[i].inde = i;
+        bts[i].onclick = function () {
+            var pos = new BMap.Point(date[this.inde]["x"], date[this.inde]["y"]);
+            map.centerAndZoom(pos, 19);
+        }
+
+        marks[i].inde = i;
+        marks[i].addEventListener("click", function () {
+            var pos = new BMap.Point(date[this.inde]["x"], date[this.inde]["y"]);
+            map.centerAndZoom(pos, 19);
+        })
+
+    }
+
+</script>
+
+</body>
+</html>

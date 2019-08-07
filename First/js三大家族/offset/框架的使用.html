@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+        margin: 0;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #cccccc;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<button>匀速200</button>
+<button>匀速500</button>
+<button>缓动200</button>
+<button>缓动500</button>
+
+<div class="box"></div>
+
+<script src="../../MyJs/jQuery.js"></script>
+<script>
+    var btns = document.querySelectorAll("button");
+    var box = document.getElementsByClassName("box")[0];
+
+
+    btns[0].onclick = function () {
+        animate_speed_x(box, 200);
+    }
+    btns[1].onclick = function () {
+        animate_speed_x(box, 500);
+    }
+    btns[2].onclick = function () {
+        slowAnimate_x(box, 200);
+    }
+    btns[3].onclick = function () {
+        slowAnimate_x(box, 500);
+    }
+
+</script>
+</body>
+</html>

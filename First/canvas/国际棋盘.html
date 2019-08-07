@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas width="400" height="400">您的浏览器不支持canvas标签</canvas>
+
+<script>
+    Array();
+    var canvas = document.querySelector("canvas");
+    var ctx = canvas.getContext("2d");
+
+    ctx.fillRect(50, 0, 50, 50);
+
+    var arr = new Array(1);
+
+    for (var b = 0; b < 8; b++) {
+        if (b % 2 == 0) {
+            for (var c = 0; c < 8; c += 2) {
+                ctx.fillRect(50 + c * 50, (b) * 50, 50, 50);
+            }
+        } else {
+            for (var c = 0; c < 8; c += 2) {
+                ctx.fillRect(c * 50, (b) * 50, 50, 50);
+            }
+        }
+        ctx.clearRect(0,0,500,400);
+
+    }
+
+
+
+
+    //    ctx.
+</script>
+</body>
+</html>

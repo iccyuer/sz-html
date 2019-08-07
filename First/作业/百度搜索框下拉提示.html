@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        .container{
+            width: 500px;
+            margin: 200px auto;
+        }
+        #inp{
+            height: 30px;
+            width: 200px;
+        }
+        #btn{
+            height: 33px;
+            background-color: #317EF3;
+            border: none;
+            vertical-align: bottom;
+        }
+        li:hover{
+            background-color: #cccccc;
+        }
+        ul{
+            list-style: none;
+            width: 260px;
+            border: 1px solid #000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--颜宽  百度搜索框下拉提示-->
+
+<div class="container">
+
+    <div id="box">
+        <input type="text" id="inp">
+        <button id="btn">百度一下</button>
+    </div>
+
+    <ul id="ul"></ul>
+
+
+    <script>
+        var inp=document.getElementById("inp");
+        var btn=document.getElementById("btn");
+        var ul=document.getElementById("ul");
+
+        var strs=['a','ab','abc','aac','abb','bb','b','bbc','c','ca'];
+        inp.oninput= function () {
+
+            var text=this.value;
+            var liArr=[];
+            for(var i=0;i<strs.length;i++){
+                if (strs[i].indexOf(text) === 0) {
+                    liArr.push("<li>"+strs[i]+"</li>");
+                }
+            }
+
+
+            if (text.length===0) {
+                ul.style.display="none";
+            }else{
+                ul.innerHTML=liArr.join("");
+                ul.style.display="block";
+
+                for(var i=0;i<ul.children.length;i++){
+                    ul.children[i].onmousedown=function(){
+                        inp.value=this.innerHTML;
+                        boo=true;
+                    }
+                }
+
+            }
+
+        }
+
+        inp.onblur=function(){
+            ul.style.display="none";
+        }
+
+        var boo=false;
+        inp.onfocus=function(){
+            if (boo) {
+                inp.oninput();
+            }
+            ul.style.display="block";
+        }
+
+
+    </script>
+</div>
+</body>
+</html>

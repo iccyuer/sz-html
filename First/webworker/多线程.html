@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+1111
+<input type="text" id="inp">
+<button>clickme</button>
+
+
+<script>
+
+    /*Worker当中 只可以写一些与dom树无关的代码
+     * 一般用作计算等操作，但是首先我们需要获得参数和事件源
+     * 又不能直接获取，所以需要线程间传值
+     *
+     * */
+
+    new Worker("inde.js");
+    if (typeof(Worker) !== "undefined") {
+        new Worker("inde.js");
+    } else {
+        console.log("您的浏览器不支持Worker");
+    }
+
+
+    var btn = document.querySelector("button");
+    btn.onclick = function () {
+        var inp = document.querySelector("#inp");
+        var worker = new Worker("inde.js");
+        worker.postMessage(inp.value - 0);
+
+//        worker.terminate();
+    }
+
+
+
+</script>
+<!--<script src="inde.js"></script>-->
+</body>
+</html>

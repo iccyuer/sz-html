@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #ox {
+            width: 20px;
+            height: 20px;
+            /*border-width: 20px;*/
+            /*border-style: solid;*/
+            /*border-color: #2aff23;*/
+            border: 1px solid #000;
+            margin-top: 5px;
+            padding: 5px;
+            background: hotpink;
+            /*background-color: hotpink;*/
+        }
+    </style>
+</head>
+<body>
+
+<div id="ox" style="font-size: 21px"></div>
+
+<script>
+    var ox = document.getElementById("ox");
+    console.log(ox.style.fontSize);
+    console.log(ox.style["font-size"]);
+    console.log(ox.style["fontSize"]);
+    console.log(ox.getAttribute("style"));
+
+    console.log(window.getComputedStyle(ox)["width"]);
+    console.log(window.getComputedStyle(ox).height);
+    console.log(window.getComputedStyle(ox)["border-left-width"]);
+    console.log(window.getComputedStyle(ox).borderLeftColor);
+    console.log(window.getComputedStyle(ox)["margin"]);
+    console.log(window.getComputedStyle(ox).margin);
+    console.log(window.getComputedStyle(ox).backgroundColor);
+    console.log(window.getComputedStyle(ox).background);//特殊的，background: hotpink; 其实是background-color: hotpink;
+
+
+    console.log("-----------------");
+    console.log(ox.currentStyle["border-left-width"]);
+    console.log(ox.currentStyle["padding-left"]);
+    console.log(ox.currentStyle["margin"]);
+    console.log(ox.currentStyle["font-size"]);
+
+
+</script>
+
+</body>
+</html>

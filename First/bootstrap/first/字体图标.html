@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="../css/phone.css">
+    <link rel="stylesheet" media="screen and (min-width:769px) and (max-width:991px)" href="../css/pad.css">
+    <link rel="stylesheet" media="screen and (min-width:992px)" href="../css/pc.css">
+
+    <!-- [if lt IE9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![end if]-->
+    <style>
+        /*C3引入字体的写法*/
+        @font-face {
+            font-family: niujinghui;
+            src:url(../fonts/kaiti.TTF);
+        }
+        .kai{
+            font-family: niujinghui;
+        }
+        .tus:before{
+            content: "\e003";
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!--一般用在span标签内-->
+    <!--找到bootstrap官网，找到3中文文档，找到组件，找到字体图标...-->
+    <!--<span class="glyphicon glyphicon-home"></span>-->
+    <!--<span class="glyphicon glyphicon-heart"></span>-->
+    <!--<span class="kai">我是繁体了吗</span>-->
+    <span class="glyphicon">&#x002a</span>
+    <span class="glyphicon ">&#x6211</span>
+</div>
+
+<script>
+    var gf=document.querySelector(".gf");
+    gf.innerHTML="&#xe005";
+</script>
+
+<!--<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>-->
+<script src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

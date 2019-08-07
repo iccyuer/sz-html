@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" form="id1" name="jj" value="jjj">
+<form action="www" id="id1" method="get">
+
+    <!--required 所提交的表单控件不可以为空（就是不键入任何东西，空格可以提交）-->
+    <!--autofocus 自动获得焦点 当前页面同时只有第一个获取焦点-->
+    <!--<input type="text" maxlength="6" minlength="2" required autofocus>-->
+    <!--<input type="email" multiple>-->
+
+    <!--进度条-->
+    <progress max="100" min="0" value="2"></progress>
+
+    <!--数据列表 结合input使用，list关联datalist的id-->
+    <datalist id="list">
+        <option value="elsa"></option>
+        <option value="anna"></option>
+    </datalist>
+    <input type="text" list="list">
+
+    <input type="submit" value="submit">
+</form>
+
+<!--<form action="#" oninput="c.value=(a.value-0)+(b.value-0)">-->
+    <!--<input type="text" id="a" value="0">+ <input type="text" id="b" value="0">=-->
+    <!--<input type="text" id="c" value="0">-->
+<!--</form>-->
+
+<!--<form action="#">-->
+    <!--<input type="text" id="t1">-->
+    <!--<input type="submit" id="submit">-->
+<!--</form>-->
+<script>
+    var submit = document.querySelector("#submit");
+    var t1 = document.querySelector("#t1");
+    submit.onclick = function () {
+        if (t1.validity.valueMissing) {
+        }
+        t1.setCustomValidity("hhh");
+    }
+</script>
+
+</body>
+<script>
+    var pg = document.querySelector("progress");
+    var timer = setInterval(function () {
+        pg.value += 2;
+        if (pg.value >= 90) {
+            clearInterval(timer);
+        }
+    }, 100)
+</script>
+</html>

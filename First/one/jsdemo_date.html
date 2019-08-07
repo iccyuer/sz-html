@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        //        console.log(date);
+        var date = new Date();
+        //        var date1=new Date("2012-12-22 17:00:00");
+        //        var date2=new Date("2012/09/22 17:00:00");
+        //        var date3=new Date("2012.09.22 17:21:00");
+        //        var date4=new Date("2012 09 22 17:21:01");
+        //        var date5=new Date("Wed Apr 11 2018 22:10:50 GMT+0800 (中国标准时间)");
+        //        var date5=new Date(2018,08,08,18,08,08);
+        //        var date5=new Date(1555555555555);
+        console.log(date.getDay()); //获取星期几
+        console.log(date.getDate()); //获取日
+        console.log(date.getMonth()); //获取月份 从0开始
+        console.log(date.getFullYear()); //获取年份
+        console.log(date.getHours()); //获取小时
+        console.log(date.getMinutes()); //获取分钟
+        console.log(date.getSeconds()); //获取秒数
+        console.log(date.getMilliseconds()); // 获取毫秒数
+        console.log(date.getTime()); //获取从1970年之后的毫秒数
+
+        console.log(date.valueOf());  //1970毫秒数
+        console.log(date.toString()); //Fri Apr 13 2018 15:22:21 GMT+0800 (中国标准时间)
+        console.log(date.toDateString()); //Fri Apr 13 2018
+        console.log(date.toTimeString()); //15:22:21 GMT+0800 (中国标准时间)
+
+        console.log(date.toLocaleString()); //2018/4/13 下午3:28:08
+        console.log(date.toLocaleDateString()); //2018/4/13
+        console.log(date.toLocaleTimeString()); //下午3:28:08
+
+        console.log(new Date().format("yyyy-MM-dd hh:mm:ss")); //没有这种format格式，需要自己拼接
+
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

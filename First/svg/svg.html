@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .d1 {
+            /*width: 200px;*/
+            /*height:200px;*/
+            border: 1px solid #333;
+        }
+
+    </style>
+</head>
+<body>
+<svg width="500" height="400">
+    <rect class="rect1" x="0" y="10" width="100" height="100" fill="red" stroke="green" stroke-width="2"
+          fill-opacity="0.5"></rect>
+</svg>
+
+
+<div class="d1" height="300">sss</div>
+
+
+<script>
+    var box = document.querySelector(".d1");
+    box.onclick = function () {
+        console.log("x");
+        box.width = "300px";
+//        box.style.width="300px";
+//        box.setAttribute("width","300");
+    }
+
+    var box1 = document.querySelector(".rect1");
+    // console.log(box)
+    box1.onclick = function () {
+        console.log(123);
+        box1.style.width = "200";
+        /*学习一个新的方法 修改属性当中的值*/
+//        box1.setAttribute("width","200");
+    }
+    console.log(new Date());
+
+    //    var rect = document.createElementNS("http://www.w3.org/2000/svg","rect");
+    //    rect.setAttribute("x",x);
+    //    rect.setAttribute("y",y);
+    //    rect.setAttribute("width",100);
+    //    rect.setAttribute("height",100);
+    //    rect.setAttribute("fill","red");
+    //    /*在svg标签的末端 添加一个元素*/
+    //    svg.appendChild(rect);
+
+
+</script>
+</body>
+</html>

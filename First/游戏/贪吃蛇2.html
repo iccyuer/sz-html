@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+
+
+<canvas width="800" height="500"></canvas>
+
+<script>
+    var canvas = document.getElementsByTagName("canvas")[0];
+
+    var ctx = canvas.getContext("2d");
+
+
+    var img = new Image();
+    img.src = "image/op.png";
+
+
+    var x=400;
+    var y=300;
+
+    var dx=2;
+    var dy=2;
+
+    document.onkeydown = function (e) {
+
+        if (e.keyCode === 37) {
+            //左键
+            console.log("左");
+            dx=-2;
+            dy=0;
+
+
+        } else if (e.keyCode === 39) {
+            //右
+            console.log("右");
+            dx=2;
+            dy=0;
+
+        }
+        else if (e.keyCode === 40) {
+            //下
+            console.log("下");
+            dx=0;
+            dy=2;
+
+
+        }
+        else if (e.keyCode === 38) {
+            //上
+            console.log("上");
+            dx=0;
+            dy=-2;
+
+
+        }
+    }
+    var nowLength=1;
+    img.onload = function () {
+            drawFood();
+        draw();
+//        ctx.drawImage(img, 400, 300, 50, 50);
+//        var timer=setInterval(function () {
+//            aa();
+//        },40);
+    };
+
+    function draw(){
+//        console.log("aa");
+        drawSnakeHead();
+        if (calauteDistance(x, y, foodX, foodY) < 30) {
+            ctx.clearRect(foodX,foodY,50,50);
+            nowLength++;
+            drawFood();
+            drawSnakeBody();
+        }
+        requestAnimationFrame(draw);
+//        draw();
+    }
+    var foodX;
+    var foodY;
+    function drawFood(){
+        foodX=randomXY().x;
+        foodY=randomXY().y;
+        ctx.drawImage(img, foodX, foodY, 50, 50);
+    }
+
+    function randomXY(){
+        return {
+            x: Math.random()*750,
+            y:Math.random()*450
+        }
+    }
+
+    var pathArr=[];
+
+    function drawSnakeHead(){
+//        console.log("--------");
+        x+=dx;
+        y+=dy;
+        pathArr.unshift({x:x,y:y});
+
+        if (pathArr.length > nowLength * 25) {
+            pathArr.pop();
+        }
+        console.log(pathArr.length);
+        var lastX=x;
+        var lastY=y;
+        ctx.clearRect(x,y,50,50);
+        ctx.drawImage(img, x, y, 50, 50);
+    }
+    function drawSnakeBody(){
+        for(var i=1;i<nowLength;i++){
+            ctx.clearRect(pathArr[(i)*24].x, pathArr[(i)*24].y,50,50);
+            ctx.drawImage(img, pathArr[(i)*24].x, pathArr[(i)*24].y, 50, 50);
+        }
+        requestAnimationFrame(drawSnakeBody);
+    }
+
+
+    function calauteDistance(x1,y1,x2,y2){
+        return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var obj = new Object();
+        obj.name = "jk";
+        obj.age = 20;
+        obj.run = function () {
+            return "i am running";
+        }
+        //        console.log(obj.name + obj.age + obj.run());
+        //        console.log(this.name);
+
+        var tp = {
+            name: "nn",
+            first_name: "gg",
+            go: function () {
+                console.log("gogo");
+                return "gogo";
+            },
+            run:jk
+        }
+        function jk(){
+
+        }
+        //        console.log(tp.name+tp.go());
+
+
+        function me() {
+            this.gender = "girl";
+            console.log("cvcvcv");
+        }
+        //        console.log(me().gender);
+        //        new me();
+        //        console.log(this.gender);
+        var show = {
+            fight: function () {
+                console.log(this);
+            }
+        }
+        //        show.fight();
+        //        console.log(show);
+
+        var per = new Object();
+        per.name = "ss";
+        per["age"] = 30;
+        var gender;
+        per[gender] = "girl";
+        console.log(per.name + per.age + per["age"] + per[gender]);
+
+        per.me = function () {
+            console.log("heh");
+        }
+        per.me = function mm() {
+            console.log("heh");
+        }
+        var me = mm;
+        function mm(){
+            console.log("heh");
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+
+</body>
+</html>

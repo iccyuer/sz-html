@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="../css/phone.css">
+    <link rel="stylesheet" media="screen and (min-width:769px) and (max-width:991px)" href="../css/pad.css">
+    <link rel="stylesheet" media="screen and (min-width:992px)" href="../css/pc.css">
+
+    <!-- [if lt IE9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![end if]-->
+</head>
+<body>
+
+<div class="container">
+    <form action="">
+        <!--form-control 类的 <input>、<textarea> 和 <select> 元素都将被默认设置宽度属性为 width: 100%;。-->
+        <div>
+            <textarea name="" id="" cols="30" rows="2" class="form-control"></textarea>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" disabled> 点我选中checkbox
+            </label>
+        </div>
+    </form>
+
+    <!--checkbox-inline内联多选，radio-inline内联单选  ，可是多选框在一行显示-->
+    <form action="">
+        <label class="checkbox-inline">
+            <input type="checkbox" value="option1"> 1
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" value="option2"> 2
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" value="option3"> 3
+        </label>
+
+    </form>
+
+    <!--form-inline，行内表单-->
+    <form action="" class="form-inline">
+        <!--将 label 元素和前面提到的控件包裹在 .form-group 中可以获得最好的排列-->
+        <div class="form-group">
+            <label>用户名</label>
+            <input type="text" class="form-control">
+        </div>
+    </form>
+    <!--form-horizontal，水平表单-->
+    <form action="" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-xs-2">用户名</label>
+            <div class="col-xs-8">
+                <input type="text" class="form-control ">
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>-->
+<script src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

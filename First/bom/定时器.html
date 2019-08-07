@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    console.log("我是第一个执行的");
+
+    setInterval(function () {
+        console.log("我是定时器执行");
+    }, 3000);
+
+    var date = new Date().getTime();
+    do {
+        var dateNew = new Date().getTime();
+    } while (dateNew - date < 10000);
+
+    console.log("我5秒之后执行");
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #app{
+            margin: 100px 100px;
+        }
+        ul{
+            width: 966px;
+            list-style-type: none;
+        }
+        ul>li{
+            width: 320px;
+            float: left;
+            border:1px solid #999;
+        }
+        ul>li>img{
+            float: left;
+        }
+        ul>li>div{
+            float: left;
+            width: 210px;
+        }
+        dt,dd{
+           font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+    </style>
+</head>
+<body>
+<!--颜宽  time:15:29  lastTime：15:42-->
+
+<div id="app">
+    <ul>
+        <li v-for="value in list">
+            <img v-bind:src="value.img" alt="">
+            <div>
+                <dt>{{value.name}}</dt>
+                <dd>{{value.enName}}</dd>
+                <dd>{{value.location}}</dd>
+                <dd>{{value.type}}</dd>
+                <dd>{{value.hot}}</dd>
+                <dd>￥： {{value.price}}</dd>
+            </div>
+        </li>
+    </ul>
+</div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            list:[{"name":"康纳斯顿梅洛干红葡萄酒（黑标）","enName":"CornerStone Merlot Black","location":"产地：智利(Chile)","type":"品种：70%梅洛(Merlot)、30%赤霞珠(Cabernet Sauvignon)","hot":"好评度：98%","price":"59.0","img":"vueimg/1.png"},
+                {"name":"黄尾袋鼠西拉红葡萄酒（又名：黄酒）","enName":"Yellow hehe","location":"产地：澳大利亚(Australia)","type":"品种：100%西拉/设拉子（Syrah/Shiraz)","hot":"好评度：99%","price":"59.0","img":"vueimg/2.jpg"},
+                {"name":"甜秘密红葡萄酒","enName":"Dolce Segreto Vino Rosso","location":"产地：意大利(Italy)","type":"品种：40%美乐(Merlot),40%萨兰托(Salento),20%赤霞珠","hot":"好评度：77%","price":"88.0","img":"vueimg/3.jpg"},
+                {"name":"黄尾袋鼠加本力梅洛红葡萄酒（又）","enName":"Yellow Tail Cabernet-Merl","location":"产地：澳大利亚(Australia)","type":"品种：赤霞珠(Cabernet Sauvignon)，美乐(Merlot)","hot":"好评度：100%","price":"99.0","img":"vueimg/4.png"},
+                {"name":"夏普朗城堡干红葡萄酒","enName":"Chateau CHAPRON","location":"产地：法国(France)","type":"品种：100%梅洛(Merlot)","hot":"好评度：97%","price":"79.0","img":"vueimg/5.jpg"},
+                {"name":"佳美妃西拉-歌海娜红葡萄酒呵呵","enName":"Gabriel Meffre Syrah-Gren","location":"产地：法国(France)","type":"品种：西拉，歌海娜","hot":"好评度：100%","price":"59.0","img":"vueimg/6.png"}]
+        }
+    })
+</script>
+</body>
+</html>

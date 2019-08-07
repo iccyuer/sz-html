@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" media="screen and (max-width:768px)" href="../css/phone.css">
+    <link rel="stylesheet" media="screen and (min-width:769px) and (max-width:991px)" href="../css/pad.css">
+    <link rel="stylesheet" media="screen and (min-width:992px)" href="../css/pc.css">
+
+    <!-- [if lt IE9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![end if]-->
+</head>
+<body>
+
+<div class="container">
+    <!--各种颜色，就是加了个背景和倒圆角-->
+    <p class="alert alert-danger">
+        路飞 第五位皇帝！
+    </p>
+    <!--可以关闭的警告框-->
+    <p class="alert alert-warning alert-dismissable">
+        <!--data-dismiss="alert"，点击后关闭谁，  .close会把x放到右侧，且样式变大，有pointer效果-->
+        <span class="close" data-dismiss="alert">x</span>
+        路飞 第五位皇帝！
+        <!--alert-link警告框中的链接，为链接设置与当前警告框相符的颜色-->
+        <a href="http://www.baidu.com" class="alert-link">如有疑问，点击此处</a>
+    </p>
+</div>
+
+
+<!--<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>-->
+<script src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

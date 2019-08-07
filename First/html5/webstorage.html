@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" ></form>
+<input type="text">
+<button>保存用户名</button>
+<a href="index.html" target="_blank">ss</a>
+<script>
+    var ip=document.querySelector("input");
+    var btn=document.querySelector("button");
+    btn.onclick= function () {
+        var user_name=ip.value;
+        sessionStorage.setItem("name", user_name);
+
+    };
+    sessionStorage.length;
+//    var user_name = "hhe";
+//    sessionStorage.setItem("name", user_name);
+</script>
+</body>
+</html>

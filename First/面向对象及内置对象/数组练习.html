@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    var arr = ["范布隆迪", "琴女", "帆布鞋", "扛得住", "吉尼斯"];
+
+    var str = arr.join("|");
+    console.log(str);
+
+    var arr1 = arr.map(function (item, index, arr) {
+        return item + "|";
+    });
+    var str = "";
+    var str1 = arr1.forEach(function (item, index, arr) {
+        str += item;
+        if (index === arr.length - 1) {
+            console.log(str.substr(0, str.length - 1));
+        }
+    });
+
+    var str = ""
+    for (var i = 0; i < arr.length; i++) {
+        str += arr[i] + "|";
+//        console.log(str);
+        if (i === arr.length - 1) {
+//            console.log("开始截取");
+//            console.log(str.length);
+            console.log(str.substr(0, str.length - 1));
+        }
+    }
+
+    var arrNumber = [1500, 1200, 2000, 2100, 2200, 1800, 2400];
+    for (var i = 0; i < arrNumber.length; i++) {
+        if (arrNumber[i] > 2000) {
+            arrNumber.splice(i, 1);
+            i--;
+        }
+    }
+    console.log(arrNumber);
+
+    arr.sort(function (a,b) {
+//        return a-b;//升序
+        return b-a; //降序
+    })
+
+</script>
+</body>
+</html>

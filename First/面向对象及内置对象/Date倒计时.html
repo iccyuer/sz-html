@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<script>
+
+    var h1 = document.querySelector("h1");
+    var h2 = document.querySelector("h2");
+    var h3 = document.querySelector("h3");
+    //    var deadline=new Date("2018 05 01 00:00:00");
+    var deadline = Date.parse("2018 05 01 00:00:00");
+    var nowTime = Date.now();
+    var str = dateFormat(deadline - nowTime);
+    h1.innerHTML = str;
+    var str1 = dateFormat1(deadline - nowTime);
+    h2.innerHTML = str1;
+    var str2 = dateFormat2(deadline - nowTime);
+    h3.innerHTML = str2;
+    setInterval(function () {
+        var nowTime = Date.now();
+        var str = dateFormat(deadline - nowTime);
+        h1.innerHTML = str;
+        var str1 = dateFormat1(deadline - nowTime);
+        h2.innerHTML = str1;
+        var str2 = dateFormat2(deadline - nowTime);
+        h3.innerHTML = str2;
+    }, 1);
+
+    function dateFormat(mstime) {
+        var aDay = (1000 * 60 * 60 * 24);
+        var aHour = (1000 * 60 * 60);
+        var aMin = (1000 * 60);
+        var aSec = 1000;
+
+        var day = parseInt(mstime / (aDay));
+        var hour = parseInt((mstime - aDay * day) / aHour);
+        var min = parseInt((mstime - aDay * day - aHour * hour) / (aMin));
+        var second = parseInt((mstime - aDay * day - aHour * hour - aMin * min) / aSec);
+        var ms = mstime - aDay * day - aHour * hour - aMin * min - aSec * second;
+        return "距离2018年五一劳动节还有 " + day + "天 " + hour + "时 " + min + "分 " + second + "秒 " + ms + "毫秒";
+    }
+    function dateFormat1(mstime) {
+        var aDay = (1000 * 60 * 60 * 24);
+        var aHour = (1000 * 60 * 60);
+        var aMin = (1000 * 60);
+        var aSec = 1000;
+
+        var day = parseInt(mstime / aDay);
+        var hour = parseInt(mstime % aDay / aHour);
+        var min = parseInt(mstime % aDay % aHour / aMin);
+        var second = parseInt(mstime % aDay % aHour % aMin / aSec);
+        var ms = parseInt(mstime % aDay % aHour % aMin % aSec / 1);
+        return "-距离2018年五一劳动节还有 " + day + "天 " + hour + "时 " + min + "分 " + second + "秒 " + ms + "毫秒";
+    }
+
+    function dateFormat2(mstime) {
+        var aDay = (1000 * 60 * 60 * 24);
+        var aHour = (1000 * 60 * 60);
+        var aMin = (1000 * 60);
+        var aSec = 1000;
+
+        var day = parseInt(mstime / aDay);
+        var hour = parseInt(mstime / aHour) % 24;
+        var min = parseInt(mstime / aMin) % 60;
+        var second = parseInt(mstime / aSec) % 60;
+        var ms = mstime % aSec;
+        return "--距离2018年五一劳动节还有 " + day + "天 " + hour + "时 " + min + "分 " + second + "秒 " + ms + "毫秒";
+    }
+
+    function dateFormat3(time) {
+        var aDay = (1000 * 60 * 60 * 24);
+        var aHour = (1000 * 60 * 60);
+        var aMin = (1000 * 60);
+        var aSec = 1000;
+
+        var day = parseInt(mstime / aDay);
+        var hour = parseInt(mstime / aHour) % 24;
+        var min = parseInt(mstime / aMin) % 60;
+        var second = parseInt(mstime / aSec) % 60;
+        var ms = mstime % aSec;
+        return "---距离2018年五一劳动节还有 " + day + "天 " + hour + "时 " + min + "分 " + second + "秒 " + ms + "毫秒";
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li class="a">3</li>
+    五五
+    <span>就看见会计块</span>
+    <ol>
+        <li class="a">a</li>
+        <li>b</li>
+    </ol>
+    <li class="ac">4</li>
+    <li>5</li>
+</ul>
+
+<script src="jquery-1.11.1.js"></script>
+<script>
+
+    console.log($("ul li"));
+    console.log($("ul").find(">li"));
+    console.log($("ul").find("li"));
+    console.log($("ul").find(".a"));
+    console.log($("ul").find($("li")));
+    console.log($("ul").find($("li")[0]));
+
+    console.log("xxxxx");
+    console.log($("ul").children());
+    console.log($("ul").children("li"));
+    console.log($("ul").children(".a"));
+
+    console.log("-------------------");
+    console.log($(".a").index());
+    console.log($("li").eq(2).index());
+    console.log($("li").index($(".ac")));
+    console.log($("li").index($("li")[1]));
+
+
+    /*
+     $("li:eq(0)").css("color", "red");  //匹配元素索引号
+     $("li:odd").css("color", "orange");  //匹配元素索引号为奇数（1,3,5...）的，效果显示出来为第（2,4,6）的
+     $("li:even").css("color", "pink");  //匹配元素索引号为偶数（0,2,4...）的，效果显示出来为第（1,3,5）的
+     */
+    /*
+    $("ul").find("li").css("color", "orange");
+
+    $("ul").children("li").css("color", "pink");
+
+    $(".a").siblings().css("background", "green");
+    $(".a").siblings("span").css("background", "green");
+
+    $(".a").parent().css("background", "red");
+
+    $("ul").find("li").eq(3).css("background", "orange");
+
+    $(".a").next().css({display:"inline-block",height: "30px", "font-size": "30px"});
+    $(".a").prev().css("font-size", "10px");
+
+    console.log($(".a").next().index());
+    console.log($("ol").children("li").eq(1).index());
+
+*/
+</script>
+</body>
+</html>

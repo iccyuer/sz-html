@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .out{
+            width: 490px;
+            height: 170px;
+            padding: 5px;
+            margin: 100px auto;
+            border: 1px solid #000;
+        }
+        .inner{
+            width: 490px;
+            height: 170px;
+            overflow: hidden;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+            position: absolute;
+            width: 600%;
+        }
+        ul>li{
+            width: 490px;
+            float: left;
+        }
+        ol{
+            list-style: none;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        ol>li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font: 400 16px/20px simsun;
+            background-color: orange;
+            color: #2aff23;
+            margin-right: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .current{
+            background-color: red;
+            color: white;
+        }
+        .select{
+            position: relative;top: 40%;
+        }
+        .select>span{
+            width: 20px;
+            height: 50px;
+            background-color: rgba(150,150,150,.4);
+            color: white;
+            position: absolute;
+            line-height: 50px;
+
+        }
+        .select>span.right{
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+<!--颜宽   time:15:44  lastTime:16:07-->
+
+<div class="out">
+    <div class="inner">
+        <ul>
+            <li><img src="images/01.jpg" alt=""></li>
+            <li><img src="images/02.jpg" alt=""></li>
+            <li><img src="images/03.jpg" alt=""></li>
+            <li><img src="images/04.jpg" alt=""></li>
+            <li><img src="images/05.jpg" alt=""></li>
+        </ul>
+        <ol>
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+
+        <div class="select">
+            <span class="left"><</span>
+            <span class="right">></span>
+        </div>
+    </div>
+</div>
+
+<script src="缓动框架.js"></script>
+<script>
+    var out=document.getElementsByClassName("out")[0];
+    var inner=out.firstElementChild||out.firstChild;
+    var ul=inner.children[0];
+    var ol=inner.children[1];
+    var select=document.getElementsByClassName("select")[0];
+
+    ul.appendChild(ul.children[0].cloneNode(true));
+
+    var moveWidth=ul.children[0].offsetWidth;
+
+
+    out.onmouseenter=function(){
+        select.style.display="block";
+        clearInterval(timer);
+    }
+    out.onmouseleave=function(){
+        select.style.display="none";
+        timer=setInterval(autoPlay,2000);
+    }
+
+    var timer=setInterval(autoPlay,2000);
+
+
+    for(let i=0;i<ol.children.length;i++){
+        ol.children[i].onmouseenter=function(){
+            for(var j=0;j<ol.children.length;j++){
+                ol.children[j].removeAttribute("class");
+            }
+            ol.children[i].setAttribute("class","current");
+            index=roundIndex=i;
+            animate_SlowSpeed1(ul,{left:-index*moveWidth});
+        }
+    }
+
+    select.children[0].onclick=function(){
+        leftSlide();
+    };
+    select.children[1].onclick= function () {
+        autoPlay();
+    };
+
+    var index=0;
+    var roundIndex=0;
+    function autoPlay(){
+        index++;
+        if(index>ul.children.length-1){
+            ul.style.left=0;
+            index=1;
+        }
+        animate_SlowSpeed1(ul,{left:-index*moveWidth});
+        roundIndex++;
+        if(roundIndex>ol.children.length-1){
+            roundIndex=0;
+        }
+        for(var i=0;i<ol.children.length;i++){
+            ol.children[i].removeAttribute("class");
+        }
+        ol.children[roundIndex].setAttribute("class","current");
+
+    }
+
+    function leftSlide(){
+        index--;
+        if(index<0){
+            ul.style.left=-(ul.children.length-1)*moveWidth+"px";
+            index=ul.children.length-2;
+        }
+        animate_SlowSpeed1(ul,{left:-index*moveWidth});
+        roundIndex--;
+        if(roundIndex<0){
+            roundIndex=ol.children.length-1;
+        }
+        for(var i=0;i<ol.children.length;i++){
+            ol.children[i].removeAttribute("class");
+        }
+        ol.children[roundIndex].setAttribute("class","current");
+    }
+
+
+
+</script>
+</body>
+</html>

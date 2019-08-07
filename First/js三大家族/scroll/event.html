@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script>
+
+    var box = document.getElementById("box");
+    document.onclick = function (event) {
+        var event = event || window.event;
+        console.log("body的page："+event.pageX+"  "+event.pageY);
+        console.log("屏幕的screen："+event.screenX+"  "+event.screenY);
+        console.log("浏览器的client："+event.clientX+"  "+event.clientY);
+//        //事件触发的时间距离页面最后一次刷新的毫秒差值
+//        console.log(event.timeStamp);//返回事件生成的日期。和时间 单位是毫秒值
+//        console.log(event.target);//该事件被传送到的对象  事件触发到哪一个元素对象上面 返回该元素对象
+//        console.log(event.type);//触发事件的类型  click  mouseover  dblclick
+//        console.log(event.bubbles);//是否支持事件冒泡
+//
+//        console.log(event.button);
+    }
+
+    //    box.onclick= function (event) {
+    //        var event=event||window.event;
+    //
+    //        console.log(event.button);
+    //    }
+
+//    box.onmousedown = function (event) {
+////        var event = event || window.event;
+//        //鼠标左键点击 0    右键 2  滚轮点击 1
+//        //一定要在onmousedown 或onmouseup里面获取才有效
+//        console.log(window.event.button);
+//    }
+
+
+    /*
+
+     */
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            /*list-style: circle;*/
+        }
+    </style>
+</head>
+<body>
+<h1>列表</h1>
+<!--ol li有序列表，type指定排序样式，1(默认)，a，A，i，I-->
+<!--start指定从哪里开始排序，只能填数字，2就是从b开始-->
+<ol type="a" start="2">
+    <li>22</li>
+    <li>11</li>
+    <li>33
+        <!--可以嵌套，无序列表第二层默认circle-->
+        <ul>
+            <li>ss</li>
+            <li>dd</li>
+            <li>tt</li>
+        </ul>
+    </li>
+</ol>
+<!--ul li无序列表，type：disc实心圆(默认)，circle空心圆，square实心矩形-->
+<ul type="none">
+    <li>ss</li>
+    <li>dd</li>
+    <li>tt</li>
+</ul>
+
+</body>
+</html>

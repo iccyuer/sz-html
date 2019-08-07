@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: url("image/2.jpg");
+            background-size: 100%;
+        }
+
+        .container {
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.42);
+            text-align: center;
+        }
+
+        .banner {
+            margin: auto;
+            position: absolute;
+            top: 30px;
+            left: 160px;
+        }
+
+        img {
+            float: left;
+            width: 200px;
+            height: 100px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var body = document.body;
+    window.onload = function () {
+        var imgs = document.querySelectorAll("img");
+        console.log(imgs);
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function () {
+                console.log(this.src);
+                console.log(this.getAttribute("src"));
+//                body.setAttribute("style", "background:url('" + this.getAttribute("src") + "')");
+                body.setAttribute("style", "background:url('" + this.src + "')");
+            }
+        }
+    }
+</script>
+
+<div class="container">
+    <div class="banner">
+        <img src="image/1.jpg" alt="">
+        <img src="image/2.jpg" alt="">
+        <img src="image/3.jpg" alt="">
+        <img src="image/4.jpg" alt="">
+        <img src="image/5.jpg" alt="">
+    </div>
+
+</div>
+
+</body>
+</html>

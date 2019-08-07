@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<h2>ppp</h2>
+
+<input type="text">
+<input type="text">
+
+<button></button>
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+//        console.log($("li:first"));
+//        console.log($("li:last"));
+//        console.log($(":header"));
+
+
+        $("button").click(function () {
+            $("input").focus(function () {
+                console.log(this);
+            });   //?????????????
+        });
+
+        console.log($("li:gt(2)"));
+        console.log($("li:lt(2)"));
+    })
+</script>
+</body>
+</html>

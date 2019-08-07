@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #d1 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="d1"></div>
+<img src="shan.jpg" alt="" height="200px">
+
+<script>
+    var box=document.querySelector("div");
+    var img=document.querySelector("img");
+    img.ondragstart=function(){
+        console.log("1");
+    }
+    img.ondrag=function(){
+        console.log("2");
+    }
+    img.ondragend= function () {
+        console.log("3");
+    }
+
+    box.ondragover=function(e){
+        console.log("4");
+        e.preventDefault();
+    }
+    box.ondrop= function () {
+        console.log("5");
+    }
+    box.ondragleave=function(){
+        console.log("6");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select {
+            width: 150px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<script src="jquery-1.11.1.js"></script>
+<script>
+    $(function () {
+        $("button").eq(0).click(function () {
+            $("#right").append($("#left>option"));
+        });
+        $("button").eq(1).click(function () {
+            $("#left").append($("#right>option"));
+        });
+        $("button").eq(2).click(function () {
+            //
+            $("#right").append($("#left>option:selected"));
+            $("#right>option").prop("selected",false);
+        });
+        $("button").eq(3).click(function () {
+            $("#left").append($("#right>option:selected"));
+
+            //清除选中状态
+            $("#left>option").prop("selected",false);
+        });
+    })
+</script>
+<select name="" id="left" multiple>
+    <option value="">苹果</option>
+    <option value="">山楂</option>
+    <option value="">荔枝</option>
+    <option value="">柠檬</option>
+    <option value="">圣女果</option>
+</select>
+<button>>>></button>
+<button><<<</button>
+<button>></button>
+<button><</button>
+<select name="" id="right" multiple>
+
+</select>
+</body>
+</html>
