@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script crossorigin src="react.development.js"></script>
+    <script crossorigin src="react-dom.development.js"></script>
+
+    <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>-->
+    <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+<script type="text/babel">
+
+/*    const numbers=[1,2,3,4,5];
+    const listItems=numbers.map((number)=><li>No.{number}</li>);
+
+
+    ReactDOM.render(
+        <ul>{listItems}</ul>,
+        document.getElementById("root")
+    )*/
+
+    //封装成组件   key={number.toString()}
+    //Each child in an array or iterator should have a unique "key" prop.  需要在每个列表孩子中添加key属性
+/*    function NumnerList(props){
+        const numbers=props.numbers;
+        const listItems=numbers.map((number)=><li>{number}</li>);
+        return (<ul>{listItems}</ul>);
+    }
+
+    const numbers=[1,2,3,4,5];
+    ReactDOM.render(
+        <NumnerList numbers={numbers}/>,
+        document.getElementById("root")
+    )*/
+
+
+    //Keys
+/*    function NumnerList(props){
+        const numbers=props.numbers;
+        //1.使用列表数据本身
+        const listItems=numbers.map((number)=><li key={number.toString()}>{number}</li>);
+        //2.使用列表数据id(推荐,但需要列表数据支持)
+        const listItems=numbers.map((number)=><li key={number.id}>{number}</li>);
+        //3.使用列表序列号
+        //如果列表可以重新排序，我们不建议使用索引来进行排序，因为这会导致渲染变得很慢。参见:协调（Reconciliation）
+        const listItems=numbers.map((number,index)=><li key={index}>{number}</li>);
+        return (<ul>{listItems}</ul>);
+    }
+
+    const numbers=[1,2,3,4,5];
+    ReactDOM.render(
+    <NumnerList numbers={numbers}/>,
+        document.getElementById("root")
+    )*/
+
+    //提取组件时，keys的注意
+    function ListItem(props){
+        return<li>{props.value}</li>;
+    }
+
+    function NumnerList(props){
+        const numbers=props.numbers;
+        //key应该在数组的上下文中被指定(离map最近的组件中定义key，之后提取的组件不需要再定义了)
+        const listItems=numbers.map((number)=>
+            <ListItem value={number} key={number}/>
+        );
+        return (<ul>{listItems}</ul>);
+    }
+
+    const numbers=[1,2,3,4,5];
+    ReactDOM.render(
+        <NumnerList numbers={numbers}/>,
+        document.getElementById("root")
+    )
+
+    /*
+     key是作为当前列表中所有兄弟之间的标识区分，不同的列表之间可以使用相同的key。
+     同一个数组是可以生成多个列表的，此时每个列表的key值都是id值，这是允许的。
+    */
+
+
+    /*
+     key会作为给React的提示，但不会传递给你的组件。
+     如果您的组件中需要使用和key相同的值，请将其作为属性传递
+     */
+    //Post组件可以读出props.id，但是不能读出props.key
+    const content = posts.map((post) =>
+        <Post
+            key={post.id}
+            id={post.id}} />
+    );
+
+
+    //jsx中嵌套map()
+    //常规用法
+    const listItems=numbers.map((number)=>
+        <ListItem value={number} key={number}/>
+    );
+    return <ul>{listItems}</ul>;
+
+    //jsx中使用{}嵌套map()
+    return(
+        <ul>
+        {numbers.map((number)=>
+            <ListItem value={number} key={number} />
+        )}
+        <ul/>
+    );
+
+
+</script>
+
+</body>
+</html>

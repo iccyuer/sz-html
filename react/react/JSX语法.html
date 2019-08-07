@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script crossorigin src="react.development.js"></script>
+  <script crossorigin src="react-dom.development.js"></script>
+
+  <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>-->
+  <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+
+  <style>
+    .ok {
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<input type="text" class="input">
+<script type="text/babel">
+
+
+  function formatName(user) {
+    if (user) {
+      return user.firstName + '  ' + user.lastName;
+    } else {
+      return "Stranger";
+    }
+  }
+
+  const user = {
+    firstName: "Peter",
+    "lastName": "Parker"
+  }
+
+  const element = (
+    < h1 class= "ok" >
+    Hello., {formatName()}!
+  < / h1 >
+  );
+
+  const src = "xiaodianshi.gif";
+  const element1 = (
+    < img src = {src} / >
+  );
+
+  const div = <div > 我是一个div < / div >;
+
+
+  const element2 = (
+    < div >
+    < h1 > Hello! < / h1 >
+  < h2 > Good to see you here. < / h2 >
+  < / div >
+  );
+
+
+  const element3 = (
+    < h2 className = "ok" >
+    lify
+    < / h2 >
+  );
+
+  const element3i = React.createElement(
+    'h2',
+    {className: 'ok'},
+    'lify'
+  );
+
+  const element4 = {
+    type: 'h2',
+    props: {
+      className: "ok",
+      children: 'lify'
+    }
+  };
+
+  const element5 = React.createElement(
+    element4.type,
+    {className: element4.props.className},
+    element4.props.children
+  );
+
+
+  ReactDOM.render(
+    element,
+//    element1,
+//    div,
+//    element2,
+//    element3i,
+//    element4,
+//    element5,
+    document.getElementById("box")
+  );
+
+
+</script>
+
+
+</body>
+</html>

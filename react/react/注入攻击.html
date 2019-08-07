@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script crossorigin src="react.development.js"></script>
+  <script crossorigin src="react-dom.development.js"></script>
+
+  <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>-->
+  <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<!--<img src="1" onerror="alert('xss')">>-->
+
+<input type="text" class="input">
+<button>gg</button>
+<div></div>
+<script>
+  var input=document.getElementsByClassName("input")[0];
+  var div=document.getElementsByTagName('div')[0];
+
+  var btn=document.getElementsByTagName("button")[0];
+
+  btn.onclick= function () {
+    div.innerHTML=input.value;
+
+    //直接格式化成字符串
+//    const text=input.value;
+//
+//    ReactDOM.render(
+//      text,
+//      document.getElementsByTagName('div')[0]
+//    );
+
+  }
+
+  const title = response.potentiallyMaliciousInput;
+  // This is safe:
+  const element = <h1>{title}</h1>;
+
+
+
+
+</script>
+
+</body>
+</html>

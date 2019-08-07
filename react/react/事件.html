@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script crossorigin src="react.development.js"></script>
+    <script crossorigin src="react-dom.development.js"></script>
+
+    <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>-->
+    <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+/*
+
+    function ActionLink(){
+    //这里的e是合成事件，无需考虑浏览器兼容
+        function handleClick(e){
+            e.preventDefault();
+            console.log('The link was clicked');
+        }
+        return(
+            <a href="#" onClick={handleClick}>
+                Click Me
+            </a>
+        );
+    }
+    const element=<ActionLink />;
+
+    ReactDOM.render(
+        element,
+        document.getElementById("root")
+    );
+*/
+
+    class Toggle extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {isToggleOn: true};
+
+            // This binding is necessary to make `this` work in the callback
+//            this.handleClick = this.handleClick.bind(this);
+        }
+
+        handleClick(e) {
+            ////这里的e是合成事件，无需考虑浏览器兼容
+            // JSX 回调函数中的 this默认是不会绑定this的，值为undefined，①在构造函数中通过bind的方式把this传过来
+            this.setState(prevState => ({
+                isToggleOn: !prevState.isToggleOn
+            }));
+//            alert(num);
+            console.log(e);
+        }
+
+        //②使用实验性语法
+      /*  handleClick = () => {
+            this.setState(prevState => ({
+                isToggleOn: !prevState.isToggleOn
+            }));
+        };*/
+        //③通过箭头函数(这里传了事件对象e，不影响this绑定)<button onClick={(e) => this.handleClick(e)}>
+
+        render() {
+            return (
+                /*<button onClick={this.handleClick}>*/
+
+                /*<button onClick={(e) => this.handleClick(5, e)}>*/
+                /*<button onClick={this.handleClick.bind(this, 5)}> //bind方式的e隐式传参*/
+                /*<button onClick={(e) => this.handleClick(e)}>*/
+                <button onClick={this.handleClick}>
+                    {this.state.isToggleOn ? 'ON' : 'OFF'}
+                </button>
+        );
+        }
+    }
+
+    ReactDOM.render(
+    <Toggle/>,
+        document.getElementById('root')
+    );
+
+
+</script>
+
+<!--
+    /*传递参数*/
+    /*<button onClick={(e) => this.handleClick(5, e)}>*/
+    /*<button onClick={this.handleClick.bind(this, id)}>*/
+
+    /*分别通过 arrow functions 和 Function.prototype.bind 来为事件处理函数传递参数。*/
+    /*参数 e 作为 React 事件对象将会被作为第二个参数进行传递。
+     通过箭头函数的方式，事件对象必须显式的进行传递，
+     但是通过 bind 的方式，事件对象以及更多的参数将会被隐式的进行传递。(直接在标签onClick处隐式传递，在类中需要写)
+
+     值得注意的是，通过 bind 方式向监听函数传参，在类组件中定义的监听函数，
+     事件对象 e 要排在所传递参数的后面，*/
+
+    /*参数传递还没有试*/
+
+
+
+-->
+</body>
+</html>

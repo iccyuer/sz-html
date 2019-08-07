@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script crossorigin src="react.development.js"></script>
+  <script crossorigin src="react-dom.development.js"></script>
+
+  <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>-->
+  <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<button>go</button>
+<script type="text/babel">
+
+  var btn=document.getElementsByTagName("button")[0];
+
+
+/*  function welCome(props) {
+    return <h1>Hello,{props.name}</h1>;
+  }
+
+  const pro={
+    name:"hehe"
+  }
+
+  ReactDOM.render(
+    welCome(pro),
+    document.getElementById("root")
+  )*/
+
+  function Welcome(props) {
+//    props.name=props.name+"2";
+    return <h1>Hello, {props.name}</h1>;
+  }
+
+/*  class Welcome extends React.Component {
+    constructor(props) {
+      super(props);
+      console.log("he");
+      this.state = {name: props.name};
+    }
+    render() {
+      this.state.name=this.state.name+"2";
+      return <h1>Hello, {this.state.name}</h1>;
+    }
+
+    tick(){
+      this.setState({
+        name:new Date()
+      });
+    }
+  }*/
+
+//  const element = <Welcome name="Sara" />;
+
+  function App(){
+    console.log("he1");
+    return(
+      <div>
+        <Welcome/>
+        <Welcome name="Cachl"/>
+        <Welcome name="Edite"/>
+      </div>
+    );
+  }
+
+  ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+  );
+
+
+  btn.onclick=function(){
+//    ReactDOM.render(
+//    <App/>,
+//      document.getElementById('root')
+//    );
+//    new Welcome().tick();
+  }
+
+
+
+</script>
+
+</body>
+</html>

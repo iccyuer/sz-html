@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script crossorigin src="react.development.js"></script>
+    <script crossorigin src="react-dom.development.js"></script>
+
+    <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>-->
+    <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+    class NameForm extends React.Component {
+        constructor(props) {
+            super(props);
+            this.handleSubmit = this.handleSubmit.bind(this);
+        }
+
+        handleSubmit(event) {
+//            alert('A name was submitted: ' + this.input.value);
+            alert('A name was submitted: ' + event.target.value);
+            console.log(cnosole);
+            event.preventDefault();
+        }
+
+        render() {
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                    Name:
+                    <input
+                        type="text"
+                        defaultValue="default data"
+                        onChange={this.handleSubmit} />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
+        );
+        }
+    }
+    //ref={(input) => this.input = input}
+
+    ReactDOM.render(
+        <NameForm />,
+        document.getElementById("root")
+    )
+
+</script>
+
+</body>
+</html>

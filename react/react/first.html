@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #out, #inner {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+<!--<h1 id="out">Hello,-->
+  <!--<h2 id="inner">World</h2>-->
+<!--</h1>-->
+<div id="root"></div>
+<script crossorigin src="react.development.js"></script>
+<script crossorigin src="react-dom.development.js"></script>
+
+<!--<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>-->
+<!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<script type="text/babel">
+
+  var name = "World!";
+  var element =<h1> Hello, {name} </h1>;
+
+  ReactDOM.render(
+    element,
+    document.getElementById('root')
+  );
+</script>
+</body>
+</html>
