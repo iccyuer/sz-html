@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <style>
+        #app div {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+        }
+        span{
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+
+        .sp1 {
+            background-color:purple ;
+        }
+
+        .sp2 {
+            background-color: pink;
+        }
+
+        .sp3 {
+            background-color: aqua;
+        }
+
+        .sp4 {
+            background-color: lawngreen;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!--<div v-show="boo"></div>-->
+
+    <span class="sp1" v-if="num===1">1</span>
+    <span class="sp2" v-else-if="num===2">2</span>
+    <span class="sp3" v-else-if="num===3">3</span>
+    <span class="sp4" v-else>4</span>
+
+
+    <!--<h2>{{msg}}</h2>-->
+    <!--<input type="text" v-model="msg">-->
+
+    <input type="text" v-model="msg">
+    <div v-text="msg"></div>
+    <div v-html="msg"></div>
+
+    <div v-on:click="show(msg)"></div>
+    <div @click="show(msg)"></div>
+
+</div>
+
+<script>
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            boo: true,
+            num:1,
+            msg:''
+        },
+        methods:{
+            show: function (x) {
+                alert("hehe"+x);
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

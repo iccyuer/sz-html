@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="留言板.css">
+</head>
+<body>
+
+<h2>小小留言板</h2>
+<div class="container">
+
+    <div class="message" >
+        <textarea name="" id="" cols="30" rows="10" v-model="msg"></textarea>
+        <p>最少输入6个字</p>
+        <div class="submit" @click="send">提交评论</div>
+    </div>
+
+    <div class="content">
+
+        <div class="nomsg" v-show="showBoo">
+            <p>暂无留言</p>
+            <div class="heng"></div>
+        </div>
+
+        <div class="msg" v-show="!showBoo" v-for="(value,index) in arr">
+            <h4 class="" v-html="value.text"></h4>
+            <span class="time">{{value.time}}</span>
+            <p>
+                <a href="javascript:;" class="zan" @click="zan(index)">
+                    <i></i>
+                    {{value.zan}}
+                </a>
+                <a href="javascript:;" class="cai" @click="cai(index)">
+                    <i></i>
+                    {{value.cai}}
+                </a>
+                <a href="javascript:;" class="del" @click="del(index)">
+                    <i></i>
+                    删除
+                </a>
+            </p>
+            <div class="heng"></div>
+        </div>
+    </div>
+
+    <div class="delall" @click="delall">全部删除</div>
+
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+    var vm=new Vue({
+        el:".container",
+        data:{
+            msg:"",
+            showBoo:true,
+            arr:[]
+        },
+        methods:{
+            send: function () {
+
+                if (this.msg.length < 6) {
+                    alert("请至少输入6个字符");
+                    return;
+                }
+
+                var date=new Date();
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                var day=date.getDate();
+                var hour=date.getHours();
+                var minute=date.getMinutes();
+                var second=date.getSeconds();
+
+                month=month<10?"0"+month:month;
+                day=day<10?"0"+day:day;
+                hour=hour<10?"0"+hour:hour;
+                minute=minute<10?"0"+minute:minute;
+                second=second<10?"0"+second:second;
+
+                this.arr.push({text:this.msg,time:year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second,zan:0,cai:0});
+                this.showBoo=false;
+            },
+            zan: function (index) {
+                this.arr[index].zan+=1;
+            },
+            cai: function (index) {
+                this.arr[index].cai+=1;
+            },
+            del: function (index) {
+                this.arr.splice(index,1);
+                if (this.arr.length === 0) {
+                    this.showBoo=true;
+                }
+            },
+            delall: function () {
+                if(this.arr.length===0){
+                    alert("没有数据，删除设么么瓦尼?");
+                    return;
+                }
+                if(confirm("你确定要删除吗?")){
+                    this.arr=[];
+                    this.showBoo=true;
+                }
+            }
+        }
+
+
+
+    });
+</script>
+
+</body>
+</html>

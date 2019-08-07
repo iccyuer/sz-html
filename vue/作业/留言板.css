@@ -1,0 +1,140 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #befffa;
+}
+
+h2 {
+    text-align: center;
+    margin: 10px auto;
+}
+
+.container {
+    width: 1000px;
+    height: 500px;
+    margin: auto;
+}
+
+.container > .message {
+    width: 600px;
+    height: 40%;
+    border: 1px solid #999999;
+    text-align: center;
+    margin: auto;
+}
+
+.container > .message > textarea {
+    width: 500px;
+    height: 100px;
+    resize: none;
+    margin-top: 10px;
+}
+
+.container > .message > p {
+    text-align: left;
+    margin-left: 50px;
+    color: #999;
+}
+
+.container > .message > .submit {
+    width: 100px;
+    height: 35px;
+    background-color: pink;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    font: 700 20px/35px simsun;
+    float: right;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.container > .message > .submit:active {
+    background-color: hotpink;
+}
+
+.container > .content {
+    width: 600px;
+    border: 1px solid #999;
+    margin: 20px auto;
+}
+
+.container > .content > .nomsg {
+    padding: 5px 10px;
+    /*display: none;*/
+}
+
+.container > .content > .nomsg > p {
+    text-align: center;
+    color: #999;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.container .heng {
+    border: 1px solid #999999;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.container > .content > .msg {
+    padding: 5px 10px;
+}
+
+.container > .content > .msg > h4 {
+    margin-bottom: 10px;
+}
+
+.container > .content > .msg > .time {
+    color: #999;
+    /*margin-top: 10px;*/
+}
+
+.container > .content > .msg > p {
+    float: right;
+    margin-right: 5px;
+}
+
+.container > .content > .msg > p > a {
+    margin-left: 10px;
+}
+
+.container > .content > .msg > p > a > i {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+.container > .content > .msg > p > a.zan > i {
+    background: url("image/up.png") no-repeat 0;
+    background-size: 25px 25px;
+}
+
+.container > .content > .msg > p > a.cai > i {
+    background: url("image/down.png") no-repeat 0;
+    background-size: 25px 25px;
+}
+
+.container > .content > .msg > p > a.del > i {
+    background: url("image/del.png") no-repeat 0;
+    background-size: 25px 25px;
+}
+.delall{
+    width: 100px;
+    height: 35px;
+    background-color: palevioletred;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    font: 800 20px/35px simsun;
+    margin-top: 10px;
+    text-align: center;
+    float: right;
+    margin-right: 200px;
+}
+.delall:active{
+    background-color: purple;
+}

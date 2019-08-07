@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div v-text="msg"></div>
+    <button @click="go">go</button>
+    <button @click="change">change</button>
+    <button @click="destroy">destroy</button>
+    <button @click="mount">mount</button>
+</div>
+
+<hr>
+
+<div id="app2">
+    <span v-text="msg"></span>
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+    var vm = new Vue({
+//        el: "#app",
+        data: {
+            msg: "titu"
+        },
+        methods: {
+            go: function () {
+                alert(1);
+            },
+            change: function () {
+                this.msg='i changed';
+            },
+            destroy: function () {
+                this.$destroy();
+            },
+            mount: function () {
+                alert(1);
+
+            }
+        },
+
+        beforeCreate: function () {
+//            alert("vue实例创建之前");
+        },
+        created: function () {
+//            alert("vue实例创建完成");
+        },
+        beforeMount: function () {
+            alert("vue实例挂载之前");
+        },
+        mounted: function () {
+            alert("vue实例挂载完成");
+        },
+        beforeUpdate: function () {
+//            alert("vue实例更新之前");
+        },
+        updated: function () {
+//            alert("vue实例更新完成");
+        },
+        beforeDestroy: function () {
+//            alert("vue实例销毁之前");
+        },
+        destroyed: function () {
+//            alert("vue实例销毁完成");
+        }
+
+    })
+
+//    vm.$mount("#app");
+
+
+
+    var vm2=new Vue({
+        data:{
+            msg:"我是第二个vue实例的数据"
+        }
+    })
+</script>
+
+
+</body>
+</html>

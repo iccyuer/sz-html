@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <bird/>  <!--可以写成单标签-->
+    <dog></dog>
+    <cat></cat>
+</div>
+
+<div id="root">
+    <bird></bird>
+    <dog></dog>
+    <!--<cat></cat>-->
+</div>
+
+<script src="../vue/vue.js"></script>
+
+<script>
+
+   /*
+   extend方式渲染组件
+   */
+
+    //组件模板
+    var com = Vue.extend({
+        template: "<h2 @click='show'>杜鹃--{{msg}}</h2>",
+        data: function () {
+          return{
+              msg:"鸣鸣鸣"
+          }
+        },
+        methods: {
+            show: function () {
+                alert("鸣鸣鸣");
+            }
+        }
+    });
+
+    //组件模板以及组件数据和事件（写到组件模板里），全局组件/局部组件的数据和事件都是写到模板里
+    var cat = Vue.extend({
+        template: "<h6 @click='show(\"的\")'>大橘为重--{{msg}}</h6>",
+        data: function () {
+            return{
+                msg:"胖胖胖"
+            }
+        },
+        methods:{
+            show: function (data) {
+                alert("胖胖"+data);
+            }
+        }
+    });
+
+
+    //组件注册指定模板（全局组件，vue挂载目标都可以使用）
+    //(参数1：自定义组件名称，参数2：模板对象)
+    Vue.component("bird", com);
+    Vue.component("dog", Vue.extend({template: "<i>柯基</i>"}));
+
+
+    new Vue({
+        el: "#app",
+        data: {
+            msg: ""
+        },
+        //在一个vue对象中通过components选项注册局部组件
+        //{自定义组件名称:组件模板对象}
+        components: {
+            cat
+        }
+    });
+
+    new Vue().$mount("#root");
+
+</script>
+
+</body>
+</html>

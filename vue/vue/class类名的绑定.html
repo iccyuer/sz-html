@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        div > :first-child {
+            width: 100px;
+            height: 100px;
+        }
+
+        .qq {
+            background-color: orange;
+        }
+
+        .ww {
+            color: pink;
+        }
+
+        .ee {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+    <div :class="json">我是图图</div>
+
+    <!--
+    直接在class后面写
+    :class="qq" ×  会按照qq变量去查找，报错，但是不影响元素正常显示
+    :class="qq ww"  × 会按照qq ww变量去查找，但是变量不允许有空格，报错且不正常显示
+    :class="['qq','ww','ee']"  √ 直接写数组
+    :class="{qq:true}"  √   直接写json
+    :class="[{qq:true},{ee:true}]"  √   直接写json数组
+    -->
+
+</div>
+<script src="vue.js"></script>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: "qq",
+            msgs: "qq ww ee",
+            arr: ["qq", "ww"],
+            json: {
+                qq: true,
+                ee: false
+            },
+            jsonArr: [{
+                qq: true
+            }, {
+                ww: true
+            }]
+        }
+
+
+    })
+
+
+</script>
+
+</body>
+</html>

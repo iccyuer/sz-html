@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <snowman>
+        <!--自定义组件里面的内容会被覆盖，用slot插槽保存-->
+        <ul slot="play">
+            <li>Do you wanna build a snowman?</li>
+            <li>Come on.let's go and play</li>
+            <li>I never see you anymore</li>
+            <li>Come out the door,It's like you've gone away</li>
+        </ul>
+    </snowman>
+
+</div>
+
+<template id="tem">
+    <div>
+        <!--保存到sot插槽里面后，在组件里面通过slot标签取出来-->
+        <slot name="play"></slot>
+        <ul>
+            <li>Do you wanna build a snowman?</li>
+            <li>It doesnn't have to be a snowman</li>
+            <li>Anna. Go away ,Anana</li>
+            <li>Okay,bye</li>
+        </ul>
+    </div>
+</template>
+
+<script src="../vue/vue.js"></script>
+
+<script>
+
+    Vue.component("snowman",{
+        template:"#tem"
+    });
+
+    new Vue().$mount("#app");
+</script>
+</body>
+</html>

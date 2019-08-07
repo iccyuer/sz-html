@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <parent></parent>
+</div>
+
+<template id="parent-a">
+    <div>
+        <h2>我是父组件的标题--{{msg_parent}}</h2>
+        <!--③在子组件的标签上面绑定这个自定义事件，等于一个自定义函数名-->
+        <child @trigger="haha"></child>
+    </div>
+</template>
+
+<template id="child-b">
+    <!--①给子组件某个元素或者整个子组件添加一个js事件(事件类型随便，例如：点击、鼠标移入)-->
+    <h3 @click="show">我是子组件的标题--{{msg_child}}--{{}}</h3>
+</template>
+
+<script src="../vue/vue.js"></script>
+
+<script>
+
+    new Vue({
+        el: "#app",
+        components: {
+            parent: {
+                template: "#parent-a",
+                data: function () {
+                    return {
+                        msg_parent: "我是父组件数据"
+                    }
+                },
+                methods: {
+                    //④在父组件的methods属性里面定义这个自定义函数名
+                    //这和函数的参数就是子组件传过来的数据
+                    haha: function (data) {
+                        this.msg_parent = data;
+                    }
+                },
+                components: {
+                    child: {
+                        template: "#child-b",
+                        data: function () {
+                            return {
+                                msg_child: "我是子组件数据"
+                            }
+                        },
+                        methods: {
+                            show: function () {
+                                //②在子组件的事件驱动函数里面 执行this.$emit()方法
+                                //参数1：自定义事件名称(不能出现大写或者横线)，参数2：要给父组件传递的数据
+                                this.$emit("trigger", this.msg_child);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

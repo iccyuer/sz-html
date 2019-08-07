@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="root">
+    <ul>
+        <li v-for="index in arr" v-html="index"></li>
+    </ul>
+    {{msg}}
+    <button @click="add">btn</button>
+</div>
+
+
+<script src="vue.js"></script>
+
+<script>
+
+    var vm=new Vue({
+        el: "#root",
+        data:{
+            arr:[1,2,3],
+            msg:"bb"
+        },
+        methods:{
+            add(){
+//                this.arr.push(4);
+                this.arr[3]="c";
+//                this.$set(this.arr,1,"c");
+//                this.msg="cc";
+            }
+        }
+    });
+
+//    vm.arr[1]="a";
+//    Vue.set(vm.arr,1,"b");
+//    vm.$set();
+
+</script>
+</body>
+</html>

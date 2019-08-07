@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <App1></App1>
+</div>
+
+<template id="App1">
+    <div>
+        <h1>我是全局组件1</h1>
+        <App2></App2>
+    </div>
+</template>
+
+<template id="App2">
+    <h2>我是全局组件2</h2>
+</template>
+
+<script src="../vue/vue.js"></script>
+
+<script>
+
+    Vue.component("App1", {
+        template: "#App1"
+    });
+
+
+    Vue.component("App2",{
+        template:"#App2"
+    });
+
+    new Vue().$mount("#app");
+
+</script>
+
+
+</body>
+</html>

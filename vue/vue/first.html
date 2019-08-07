@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script src="vue.js"></script>
+
+<div class="box">
+  <span>{{msg}}</span>
+  <i>{{msg}}</i>
+
+  <!--v-for循环遍历，可以是array，也可以是json-->
+  <li v-for="(value,key) in arr">
+    {{key}}--{{value}}
+  </li>
+  <li v-for="(value,key,index) in json">
+    {{index}}--{{key}}--{{value}}
+  </li>
+
+  <!--v-show，控制display的显示与隐藏-->
+  <div style="width: 50px;height: 50px;background-color:pink;" v-show="show"></div>
+
+</div>
+
+<script>
+
+  var vm = new Vue({
+    el: ".box",
+    data: {
+      msg: "hello vue",
+      arr: [
+        "pipo", "wana", true, 12
+      ],
+      json: {
+        name: "tutu",
+        age: 11,
+        skill: "fly"
+      },
+      show: "true"
+    }
+  });
+
+
+  //  new Vue({
+  //    el:".box",
+  //    data:{
+  //      msg:"he"
+  //    }
+  //  });
+
+
+</script>
+</body>
+</html>

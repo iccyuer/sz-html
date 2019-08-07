@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <parent></parent>
+</div>
+
+<template id="parent">
+    <div @click="show">
+        <h1>我是父组件标题--{{msg_parent}}</h1>
+        <child></child>
+    </div>
+</template>
+
+<template id="child">
+    <h2 @click="show">我是子组件标题--{{msg_child}}</h2>
+</template>
+
+<script src="../vue/vue.js"></script>
+
+<script>
+
+    Vue.component("parent",{
+        template:"#parent",
+        data: function () {
+            return{
+                msg_parent:"我是父组件数据"
+            }
+        },
+        methods:{
+          show: function () {
+              alert("我是父组件弹窗--"+this.msg_parent)
+          }
+        },
+        components:{
+            child:{
+                template:"#child",
+                data: function () {
+                    return{
+                        msg_child:"我是子组件数据"
+                    }
+                },
+                methods:{
+                    show: function () {
+                        alert("我是子组件弹窗--"+this.msg_child)
+                    }
+                }
+            }
+        }
+    });
+
+    new Vue({el:"#app"});
+</script>
+
+
+</body>
+</html>

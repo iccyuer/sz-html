@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .aa {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="app">
+
+    <div :style="[{color:'red'},{'text-align':'center'}]">
+        我是测试文字
+    </div>
+
+    <!--
+    :style="color:orange"   ×   把color:orange当作变量查找，变量名不允许冒号，报错，且元素不能正常显示
+    :style="['text-align:center']"  ×   无任何效果
+    :style="[text-align:center]"    ×   报错，元素不能正常显示
+    :style="{color:'red','text-align':'center'}"    √   json字串
+    :style="[{color:'red'},{'text-align':'center'}]"    √   json数组
+    -->
+
+</div>
+<script src="vue.js"></script>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg: "text-align:right",
+            msgs: "font-size:30px;background-color:orange",
+            arr: ["color:orange"],  //×  :style="arr"不生效，可以这样:style="arr[0]"
+            json: {
+                backgroundColor: "pink",
+                color: "red"
+            },
+            jsonArr: [
+                {
+                    textAlign: "right",
+                    fontSize: "40px"
+                }
+            ]
+        },
+        methods: {}
+    });
+
+
+</script>
+
+
+</body>
+</html>

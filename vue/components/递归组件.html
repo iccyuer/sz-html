@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="vue.js"></script>
+
+
+<div id="box">
+    <ul>
+        <item-p :model="treeData"></item-p>
+    </ul>
+</div>
+
+
+<script>
+    new Vue({
+            el: "#box",
+            data: {
+                treeData: {
+                    name: 'My Tree',
+                    children: [
+                        {name: 'hello'},
+                        {name: 'wat'},
+                        {
+                            name: 'child folder',
+                            children: [
+                                {
+                                    name: 'child folder',
+                                    children: [
+                                        {name: 'hello'},
+                                        {name: 'wat'}
+                                    ]
+                                },
+                                {name: 'hello'},
+                                {name: 'wat'},
+                                {
+                                    name: 'child folder',
+                                    children: [
+                                        {name: 'hello'},
+                                        {name: 'wat'}
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            components: {
+                itemP: {
+                    template: `<li>
+                    <div>
+                      {{model.name}}
+                    </div>
+                    <ul>
+                      <item
+                        v-for="(model, index) in model.children"
+                        :key="index"
+                        :model="model">
+                      </item>
+                    </ul>
+                  </li>`,
+                    props: {
+                        model: Object
+                    },
+                    name: "item"
+                }
+            }
+        }
+    )
+</script>
+
+</body>
+</html>

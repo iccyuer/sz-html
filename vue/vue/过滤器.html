@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <div >{{msg|check}}</div>
+    <div v-for="value in arr":title="value | checklength">{{value | checklength}}</div>
+</div>
+<script src="vue.js"></script>
+
+<script>
+
+    //静态方法(参数1:过滤器名称，参数2：回调（参数：没有过滤的原数据）)
+    Vue.filter("check", function (data) {
+        //返回值就是过滤之后的新值
+        return "hehe";
+    });
+
+    Vue.filter("checklength", function (data) {
+//        console.log(data.length);
+        if (data.length <4) {
+//            console.log('he');
+            return data;
+        }
+//        return data;
+    });
+
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"vue",
+            arr:["lily",'lif','john','hi']
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

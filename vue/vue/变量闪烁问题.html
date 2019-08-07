@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <aa @click.native="show1"></aa>
+
+        <span>{{}}</span>
+    </div>
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+    var a=0;
+
+    new Vue({
+        el:"#app",
+        data:{
+            ha:"xx"
+        },
+        methods:{
+            show1(){
+                console.log("show1");
+            }
+        },
+        components:{
+            aa:{
+                template:"<h1>我是标题哈哈哈哈</h1>",
+                data(){
+                    return{
+                        msg:"a message"
+                    }
+                },
+                methods:{
+                    show2(){
+                        console.log("show2");
+                    }
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

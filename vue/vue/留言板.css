@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #C6DDFF;
+}
+
+h2 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.container {
+    width: 1000px;
+    height: 500px;
+    margin: auto;
+    /*border: 1px solid #999;*/
+}
+
+.message {
+    width: 800px;
+    height: 40%;
+    border: 1px solid #999;
+    margin: auto;
+    text-align: center;
+}
+
+.message textarea {
+    width: 600px;
+    height: 100px;
+    resize: none;
+    margin: 20px auto 0;
+}
+
+.message p {
+    text-align: left;
+    margin-left: 100px;
+    color: #999;
+}
+
+.message > .submit {
+    width: 100px;
+    height: 35px;
+    background-color: pink;
+    border-radius: 10px;
+    text-align: center;
+    font: 700 18px/35px simsun;
+    color: white;
+    float: right;
+    margin-right: 100px;
+    cursor: pointer;
+}
+
+.content {
+    width: 800px;
+    margin: 10px auto 0;
+    border: 1px solid #999;
+}
+
+.content > .nomsg > p {
+    text-align: center;
+    color: #999;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.content .heng {
+    width: 95%;
+    border: 1px solid #aaa;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
+    margin: 20px auto;
+}
+
+.content > .nomsg {
+    /*display: none;*/
+}
+
+.content > .msg > h4 {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.content > .msg > p {
+    float: right;
+    margin-right: 20px;
+}
+.content > .msg > .time{
+    color: #999;
+    margin-left: 10px;
+    /*float: left;*/
+}
+.content > .msg > p > a {
+    text-decoration: none;
+    color: black;
+}
+
+.content > .msg > p > a > i {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+}
+
+.content > .msg > p > a.zan > i {
+    background: url("image/up.png") no-repeat 0;
+    background-size: 25px 25px;
+}
+
+.content > .msg > p > a.cai > i {
+    background: url("image/down.png") no-repeat 0;
+    background-size: 25px 25px;
+}
+
+.content > .msg > p > a.del > i {
+    background: url("image/del.png") no-repeat 0;
+    background-size: 25px 25px;
+}
+.delall{
+    width: 100px;
+    height: 35px;
+    background-color: pink;
+    border-radius: 10px;
+    text-align: center;
+    font: 700 18px/35px simsun;
+    color: white;
+    float: right;
+    margin-right: 100px;
+    cursor: pointer;
+    margin-top: 5px;
+}

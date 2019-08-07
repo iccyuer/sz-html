@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div v-text="msg"></div>
+    <button @click="show"></button>
+
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "tds"
+        },
+        beforeCreated: function () {
+        },
+        attr: "我是绑定到vm对象上的属性",
+        mes: function () {
+            console.log("我是绑定到vm对象的方法");
+        },
+        computed: {
+            b: function () {
+                return mag + "haha";
+            }
+        },
+        methods: {
+            show: function () {
+                //vue实例本身通过$前缀获取的属性
+                console.log(this.$el);
+                console.log(this.$data);
+                console.log(this.$options);
+                console.log(this.$options.computed);
+
+                //data属性中的数据可以直接获取，且不用加$。也可以通过$data.msg获取
+                console.log(this.msg);
+                console.log(this.$data.msg);
+
+                //通过$options属性继续获取的属性
+                console.log(this.$options.methods);
+                console.log(this.$options.methods.show);
+                console.log(this.$options.beforeCreated);
+
+                //vue实例本身的方法
+//                this.$destroy(); //销毁vue实例的方法
+//                this.$mount("目标选择器");  //挂载vue实例的方法
+
+                //自己绑定的属性和方法通过$options
+                console.log(this.$options.attr);
+                this.$options.mes();
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

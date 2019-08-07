@@ -1,0 +1,149 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+h2{
+    text-align: center;
+    margin:50px auto 0;
+}
+html,body{
+
+    background-color: #C6DDFF;
+}
+.container{
+    margin:0 auto;
+    width: 1000px;
+    height: 600px;
+}
+.message{
+    width: 700px;
+    height:40%;
+    border: 1px solid #999;
+    margin:auto;
+    text-align: center;
+}
+.message textarea{
+    width:600px;
+    height: 100px;
+    margin:30px auto 0;
+    border: 1px solid #999;
+    resize:none;
+    
+}
+.message p{
+    text-align: left;
+    margin-left: 50px;
+    color:#999;
+}
+.message #submitcontent{
+    float: right;
+    width: 130px;
+    height: 40px;
+    background-color: hotpink;
+    color: white;
+    line-height: 40px;
+    font-size:20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right:50px;
+    margin-top:30px;
+}
+.message #submitcontent:active{
+    background-color: #ff2bac;
+}
+
+.content{
+    width: 660px;
+    border: 1px solid #999;
+    margin:30px auto 0;
+    padding: 20px;
+
+}
+.content .nomsg{
+    height:40px;
+    width: 660px;
+    font: 22px "微软雅黑";
+    text-align: center;
+    color:#999;
+    /*display: none;*/
+
+}
+.heng{
+    
+    width: 100%;
+    border: 1px solid #bbb;
+    margin-top: 20px;
+
+}
+
+
+.content .msg{
+    height: 90px;
+    /*display: none;*/
+}
+.content .msg>h4{
+    width: 100%;
+}
+.content .msg p {
+
+    margin-top:20px;
+}
+.content .msg span {
+    color:#999;
+}
+.content .msg p a{
+    text-decoration:none;
+    color:black;
+    float:right;
+    margin-left: 15px;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+}
+.content .msg p a:hover{
+    color:hotpink;
+    text-decoration: underline;
+}
+.content .msg p a i{
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+
+}
+.content .msg p .cai i{
+    background: url("image/down.png") no-repeat 0/25px 25px;
+    vertical-align: -7px;
+}
+.content .msg p .zan i{
+     background: url("image/up.png") no-repeat 0/25px 25px;
+     vertical-align: -7px;
+ }
+.content .msg p .del i{
+    background: url("image/del.png") no-repeat 0/25px 25px;
+    vertical-align: -7px;
+}
+
+.delall{
+    margin-top:30px;
+    float: right;
+    margin-right: 150px;
+    width: 145px;
+    height: 38px;
+    background-color: #C03533;
+    border-radius: 15px;
+    color:white;
+    font-size:22px;
+    text-align: center;
+    line-height: 38px;
+    cursor: pointer;
+
+
+}
+.delall:active{
+    background-color: #c00907;
+}
+
+
+
+

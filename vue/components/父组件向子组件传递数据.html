@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!--<App></App>-->
+</div>
+<hr>
+<div id="root">
+    <aaa></aaa>
+</div>
+
+<template id="parent-a">
+    <div>
+        <h1>我是父组件的标题--{{msg}}</h1>
+        <!--第一步：给子组件标签绑定一个自定义属性，值就是要传递的变量-->
+        <!--<child-b :qq="msg"></child-b>-->
+        <bbb :qq="msg"></bbb>
+        <button @click="change">go</button>
+    </div>
+</template>
+
+<template id="child-b">
+    <div>
+        <h2>我是子组件的标题--{{msg}}--{{qq}}</h2>
+    </div>
+</template>
+
+<script src="../vue/vue.js"></script>
+
+<script>
+
+    Vue.component("App", {
+        template: "#parent-a",
+        data: function () {
+            return {
+                msg: "parent"
+            }
+        },
+        components: {
+            "child-b": {
+                template: "#child-b",
+                data: function () {
+                    return {
+                        msg: "child"
+                    }
+                },
+               /* 第二步：在子组件定义位置，添加props属性
+                props值可以是数组，把子组件标签里面的自定义属性名以字符串的形式注册一下
+                此时子组件就拿到了这个自定义属性，也是一个变量（等同于父组件变量）
+                属性值就是父组件的传递过来的数据。
+                props: ["qq"],
+                props值还可以是一个json
+                键是当前自定义属性名，值就是声明该属性是什么类型的变量 如果写错就报错
+                类型名要大写*/
+                props: {
+                    "qq": String
+                }
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el: "#app"
+    });
+
+
+    var vm1 = new Vue({
+        el: "#root",
+        components: {
+            aaa: {
+                template: "#parent-a",
+                data: function () {
+                    return {
+                        msg: "我是父组件"
+                    }
+                },
+                methods: {
+                    change: function () {
+                        this.msg = "我是父组件新"
+                    }
+                },
+                components: {
+                    bbb: {
+                        template: "#child-b",
+                        data: function () {
+                            return {
+                                msg: "我是子组件"
+                            }
+                        },
+                        /* 第二步：在子组件定义位置，添加props属性
+                         props值可以是数组，把子组件标签里面的自定义属性名以字符串的形式注册一下
+                         此时子组件就拿到了这个自定义属性，也是一个变量（等同于父组件变量）
+                         属性值就是父组件的传递过来的数据。
+                         props: ["qq"],
+                         props值还可以是一个json
+                         键是当前自定义属性名，值就是声明该属性是什么类型的变量 如果写错就报错
+                         类型名要大写*/
+                        props: {
+                            "qq": String
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+
+</script>
+
+</body>
+</html>

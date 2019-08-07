@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+        .inner{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <button @click="show"></button>
+
+<!--    vue2.0中 动画的使用（进入和离开的动画）
+
+    1.把要实现动画的盒子放入 transition 标签里面
+    2.在transition的头标签里面 定义属性
+    3.进入属性  enter-active-class="animate.css动画类名"
+    5.离开属性  leave-active-class="animate.css动画类名"
+    4.进入或者离开的类名 必须是两个 第一个class必须是animated 第二个可以自己去选择-->
+    <transition
+        enter-active-class="animated flipInX"
+        leave-active-class="animated bounceOut"
+    >
+        <div class="inner" v-show="boo"></div>
+    </transition>
+
+
+</div>
+
+<!--2.0动画-->
+<script src="vue.js"></script>
+
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+            boo: true
+        },
+        methods: {
+            show: function () {
+                this.boo=!this.boo;
+            }
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

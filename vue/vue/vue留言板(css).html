@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="msg.css">
+</head>
+<body>
+<h2>小小留言板</h2>
+<div class="container">
+    <div class="message">
+        <textarea name="" id="" cols="30" rows="10" v-model="msg"></textarea>
+        <p>最少输入6个字</p>
+        <div id="submitcontent" @click="send">提交评论</div>
+
+    </div>
+    <div class="content">
+        <div class="nomsg" v-show="showBoo">
+            暂无留言
+            <div class="heng"></div>
+        </div>
+
+        <div class="msg" v-show="!showBoo" v-for="(key,index) in arr">
+            <h4 v-html="key.text"></h4>
+            <p>
+                <span class="time" v-html="key.time">2018-05-06 18:56:32</span>
+
+                <!--这里最好不要写id，因为要循环多个-->
+                <a href="jsvascript:;" class="del" @click="del(index)">  <!--@click="del(arr.indexOf(key))"-->
+                    <i></i>
+                    删除
+                </a>
+                <a href="jsvascript:;" class="cai" @click="cai(index)">
+                    <i></i>
+                    {{key.cai}}
+                </a>
+                <a href="jsvascript:;" class="zan" @click="zan(index)">
+                    <i></i>
+                    {{key.zan}}
+                </a>
+            </p>
+            <div class="heng"></div>
+        </div>
+    </div>
+    <div class="delall" @click="delall">全部删除</div>
+
+</div>
+
+<script src="vue.js"></script>
+<script>
+
+    new Vue({
+        el:".container",
+        data:{
+            msg:"",
+            showBoo:true,
+            arr:[]
+        },
+        methods:{
+            send: function () {
+                if (this.msg.length < 6) {
+                    alert("输入内容不能为空");
+                    return;
+                }
+                this.showBoo=false;
+                var date=new Date();
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                var day=date.getDate();
+                var hour=date.getHours();
+                var minute=date.getMinutes();
+                var second=date.getSeconds();
+                month=month>=10?month:"0"+month;
+                day=day>=10?day:day="0"+day;
+                hour=hour>=10?hour:"0"+hour;
+                minute=minute>=10?minute:"0"+minute;
+                second=second>=10?second:"0"+second;
+                this.arr.push({time:year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second,text:this.msg,zan:0,cai:0});
+                this.msg="";
+            },
+            delall: function () {
+                if(this.arr.length===0){
+                    alert("没有数据");
+                    return;
+                }
+                if(confirm("确定要删除全部数据？")){
+                    this.showBoo=true;
+//                    this.arr.splice(0,this.arr.length);
+                    this.arr=[];
+                }
+            },
+            del: function (index) {
+                this.arr.splice(index,1);
+                if (this.arr.length === 0) {
+                    this.showBoo=true;
+                }
+            },
+            cai:function(index){
+                this.arr[index].cai+=1;
+//                console.log(this.arr[index].cai);
+            },
+            zan: function (index) {
+                this.arr[index].zan+=1;
+            }
+        }
+    })
+
+
+</script>
+
+
+</body>
+</html>

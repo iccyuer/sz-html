@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+  <!--  <template v-if="msg">
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+    </template>
+    <template v-else>
+        <span>span1</span>
+        <span>span2</span>
+        <span>span3</span>
+    </template>-->
+
+    <template v-if="msg">
+        wa:<input type="text" key="1">
+    </template>
+    <template v-else>
+        waka:<input type="text" key="2">
+    </template>
+
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            msg:true
+        }
+    });
+</script>
+
+</body>
+</html>

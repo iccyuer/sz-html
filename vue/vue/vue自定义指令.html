@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <div v-orange="msg"></div>
+    <!--<div v-orange="show()"></div>-->
+    <input type="text" v-focus>
+
+    <!--<button @click="xooi"></button>-->
+</div>
+
+<div id="root">
+    <input type="text" v-focus>
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+    /*
+     Vue.directive(
+        参数1：不带v-的指令名称
+        参数2：回调函数(
+            参数1：当前指令所在的元素的dom对象
+            参数2：是一个对象：自定义指令后面的值是一个在data里面定义过的变量，vue会帮我们把它传过来。
+            )
+     )
+     */
+    Vue.directive("orange", function (ele, data) {
+        //data是指令后面的变量，可以获取到：
+        console.log(data.name); //不带v-的指令名称
+        console.log(data.rawName);  //带v-的指令名称
+        console.log(data.value);    //变量的值
+        console.log(data.expression);   //变量本身
+        console.log(data.oldValue); //变量上一次的值
+        ele.innerHTML = data.value; //v-html
+        console.log(data);
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "jk"
+        },
+        methods:{
+            show: function () {
+                alert(1);
+                return this.msg;
+            }
+        },
+        directives:{
+            focus:{
+                inserted: function (ele,data) {
+                    ele.focus();
+                }
+            },
+
+        }
+
+    })
+
+
+</script>
+
+
+</body>
+</html>

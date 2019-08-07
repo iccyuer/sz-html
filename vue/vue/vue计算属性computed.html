@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!--5----NaN-->
+    {{a}}----{{b}}
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            a: 5,
+//            b: this.a + 5
+        },
+        computed: {
+            b: function () {
+                return this.a + 5;
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

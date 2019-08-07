@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .active{
+            background-color: orange;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div :class="{active:true}"></div>
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+    new Vue({
+        el:"#app",
+
+    })
+</script>
+
+</body>
+</html>

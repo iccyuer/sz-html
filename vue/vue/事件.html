@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app" @click="show($event,5)">{{msg}}<!---->
+
+    <input type="text" @keydown.enter="cl">
+    <input type="text" @keydown.13="cl">
+    <input type="text" @click="haha">
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            msg:"haha"
+        },
+        methods:{
+            show: function (event,num) {
+                console.log(event,num);
+                this.msg="i changed"
+            },
+            cl: function (event) {
+                console.log(event.key);
+            },
+            haha(){
+                console.log('hahaa');
+            }
+        }
+    });
+
+
+
+
+</script>
+
+</body>
+</html>

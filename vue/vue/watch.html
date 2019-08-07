@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div v-html="msg"></div>
+    <div v-html="per"></div>
+
+</div>
+
+<script src="vue.js"></script>
+
+<script>
+    var vm=new Vue({
+        data:{
+            msg:"data",
+            per:{
+                name:"xiao",
+                age:20,
+                gender:"girl"
+            }
+        }
+    });
+
+    vm.$mount("#app");
+
+    //vm.$watch(参数1：监听的变量，参数2：回调(参数：变化后的新值))
+    //$watch方法默认是浅层监听，如果监听的变量是一个简单数据类型，如果数据改变那么方法触发
+    vm.$watch("msg", function (newVal) {
+        //newVal参数是变化后的新值
+        console.log(newVal);
+    });
+
+    /*
+     如果监听的变量是一个object类型，那么只有对象本身重新赋值才会监听到
+     如果是对象中的属性发生了变化，那么不会监听到
+     所以需要第三个参数：json{deep:true}深层监听。
+     可以监听到对象的属性变化以及自身变化。
+     Tips：如果是给object对象增加属性，那么不会监听到变化，而且页面上也不会渲染（vue本身就不能监听属性增加）
+     */
+ /*   vm.$watch("per", function (newVal) {
+        console.log(newVal);
+    },{
+        deep:true
+    });*/
+
+    vm.$watch("per.name", function (newVal) {
+        console.log(newVal);
+    });
+
+</script>
+
+</body>
+</html>

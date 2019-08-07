@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <bird></bird>
+    <cat></cat>
+    <cat></cat>
+    <cat></cat>
+    <cat></cat>
+    <cat></cat>
+</div>
+
+<div id="root">
+    <bird></bird>
+    <!--<cat></cat>-->
+</div>
+
+<script src="../vue/vue.js"></script>
+
+<script>
+
+    /*
+     components渲染组件
+     */
+
+    //全局组件(参数1：自定义组件名称:参数2：json对象{template,data,methods})
+    //相对于extend方式，就是少了extend方式创建模板对象，直接用一个json对象替代了
+    Vue.component("bird",{
+        template:"<h3 @click='show'>鹦鹉---{{msg}}</h3>",
+        data: function () {
+            return{
+                msg:"会说话"
+            }
+        },
+        methods:{
+            show: function () {
+                alert('早上好!');
+            }
+        }
+    });
+
+    new Vue({
+        el:"#app",
+        //在一个vue对象中通过components选项注册局部组件
+        //{自定义组件名称:json对象{template,data,methods}}
+        components:{
+            cat:{
+                template:"<h2 @click='show'>橘猫--{{msg}}</h2>",
+                data: function () {
+                    return{
+                        msg:"从未让你失望"
+                    }
+                },
+                methods:{
+                    show: function () {
+                        alert('大橘为重');
+                    }
+                }
+            }
+        }
+    });
+
+    new Vue().$mount("#root");
+
+</script>
+
+</body>
+</html>
