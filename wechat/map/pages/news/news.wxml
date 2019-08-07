@@ -1,0 +1,5 @@
+<view wx:for='{{newsArr}}' wx:key='{{index}}'>
+  <text>
+  {{item.title}}
+  </text>
+</view>

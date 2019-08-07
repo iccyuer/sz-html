@@ -1,0 +1,49 @@
+.view1{
+  /*定义弹性盒子*/
+  display: flex; 
+  /*定义主轴方向，可取值row和column，次轴随主轴垂直*/
+  flex-direction: column; 
+  width: 100%;
+  height: 100%;
+  background: aqua;
+  position: absolute;
+
+  /* 定义主轴排不下如何换行 */
+  flex-wrap: no-wrap;
+  /* flex-direction和flex-wrap的简写 */
+  /* flex-flow: column wrap; */
+
+  /* 定义主轴的对齐方式 */
+  justify-content: flex-end;
+
+  /* 定义交叉轴(次轴)的对齐方式 */
+  align-items: center;
+
+  /* 定义多跟轴线的对齐方式，单根轴线不起作用 */
+  /* align-content: flex-end; */
+}
+.text1{
+  background: red;
+  color: white;
+  /* order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0 */
+  order: 2;
+  /* 放大比例，有剩余空间时生效，按照权重值分配剩余空间，默认为0，0不放大，负值无效，按0处理 */
+  /* flex-grow: 3; */
+  /* 缩小比例，剩余空间不足时生效，值越大缩小比率越大，默认为1，0不缩小，负值无效，按1处理 */
+  /* flex-shrink: 4; */
+
+  /* 在分配多于空间之前，标签占据主轴空间大小，值为具体rpx，默认auto本来大小 */
+  flex-basis: 300rpx;
+
+  /* flex-grow、flex-shrink、flex-basis的简写 有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)*/
+  flex: 0 1 auto;
+  /* 定义自己在次轴中的排布位置，不能定义自己主轴中的位置，主轴位置只能由其父容器决定 */
+  align-self: flex-start;
+}
+.text2{
+  background: teal;
+  color: wheat;
+  order: 1;
+  /* flex-grow: 2 */
+  flex-basis: 300rpx;
+}

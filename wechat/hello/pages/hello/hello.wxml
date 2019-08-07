@@ -1,0 +1,4 @@
+<view>
+  <button pen-type="hehe" bindgetuserinfo="hehe">{{btnValue}}</button>
+  <map longitude="{{longitude}}" latitude="{{latitude}}"></map>
+</view>

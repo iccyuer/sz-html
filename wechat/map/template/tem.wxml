@@ -1,0 +1,5 @@
+<template name="tp1">
+  <view>
+    <text>我是一个模板，将来可以把我写的复杂一点。。</text>
+  </view>
+</template>

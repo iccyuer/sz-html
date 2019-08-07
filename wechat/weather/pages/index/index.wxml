@@ -1,0 +1,55 @@
+<!--index.wxml-->
+<view class="container">
+  <image mode='' src='{{weatherData.weatherBg}}' class='bg'></image>
+  <block wx:if='{{isShowError}}'>
+    <import src='../template/error.wxml'/>
+    <template is='errorPage' data='{{info:errInfo}}'/>
+  </block>
+
+
+  <view class='today'>
+     <view class='weather-info-top'>
+        <text class='tem'>{{weatherData.temp}}℃</text>
+        <text>{{weatherData.city}}</text>
+        <text>{{weatherData.weather}}</text>
+        <!-- <text class='tem'>31℃</text> 
+        <text class='city'>三河市</text> 
+        <text class='weather'>晴</text>  -->
+
+     </view>
+
+     <view class='weather-icons'>
+      <image src='{{weatherData.weatherIcon}}'></image>
+     </view>
+
+     <view class='weather-info-bottom'>
+        <!-- <text>{{weatherData.temp}}</text>
+        <text>{{weatherData.city}}</text>
+        <text>{{weatherData.weather}}</text> -->
+        <text class='week'>{{weatherData.week}}</text> 
+        <text class='range'>{{weatherData.templow}}℃ ~ {{weatherData.temphigh}}℃</text> 
+
+     </view>
+  </view>
+
+  <view class='daily'>
+      <scroll-view scroll-x class='srcoll-view'>
+        <view class='daily-item' wx:for='{{weatherDaily}}' wx:key='{{index}}'>
+          <view class='top'>{{item.week}}</view>
+          <image src='{{item.weatherIcon}}' class='middle'></image>
+          <view>{{item.weather}}</view>
+          <view class='bottom'>{{item.templow}}℃ ~ {{item.temphigh}}℃</view>
+        </view>
+
+      </scroll-view>
+  </view>
+
+
+
+  <loading hidden='{{isHiddenLoading}}'>
+    加载中
+  </loading>
+  
+  <image src='../../image/white/refesh.png' class='refresh' bindtap='refresh'></image> 
+
+</view>

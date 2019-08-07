@@ -1,0 +1,34 @@
+/* pages/hello/hello.wxss */
+
+.viewContainer1 {
+  height: 150rpx;
+  width: 150rpx;
+}
+
+.scrollStyle{
+  width: 150rpx;
+}
+.viewContainer2 {
+  height: 300rpx;
+  width: 300rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.blue {
+  background: blue;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.aqua {
+  background: aqua;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.yellow {
+  background: yellow;
+  width: 100rpx;
+  height: 100rpx;
+}

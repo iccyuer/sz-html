@@ -1,0 +1,4 @@
+<template name='errorPage'>
+  <image mode='aspectFill' src='../../image/background/404.png'></image>
+  <text>{{info}}</text>
+</template>
