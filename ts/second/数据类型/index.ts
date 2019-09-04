@@ -47,7 +47,7 @@ class Person {
   }
 }
 
-var per = new Person('lasa', 10)
+var per: Person = new Person('lasa', 10)
 per.name = 's'
 per.age = 20
 console.log(per)
