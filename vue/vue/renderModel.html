@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>renderValue</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id='box'>
+    <myform :value="George" @input="gogo">
+    </myform>
+    {{ George }}
+  </div>
+</body>
+<script type="text/javascript">
+  var getChildrenTextContent = function (children) {
+    console.log(children.map)
+    return children.map(function (node) {
+      console.log(node)
+      return node.children
+        ? getChildrenTextContent(node.children)
+        : node.text
+    }).join('')
+  }
+  Vue.component('myform', {
+    render(creatElement) {
+      var self = this
+      return creatElement('input', {
+        domProps: {
+          value: self.value
+        },
+        on: {
+          input(event) {
+            self.$emit('input', event.target.value)
+          }
+        }
+      })
+    },
+    props: {
+      value: {
+        type: String,
+        required: true
+      }
+    }
+  })
+  new Vue({
+    el: '#box',
+    data: {
+      George: ''
+    },
+    methods: {
+      gogo(value) {
+        this.George = value
+      }
+    }
+  })
+</script>
+
+</html>
